@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `Dev Thoughts`,
+    title: `Thoughts & Things`,
     author: `Cory Miller`,
     description: `Thoughts on the developer journey from a front-end dev.`,
     siteUrl: `https://corydhmiller.netlify.com/`,
@@ -73,6 +73,7 @@ module.exports = {
         pathToConfigModule: `src/utils/typography`,
       },
     },
+    `gatsby-plugin-sass`
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

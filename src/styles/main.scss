@@ -1,0 +1,19 @@
+@import 'colors';
+
+body {
+  background-color: $bg-color;
+  color: $primary-color;
+}
+
+a {
+  color: $link-color;
+  text-decoration: none;
+  transition: all ease .15s;
+
+  &:hover {
+    border-radius: 3px;
+    border-radius: 50px;
+    color: lighten($link-color, 10%);
+   
+  }
+}

@@ -56,6 +56,7 @@ const Bio = () => {
       <p>
         <strong>{author}</strong>. Front-End Developer at ConvertKit. Remote.
         {` `}
+        <br/>
         <a href={`https://twitter.com/${social.twitter}`}>
           Twitter
         </a>

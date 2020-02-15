@@ -18,7 +18,6 @@ const Layout = ({ location, title, children }) => {
       >
         <Link
           style={{
-            boxShadow: `none`,
             textDecoration: `none`,
             color: `inherit`,
           }}

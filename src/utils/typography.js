@@ -4,7 +4,7 @@ import noriegaTheme from 'typography-theme-noriega'
 noriegaTheme.overrideThemeStyles = () => {
   return {
     "a.gatsby-resp-image-link": {
-      boxShadow: `none`,
+
     },
   }
 }
