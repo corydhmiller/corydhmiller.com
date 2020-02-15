@@ -1,11 +1,11 @@
 {
-  "name": "gatsby-starter-blog",
+  "name": "corydhmiller.com",
   "private": true,
-  "description": "A starter for a blog powered by Gatsby and Markdown",
+  "description": "A personal blog developed on Gatsby",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Cory Miller <cory@corydhmiller.com>",
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/corydhmiller"
   },
   "dependencies": {
     "gatsby": "^2.19.7",
