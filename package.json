@@ -5,7 +5,7 @@
   "version": "0.1.0",
   "author": "Cory Miller <cory@corydhmiller.com>",
   "bugs": {
-    "url": "https://github.com/corydhmiller"
+    "url": "https://github.com/corydhmiller/corydhmiller.com"
   },
   "dependencies": {
     "gatsby": "^2.19.7",
