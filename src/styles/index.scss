@@ -1,8 +1,10 @@
-@import 'colors';
+@import "colors";
 article {
-    border-radius: 15px;
-    padding: 30px 20px;
-    margin: 10px 0 70px;
-    background: lighten($color-primary, 3%);
-    box-shadow: 10px 10px 30px darken($color-primary, 2%), -10px -10px 30px lighten($color-primary, 2%), 1px 1px 2px lighten($color-primary, 7%) inset;
+  border-radius: 15px;
+  padding: 30px 20px;
+  margin: 10px 0 70px;
+  background: lighten($color-primary, 3%);
+  box-shadow: 10px 10px 30px darken($color-primary, 2%),
+    -10px -10px 30px lighten($color-primary, 2%),
+    1px 1px 2px lighten($color-primary, 7%) inset;
 }

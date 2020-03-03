@@ -8,7 +8,6 @@ import { rhythm } from "../utils/typography"
 import "../styles/main.scss"
 import "../styles/index.scss"
 
-
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title
   const posts = data.allMarkdownRemark.edges
@@ -27,14 +26,13 @@ const BlogIndex = ({ data, location }) => {
                   marginBottom: rhythm(1 / 4),
                 }}
               >
-                <Link to={node.fields.slug}>
-                  {title}
-                </Link>
+                <Link to={node.fields.slug}>{title}</Link>
               </h3>
               <small>{node.frontmatter.date}</small>
             </header>
             <section>
-              <p style={{marginBottom:0}}
+              <p
+                style={{ marginBottom: 0 }}
                 dangerouslySetInnerHTML={{
                   __html: node.frontmatter.description || node.excerpt,
                 }}
