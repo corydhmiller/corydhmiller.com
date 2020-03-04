@@ -1,6 +1,6 @@
 ---
 title: "Considering scalability in small updates and features"
-date: "2019-09-09T00:00:00Z"
+date: "2020-02-27T00:00:00Z"
 layout: post
 description: "It's fairly easy to add updates to your code to solve an issue. It's easy to get a directive from a director or project leader or even a request from a teammate and simply execute it. The challenge comes in looking at problems from a standpoint of future proofing."
 tags:

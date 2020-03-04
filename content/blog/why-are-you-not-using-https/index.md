@@ -1,6 +1,6 @@
 ---
 title: "Why are you not using HTTPS?"
-date: "2019-09-19T00:00:00Z"
+date: "2020-02-29T00:00:00Z"
 layout: post
 description: "You don't want to be the person who regrets not doing it sooner."
 tags:

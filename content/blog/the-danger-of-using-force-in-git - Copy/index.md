@@ -1,6 +1,6 @@
 ---
 title: "The danger of using --force in git"
-date: "2019-09-05T00:00:00Z"
+date: "2020-02-28T00:00:00Z"
 layout: post
 description: "Yesterday I had one of those days when my life seemed to flash before my eyes. I was staring at my branch's logs, wondering why all of the previous day's work was nowhere to be found."
 tags:
