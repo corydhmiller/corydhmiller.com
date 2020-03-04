@@ -41,11 +41,13 @@ Making your own utility classes can be fun but finding a canonical way to write 
 
 I'd seen frameworks like [Tailwind CSS](https://tailwindcss.com/) use a really handy format for responsive utility classes, but hadn't given it much thought in my own practice, until I wanted to make some responsive margin classes.
 
-I use SASS for all of my styling, so let's check out what this would look like.
+"Why not just use Tailwind?" Great question. Tailwind is really great, but I was interested in constructing my own.
+
+I use SASS for all of my styling, so let's check out what this would look like in practice.
 
 ## Setting up the variables
 
-First off I want to assemble what my classes would look like, 
+First off I want to assemble what my classes would look like. I want utility classes for both `margin` and `padding`, and be able to add spacing on every side. I want the output to be fairly shorthand, so `m-20` or `pl-30` would be the end result.
 
 ```sass
 $spacers: (
@@ -63,7 +65,7 @@ $sides-list: (
 $spacing-list: ("0", "20", "30");
 ```
 
-So here we have three arrays: `$spacers`, `$sides-list` and `$spacing-list`. 
+So here we have three arrays: `$spacers`, `$sides-list` and `$spacing-list`. Because I want to 
 
 
 ```sass
