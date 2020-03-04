@@ -1,6 +1,6 @@
 ---
 title: "Update multiple attributes in vanilla JavaScript [Ditching jQuery: Part 1]"
-date: "2020-03-03T00:00:00Z"
+date: "2020-03-02T00:00:00Z"
 layout: post
 description: "Let's be honest: if you're an oldschool JavaScript developer, you've probably spent a lot of time crutching hard on jQuery. I certainly have.
 
