@@ -2,6 +2,7 @@
 title: "Why I'm getting back into blogging"
 date: "2020-03-03T00:00:00Z"
 layout: post
+published: true
 description: "Recently I decided to get back into blogging, which you probably figured out by visiting the site. It's a simple setup, but it does one thing really well: it stops me from overthinking."
 tags:
   - "work"

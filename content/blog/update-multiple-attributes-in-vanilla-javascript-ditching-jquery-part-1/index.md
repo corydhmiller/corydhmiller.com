@@ -2,6 +2,7 @@
 title: "Update multiple attributes in vanilla JavaScript [Ditching jQuery: Part 1]"
 date: "2020-03-02T00:00:00Z"
 layout: post
+published: true
 description: "Let's be honest: if you're an oldschool JavaScript developer, you've probably spent a lot of time crutching hard on jQuery. I certainly have.
 
 JavaScript is in a great place, and while jQuery still has its uses, we're in a great season of vanilla."
