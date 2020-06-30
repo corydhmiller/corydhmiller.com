@@ -56,7 +56,7 @@ const Bio = () => {
         <strong>{author}</strong>. Front-End Developer at ConvertKit. Remote.
         {` `}
         <br />
-        <a href="https://commuteless.fm" target="_blank" rel="noopener">Podcast</a> • <a href={`https://twitter.com/${social.twitter}`} target="_blank" rel="noopener">Twitter</a>
+        <a href="https://commuteless.fm" target="_blank" rel="noopener noreferrer">Podcast</a> • <a href={`https://twitter.com/${social.twitter}`} target="_blank" rel="noopener noreferrer">Twitter</a>
       </p>
     </div>
   )

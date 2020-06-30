@@ -1,9 +1,9 @@
 ---
 title: "Creating complex and responsive pseudo-classes in SASS"
-date: "2020-06-30T00:00:00Z"
+date: "2020-06-28T00:00:00Z"
 layout: post
 published: true
-description: "Recently I decided to get back into blogging, which you probably figured out by visiting the site. It's a simple setup, but it does one thing really well: it stops me from overthinking."
+description: "Utility classes are my favorite way to design and code with CSS. Being able to quickly add a class that tells an element what to do at what breakpoint isn't anything new, but I wanted to construct my own."
 tags:
   - "work"
   - "css"
