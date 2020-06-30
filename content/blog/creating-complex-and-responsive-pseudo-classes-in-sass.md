@@ -1,8 +1,8 @@
 ---
-title: 'Creating complex and responsive pseudo-classes in SASS'
-date: "2020-03-07T00:00:00Z"
+title: "Creating complex and responsive pseudo-classes in SASS"
+date: "2020-06-30T00:00:00Z"
 layout: post
-published: false
+published: true
 description: "Recently I decided to get back into blogging, which you probably figured out by visiting the site. It's a simple setup, but it does one thing really well: it stops me from overthinking."
 tags:
   - "work"
@@ -65,7 +65,12 @@ $sidesList: (
 
 $spacingUnits: ("0", "20", "30");
 
-$screenSizes: ("480", "768", "980", "1200");
+$screenSizes: (
+  "xs": "480",
+  "sm": "768",
+  "md": "980",
+  "lg": "1200",
+);
 ```
 
 So here we have four arrays: `$spacers`, `$sidesList`, `$spacingUnits` and `$screenSizes`. The first two arrays have key value pairs that will be used in our SASS loops, the other two are list of the pixel units for the spacing and media queries, respectively.
@@ -269,11 +274,13 @@ It allows for rapid prototyping and page building. I need to create an element w
 
 I know exactly what this element is doing and I don't have to make anything else.
 
-It might seem *far* too verbose to be generating all of these classes, but when you realize that you have hundreds of classes with margin and padding properties, you can just drop in these utility classes and keep rolling along without having to add the same properties in the code.
+It might seem _far_ too verbose to be generating all of these classes, but when you realize that you have hundreds of classes with margin and padding properties, you can just drop in these utility classes and keep rolling along without having to add the same properties in the code.
 
 ## Okay okay, but what about responsive classes?
 
-You're right
+What if we want to start at zero margin then at "mobile" screen size we want to add `margin: 20px`?
+
+This is really where it starts to get complicated.
 
 ```scss
 @each $spacerKey, $spacer in $spacers {
@@ -292,22 +299,22 @@ You're right
       }
     }
 
+    // Now we're going to do the same thing 
+    // but add in our responsive breakpoints
     @each $sizeKey, $sizeVal in $screenSizes {
+      // This is taking the key, i.e. "xs" or "sm" 
+      // and injecting it as a string.
       .#{$sizeKey} {
         &\:#{$spacerKey} {
           &-#{$num} {
-            @include screen($sizeKey, min) {
+            /* This is basically the same as the above, 
+            but now we're adding in a media query that 
+            accepts in a min-width of the value we 
+            specified in the $screenSizes array. 
+            Now we'll only see this spacing happen on 
+            screen sizes starting at what is defined. */
+            @media screen and (min-width: #{$sizeVal}px) {
               #{$spacer}: #{$num}px;
-            }
-          }
-
-          @each $sideKey, $side in $sidesList {
-            &#{$sideKey} {
-              &-#{$num} {
-                @include screen($sizeKey, min) {
-                  #{$spacer}-#{$side}: #{$num}px;
-                }
-              }
             }
           }
         }
@@ -316,3 +323,43 @@ You're right
   }
 }
 ```
+
+It's a lot, I know, but now we can use something like `m-0 xs:m-20 lg:m-30` to specify what sort of margin we want at whatever breakpoints we have specified.
+
+There's another piece of code we'd need to write to get classes such as `ml-0 sm:mr-20` if you wanted to:
+
+```scss
+@each $sizeKey, $sizeVal in $screenSizes {
+  .#{$sizeKey} {
+    &\:#{$spacerKey} {
+      &-#{$num} {
+        @media screen and (min-width: #{$sizeVal}px) {
+          #{$spacer}: #{$num}px;
+        }
+      }
+      // Bit more complicated to get the sides
+      @each $sideKey, $side in $sidesList {
+        &#{$sideKey} {
+          &-#{$num} {
+            @media screen and (min-width: #{$sizeVal}px) {
+              #{$spacer}-#{$side}: #{$num}px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+And that's "it"!
+
+## Is this overkill?
+
+If you have a fairly small project, you could _easily_ add a few classes that apply just to your project and not worry about this sort of thing at all. In fact, if you _are_ working with a small project, I would recommend _against_ something as robust as what I've just written out.
+
+However in projects like the ones I'm working on, we use these classes _constantly_ across hundreds of pages. By abstracting out common spacing classes like this, I prevent the need to write additional margin or padding properties to specific elements. It may seem like a lot of CSS is generated here, but as long as we're only adding what we need and then using it across our site effetively, we'll be saving both time and KB in the long run.
+
+It also allows for super fast prototyping as I convert designs into code. Our designer Charli told me today: "your utility classes are SO GREAT Cory! I'm poking around at elements on other pages where I know I designed a similar pattern and learning from how you've set them up! Have barely written any CSS so far!"
+
+This is what we're aiming for on our large site project. Faster development, less code bloat, and effectively using SASS to keep us in check.
