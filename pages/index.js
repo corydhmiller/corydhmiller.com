@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
+import Header from "../components/Header";
 import Layout from "../components/Layout";
 import Content from "../components/Content";
 import SiteLink from "../components/UI/SiteLink";
@@ -12,8 +13,8 @@ export default function Home({ posts }) {
 			<Head>
 				<title>Cory&apos;s Thoughts</title>
 			</Head>
+			<Header />
 			<Content>
-				<h1 className="text-6xl font-semibold mb-6">Cory Miller&apos;s Thoughts</h1>
 				{posts.map((post) => (
 					<div key={post.postSlug} className="mb-8">
 						<h2 className="text-3xl font-semibold">
