@@ -23,12 +23,13 @@
 	--red-100: #ff807f;
 	--red-400: #ff5c5c;
 	--red-600: #ff3b3b;
-	--sans-serif: "HKGrotesk", sans-serif;
-  --serif: "Juana", serif;
+	--sans-serif: "HKGrotesk", '"Helvetica Neue"', "Helvetica", "Arial", "sans-serif", '"Apple Color Emoji"', '"Segoe UI Emoji"', '"Segoe UI Symbol"', '"Noto Color Emoji"';
+	--serif: "Juana", "Georgia", "Cambria", '"Times New Roman"', "serif";
 }
 
 body {
 	height: 100vh;
 	width: 100vw;
+	font-size: 1.4rem;
 	font-family: var(--sans-serif);
 }

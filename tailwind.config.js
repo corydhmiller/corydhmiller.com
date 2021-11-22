@@ -16,6 +16,10 @@ module.exports = {
 			purple: { 100: "var(--purple-100)", 400: "var(--purple-400)", 600: "var(--purple-600)" },
 			red: { 100: "var(--red-100)", 400: "var(--red-400)", 600: "var(--red-600)" },
 		},
+		fontFamily: {
+			sans: ["HKGrotesk", '"Helvetica Neue"', "Helvetica", "Arial", "sans-serif", '"Apple Color Emoji"', '"Segoe UI Emoji"', '"Segoe UI Symbol"', '"Noto Color Emoji"'],
+			serif: ["Juana", "Georgia", "Cambria", '"Times New Roman"', "serif"],
+		},
 	},
 	variants: {
 		extend: {},
