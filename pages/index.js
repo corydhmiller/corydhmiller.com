@@ -16,17 +16,9 @@ export default function Home({ posts }) {
 				<title>Cory&apos;s Thoughts</title>
 			</Head>
 			<Content>
-				{posts.map((post) => (
-					<div key={post.postSlug} className="mb-8">
-						<Heading level="h1">
-							<SiteLink href={`/blog/` + post.postSlug}>{post.postTitle}</SiteLink>
-						</Heading>
-						<Paragraph>{post.postContent}</Paragraph>
-						<Paragraph>
-							<SiteLink href={`/blog/` + post.postSlug}>Read on...</SiteLink>
-						</Paragraph>
-					</div>
-				))}
+				<Heading level="h1">
+					Rebuilding this. See you soon.
+				</Heading>
 			</Content>
 		</Layout>
 	);
