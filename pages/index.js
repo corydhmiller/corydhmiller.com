@@ -7,7 +7,6 @@ import { Paragraph } from "@components/Blocks/Blocks";
 import Content from "@components/Content";
 import SiteLink from "@components/UI/SiteLink";
 
-import { getAllPosts } from "../lib/posts";
 
 export default function Home({ posts }) {
 	return (
@@ -23,13 +22,3 @@ export default function Home({ posts }) {
 		</Layout>
 	);
 }
-
-export const getStaticProps = async () => {
-	const { posts } = await getAllPosts();
-
-	return {
-		props: {
-			posts,
-		},
-	};
-};
