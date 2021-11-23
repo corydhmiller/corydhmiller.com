@@ -3,6 +3,7 @@ import Head from "next/head";
 import Header from "@components/Header";
 import Layout from "@components/Layout";
 import { Heading } from "@components/Typography";
+import { Paragraph } from "@components/Blocks/Blocks";
 import Content from "@components/Content";
 import SiteLink from "@components/UI/SiteLink";
 
@@ -14,18 +15,16 @@ export default function Home({ posts }) {
 			<Head>
 				<title>Cory&apos;s Thoughts</title>
 			</Head>
-			<Header />
 			<Content>
-			<Heading level="h1">Cory's Thoughts</Heading>
-
-
 				{posts.map((post) => (
 					<div key={post.postSlug} className="mb-8">
-						<Heading level="h3">
+						<Heading level="h1">
 							<SiteLink href={`/blog/` + post.postSlug}>{post.postTitle}</SiteLink>
 						</Heading>
-						<p>{post.postContent}</p>
-						<p><SiteLink href={`/blog/` + post.postSlug}>Read on...</SiteLink></p>
+						<Paragraph>{post.postContent}</Paragraph>
+						<Paragraph>
+							<SiteLink href={`/blog/` + post.postSlug}>Read on...</SiteLink>
+						</Paragraph>
 					</div>
 				))}
 			</Content>
