@@ -1,16 +1,35 @@
+/* eslint-disable react/no-unescaped-entities */
 import Head from "next/head";
-import Image from "next/image";
-import Layout from "../components/Layout";
+import Header from "@components/Header";
+import Layout from "@components/Layout";
+import { Heading } from "@components/Typography";
+import { Paragraph } from "@components/Blocks/Blocks";
+import Content from "@components/Content";
+import SiteLink from "@components/UI/SiteLink";
 
-export default function Home() {
-  return (
-    <Layout>
-      <Head>
-        <title>Cory&apos;s Thoughts</title>
-      </Head>
-      <div className="max-w-5xl mx-auto w-full h-full flex place-items-center">
-        Rebuilding this. See you soon.
-      </div>
-    </Layout>
-  );
+import { getAllPosts } from "../lib/posts";
+
+export default function Home({ posts }) {
+	return (
+		<Layout>
+			<Head>
+				<title>Cory&apos;s Thoughts</title>
+			</Head>
+			<Content>
+				<Heading level="h1">
+					Rebuilding this. See you soon.
+				</Heading>
+			</Content>
+		</Layout>
+	);
 }
+
+export const getStaticProps = async () => {
+	const { posts } = await getAllPosts();
+
+	return {
+		props: {
+			posts,
+		},
+	};
+};

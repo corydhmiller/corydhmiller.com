@@ -1,8 +1,15 @@
+
+import Header from "@components/Header";
+
+
 const Layout = ({ children }) => {
-  return (
-    <>
-      <main className="h-100vh text-gray-100 bg-gradient-to-br from-black-800 to-black-900">{children}</main>
-    </>
-  );
+	return (
+		<>
+			<div className="w-100vw p-6">
+				<Header />
+				<main>{children}</main>
+			</div>
+		</>
+	);
 };
 export default Layout;
