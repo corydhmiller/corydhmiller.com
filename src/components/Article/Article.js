@@ -3,7 +3,7 @@
 import Layout from "@components/Layout";
 import Content from "@components/Content";
 import { Heading } from "@components/Typography";
-import estimateReadingTime from "@utils/EstimateRead/EstimateRead";
+import estimateReadingTime from "@utils/EstimateRead";
 
 const Article = ({ children, data }) => {
 	const {meta} = data;
