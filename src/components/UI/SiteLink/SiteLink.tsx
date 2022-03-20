@@ -1,7 +1,7 @@
 import Link from "next/link"
 
 interface SiteLinkProps {
-	children: JSX.Element
+	children: JSX.Element | string
 	href: string
 	props: {}
 }
