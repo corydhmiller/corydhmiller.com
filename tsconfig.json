@@ -7,7 +7,7 @@
 			"@helpers/*": ["./helpers/*"],
 			"@data/*": ["./data/*"],
 			"@lib/*": ["./lib/*"],
-			"@public/*": ["../public/*"],
+			"@public/*": ["./public/*"],
 			"@styles/*": ["./styles/*"],
 			"@images/*": ["./components/images/*"]
 		},
