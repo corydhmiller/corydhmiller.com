@@ -17,7 +17,7 @@ export default function Home({ posts }: HomeProps) {
 				<title>Cory&apos;s Thoughts</title>
 			</Head>
 			<Content>
-				<Heading level="h1">Rebuilding this. See you soon.</Heading>
+				<Heading as="h1">Rebuilding this. See you soon.</Heading>
 			</Content>
 		</Layout>
 	)

@@ -2,21 +2,14 @@ import classNames from "classnames"
 import headingsConstants from "./headings.constants"
 
 interface HeadingProps {
-	level: string
 	color?: string
 	size?: string
 	className?: {}
-	children: JSX.Element | string
 }
 
-const Heading = ({
-	level,
-	className = {},
-	color,
-	size,
-	children,
-}: HeadingProps) => {
-	const Tag = `${level}` || "h1"
+const Heading = ({ children, ...props }) => {
+	const { className = {}, size }: HeadingProps = props
+	const Tag = props.as ? props.as : "h2" // Default html tag to h2 if none is provided
 	const heading = headingsConstants[Tag]
 
 	return (
@@ -24,8 +17,8 @@ const Heading = ({
 			className={classNames(
 				heading.classes,
 				className,
-				size ? `text-${size}` : heading.size,
-				(color = `text-${color || heading.color.default}`)
+				heading.size,
+				(`${heading.color.default}`)
 			)}
 		>
 			{children}
