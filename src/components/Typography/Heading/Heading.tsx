@@ -16,9 +16,10 @@ const Heading = ({ children, ...props }) => {
 
 	// Construct the classes together based on the theme provided
 	const classes = cx(
-		size && Element[size] ? Element[size].className : Element.className,
-		props.color ? props.color : Element.color,
-		className
+		Element.size,
+		Element.className,
+		props.color ? props.color : Element.color.default,
+		`mb-8`
 	)
 
 	return (

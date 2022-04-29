@@ -1,19 +1,31 @@
-import Article from "@components/Article";
-import {Heading} from "@components/Typography";
+import Article from "@components/Article"
+import { Heading } from "@components/Typography"
+import { Paragraph } from "@components/Blocks"
 
 export const data = {
-  wordCount: 450,
+	wordCount: 450,
 	meta: {
 		title: "I have no idea what I'm doing",
 		description: "Getting started with the Next framework",
 		date: "11-23-21",
 	},
-};
+}
 
-export default ({ children }) => <Article data={data}>{children}</Article>;
+export default ({ children }) => <Article data={data}>{children}</Article>
 
-## Hello
+<Paragraph>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean a felis
+blandit, aliquam erat sit amet, consequat ex. Vivamus dignissim dui at aliquet
+fermentum. Curabitur pharetra iaculis pharetra. Sed quam nibh, rutrum rutrum
+pellentesque sed, pretium quis felis. Sed at lectus at est commodo efficitur.
+Maecenas at felis non ipsum congue tempus vel et erat. Phasellus blandit lacus
+augue, eget vehicula orci egestas eu. Proin eu dapibus libero. Nam gravida a
+ante sed viverra. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Pellentesque felis arcu, maximus vel mi at, vehicula maximus quam. Fusce
+sapien lacus, efficitur vel quam vel, consequat posuere leo. Sed suscipit
+magna a ipsum lobortis, vel facilisis augue feugiat. Ut porttitor vulputate
+tortor, luctus malesuada orci feugiat nec. Nullam rutrum quam eu tortor
+sollicitudin tempor.</Paragraph>
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean a felis blandit, aliquam erat sit amet, consequat ex. Vivamus dignissim dui at aliquet fermentum. Curabitur pharetra iaculis pharetra. Sed quam nibh, rutrum rutrum pellentesque sed, pretium quis felis. Sed at lectus at est commodo efficitur. Maecenas at felis non ipsum congue tempus vel et erat. Phasellus blandit lacus augue, eget vehicula orci egestas eu. Proin eu dapibus libero. Nam gravida a ante sed viverra. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque felis arcu, maximus vel mi at, vehicula maximus quam. Fusce sapien lacus, efficitur vel quam vel, consequat posuere leo. Sed suscipit magna a ipsum lobortis, vel facilisis augue feugiat. Ut porttitor vulputate tortor, luctus malesuada orci feugiat nec. Nullam rutrum quam eu tortor sollicitudin tempor.
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus faucibus ante et aliquam dignissim. Integer massa lacus, fermentum eget ullamcorper laoreet, fringilla fringilla enim. Integer auctor vehicula augue, at dignissim.
+<Paragraph>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus faucibus ante
+et aliquam dignissim. Integer massa lacus, fermentum eget ullamcorper laoreet,
+fringilla fringilla enim. Integer auctor vehicula augue, at dignissim.</Paragraph>

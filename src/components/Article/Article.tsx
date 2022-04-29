@@ -10,7 +10,7 @@ const Article = ({ children, data }) => {
 			<Content>
 				<article>
 					<Heading as="h1">{meta.title}</Heading>
-					<div className="text-sm text-gray-400">
+					<div className="mb-8 text-sm text-gray-400">
 						Read time: {estimateReadingTime(data.wordCount)} minutes
 					</div>
 					{children}
