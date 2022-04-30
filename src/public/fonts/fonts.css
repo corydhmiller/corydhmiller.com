@@ -1,55 +1,56 @@
 /**
  * @license
  * MyFonts Webfont Build ID 4214916, 2021-11-21T16:08:32-0500
- * 
+ *
  * The fonts listed in this notice are subject to the End User License
- * Agreement(s) entered into by the website owner. All other parties are 
+ * Agreement(s) entered into by the website owner. All other parties are
  * explicitly restricted from using the Licensed Webfonts(s).
- * 
+ *
  * You may obtain a valid license at the URLs below.
- * 
+ *
  * Webfont: Juana by Latinotype
  * URL: https://www.myfonts.com/fonts/latinotype/juana/semi-bold/
  * Copyright: Copyright � 2020 by Eli Hernandez. All rights reserved.
- * 
+ *
  * Webfont: Juana by Latinotype
  * URL: https://www.myfonts.com/fonts/latinotype/juana/bold/
  * Copyright: Copyright � 2020 by Eli Hernandez. All rights reserved.
- * 
+ *
  * Webfont: Orto by LetterPalette
  * URL: https://www.myfonts.com/fonts/letter-palette/orto/regular/
  * Copyright: Copyright (c) 2021 by Ana Prodanovic. All rights reserved.
- * 
+ *
  * Webfont: Orto-Italic by LetterPalette
  * URL: https://www.myfonts.com/fonts/letter-palette/orto/italic/
  * Copyright: Copyright (c) 2021 by Ana Prodanovic. All rights reserved.
- * 
+ *
  * Webfont: Orto-SemiBold by LetterPalette
  * URL: https://www.myfonts.com/fonts/letter-palette/orto/semi-bold/
  * Copyright: Copyright (c) 2021 by Ana Prodanovic. All rights reserved.
- * 
+ *
  * Webfont: Orto-Bold by LetterPalette
  * URL: https://www.myfonts.com/fonts/letter-palette/orto/bold/
  * Copyright: Copyright (c) 2021 by Ana Prodanovic. All rights reserved.
- * 
- * 
- * 
+ *
+ *
+ *
  * © 2021 MyFonts Inc
  */
 
 /* @import must be at top of file, otherwise CSS will not work */
 @import url("//hello.myfonts.net/count/405084");
 
+
 @font-face {
   font-family: "HKGrotesk";
-	src: url("webFonts/HKGrotesk/HKGrotesk-Regular.woff2") format("woff2"), url("webFonts/HKGrotesk/HKGrotesk-Regular.woff") format("woff");
+	src: url("webFonts/HKGrotesk/HKGrotesk-Light.woff2") format("woff2"), url("webFonts/HKGrotesk/HKGrotesk-Light.woff") format("woff");
 	font-weight: 400;
   font-style:normal;
 }
 
 @font-face {
   font-family: "HKGrotesk";
-  src: url("webFonts/HKGrotesk/HKGrotesk-Italic.woff2") format("woff2"), url("webFonts/HKGrotesk/HKGrotesk-Italic.woff") format("woff");
+  src: url("webFonts/HKGrotesk/HKGrotesk-LightItalic.woff2") format("woff2"), url("webFonts/HKGrotesk/HKGrotesk-LightItalic.woff") format("woff");
   font-weight: 400;
   font-style:italic;
 }
@@ -63,6 +64,7 @@
 @font-face {
   font-family: "HKGrotesk";
 	src: url("webFonts/HKGrotesk/HKGrotesk-SemiBoldItalic.woff2") format("woff2"), url("webFonts/HKGrotesk/HKGrotesk-SemiBoldItalic.woff") format("woff");
+  font-weight: 600;
   font-style:italic;
 }
 
