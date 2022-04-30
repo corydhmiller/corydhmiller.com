@@ -3,7 +3,7 @@ import Head from "next/head"
 import Header from "@components/Header"
 import Layout from "@components/Layout"
 import { Heading } from "@components/Typography"
-import { Paragraph } from "@components/Blocks/Blocks"
+import { Paragraph } from "@components/Blocks"
 import Content from "@components/Content"
 
 interface HomeProps {
