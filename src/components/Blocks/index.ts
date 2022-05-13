@@ -1,2 +1,3 @@
 import { Paragraph } from "./Paragraph/Paragraph"
-export { Paragraph }
+import { Small } from "./Small/Small"
+export { Paragraph, Small }
