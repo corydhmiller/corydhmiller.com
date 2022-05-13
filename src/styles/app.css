@@ -19,19 +19,18 @@
 	--red-100: #ff807f;
 	--red-400: #ff5c5c;
 	--red-600: #ff3b3b;
-	--sans-serif: "HKGrotesk", '"Helvetica Neue"', "Helvetica", "Arial", "sans-serif", '"Apple Color Emoji"',
-		'"Segoe UI Emoji"', '"Segoe UI Symbol"', '"Noto Color Emoji"';
+	--sans-serif: "HKGrotesk", '"Helvetica Neue"', "Helvetica", "Arial",
+		"sans-serif", '"Apple Color Emoji"', '"Segoe UI Emoji"', '"Segoe UI Symbol"',
+		'"Noto Color Emoji"';
 	--serif: "Juana", "Georgia", "Cambria", '"Times New Roman"', "serif";
 }
 
 body {
-	height: 100vh;
-	width: 100vw;
 	font-size: 1.4rem;
 	padding: 0;
 	margin: 0;
 	font-family: var(--sans-serif);
-	background-color: var(--gray-800);
+	background-color: #161616;
 	color: var(--gray-100);
 	font-size: 1.35rem;
 }
@@ -46,8 +45,7 @@ body {
 	margin: 0;
 }
 
-html,
-body {
+html {
 	height: 100%;
 }
 
@@ -88,14 +86,13 @@ h6 {
 }
 
 .wrapper {
-  display: grid;
-  grid-template-columns:
-    1fr
-    min(65ch, 100%)
-    1fr;
+	display: grid;
+	grid-template-columns:
+		1fr
+		min(65ch, 100%)
+		1fr;
 }
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-

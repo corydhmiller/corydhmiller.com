@@ -1,7 +1,15 @@
 import React from "react"
-import styled from "styled-components"
+import cx from "classnames"
 
-const PTag = styled.p``
-export const Paragraph = ({ children }: { children: React.ReactNode }) => (
-	<PTag className="mb-4 leading-relaxed">{children}</PTag>
-)
+export const Paragraph = ({
+	children,
+	props,
+}: {
+	children: React.ReactNode
+	props?: React.HTMLProps<HTMLParagraphElement>
+}) => {
+	
+	const classes = cx("mb-4 leading-relaxed", props?.className)
+	
+	return <p className={classes}>{children}</p>
+}

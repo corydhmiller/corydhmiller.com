@@ -6,6 +6,20 @@ import { Heading } from "@components/Typography"
 import { getAllPostPaths, getPostDataFromSlug } from "@lib/posts"
 import { MDXRemote } from "next-mdx-remote"
 import Head from "next/head"
+import styled  from "styled-components"
+
+const Quotish = styled.span`
+	&::before {
+		content: '\\201C';
+		color: var(--orange-400);
+		position: absolute;
+		left: ;
+		transform: translateX(-60%) rotate(-20deg);
+		opacity: 0.8;
+		font-size: 42rem;
+		z-index: -1;
+	}
+`
 
 const PostPage = ({ post }) => {
 	const { data, html } = post
@@ -16,7 +30,7 @@ const PostPage = ({ post }) => {
 				<title>{data.title} - Cory&apos;s Thoughts</title>
 			</Head>
 			<Content>
-				<Heading as="h1">{title}</Heading>
+				<Heading as="h1"><Quotish>{title}</Quotish></Heading>
 				<Paragraph>{date}</Paragraph>
 				<Small>Categories: {categories.join(", ")}</Small>
 			</Content>
