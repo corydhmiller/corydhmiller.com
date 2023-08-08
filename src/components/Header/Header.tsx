@@ -1,8 +1,7 @@
-import { Button, Heading, useColorMode } from "@chakra-ui/react"
+import { Heading, useColorMode } from "@chakra-ui/react"
 import Link from "next/link"
 
 export const Header = () => {
-	const { colorMode, setColorMode } = useColorMode()
 	return (
 		<header>
 			<Heading
@@ -22,14 +21,6 @@ export const Header = () => {
 				<Link href="/" passHref>
 					/C
 				</Link>
-
-				<Button
-					onClick={() => {
-						setColorMode(colorMode === "light" ? "dark" : "light")
-					}}
-				>
-					{colorMode === "light" ? "Dark" : "Light"}
-				</Button>
 			</Heading>
 		</header>
 	)

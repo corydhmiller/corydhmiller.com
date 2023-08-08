@@ -1,26 +1,17 @@
 import { extendTheme, type ThemeConfig } from "@chakra-ui/react"
 import { colors } from "./colors"
+import { HeadingStyles, TextStyles } from "./styles"
 
 const config: ThemeConfig = {
-	initialColorMode: "light",
+	initialColorMode: "dark",
 	useSystemColorMode: false,
 }
 
 const styles = {
 	global: (props) => ({
 		body: {
-			color: props.colorMode === "dark" ? "gray.300" : "black",
 			bg: props.colorMode === "dark" ? "black" : "gray.300",
 		},
-		h1: {
-			color: props.colorMode === "dark" ? "orange.200" : "purple.400",
-		},
-    h2: {
-      color: props.colorMode === "dark" ? "orange.200" : "purple.400",
-    },
-    h3: {
-      color: props.colorMode === "dark" ? "orange.200" : "purple.400",
-    },
 	}),
 }
 
@@ -32,7 +23,9 @@ const theme = extendTheme({
 	colors,
 	styles,
 	config,
-	components: {},
+	components: {
+		Heading: HeadingStyles,
+	},
 })
 
 export default theme
