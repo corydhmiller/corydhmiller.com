@@ -1,7 +1,7 @@
 import Layout from "@components/Layout"
 import Content from "@components/Content"
 import { Heading } from "@components/Typography"
-import estimateReadingTime from "@utils/EstimateRead"
+import estimateReadingTime from "@utils/utils"
 
 const Article = ({ children, data }) => {
 	const { meta } = data

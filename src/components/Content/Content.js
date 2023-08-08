@@ -1,5 +1,16 @@
-const Content = ({ children }) => {
-	return <div className="max-w-4xl p-7 mx-auto text-gray-200">{children}</div>;
-};
+import { Box } from "@chakra-ui/react"
 
-export default Content;
+const Content = ({ children }) => {
+	return (
+		<Box
+			mx="auto"
+			px={{ base: "6", lg: "8" }}
+			py={{ base: "16", sm: "20" }}
+			maxW="7xl"
+		>
+			{children}
+		</Box>
+	)
+}
+
+export default Content

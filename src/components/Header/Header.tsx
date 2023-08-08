@@ -1,15 +1,36 @@
+import { Button, Heading, useColorMode } from "@chakra-ui/react"
 import Link from "next/link"
 
 export const Header = () => {
+	const { colorMode, setColorMode } = useColorMode()
 	return (
 		<header>
-			<Link href="/" passHref>
-				<div
-					className={`text-gray-400 font-serif transform inline-block font-bold text-6xl cursor-pointer hover:text-orange-400 focus:text-orange-400 transition-colors duration-500`}
-				>
+			<Heading
+				color="gray.400"
+				fontWeight="bold"
+				fontSize="6xl"
+				transform="inline-block"
+				cursor="pointer"
+				transition="color 200ms ease-in-out"
+				_hover={{
+					color: "orange.400",
+				}}
+				_focus={{
+					color: "orange.400",
+				}}
+			>
+				<Link href="/" passHref>
 					/C
-				</div>
-			</Link>
+				</Link>
+
+				<Button
+					onClick={() => {
+						setColorMode(colorMode === "light" ? "dark" : "light")
+					}}
+				>
+					{colorMode === "light" ? "Dark" : "Light"}
+				</Button>
+			</Heading>
 		</header>
 	)
 }

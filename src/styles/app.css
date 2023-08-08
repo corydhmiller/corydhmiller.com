@@ -19,8 +19,9 @@
 	--red-100: #ff807f;
 	--red-400: #ff5c5c;
 	--red-600: #ff3b3b;
-	--sans-serif: "HKGrotesk", '"Helvetica Neue"', "Helvetica", "Arial", "sans-serif", '"Apple Color Emoji"',
-		'"Segoe UI Emoji"', '"Segoe UI Symbol"', '"Noto Color Emoji"';
+	--sans-serif: "HKGrotesk", '"Helvetica Neue"', "Helvetica", "Arial",
+		"sans-serif", '"Apple Color Emoji"', '"Segoe UI Emoji"', '"Segoe UI Symbol"',
+		'"Noto Color Emoji"';
 	--serif: "Juana", "Georgia", "Cambria", '"Times New Roman"', "serif";
 }
 
@@ -30,10 +31,8 @@ body {
 	font-size: 1.4rem;
 	padding: 0;
 	margin: 0;
-	font-family: var(--sans-serif);
-	background-color: var(--gray-800);
-	color: var(--gray-800);
-	font-size: 1.35rem;
+	line-height: 1.5;
+	-webkit-font-smoothing: antialiased;
 }
 
 *,
@@ -44,16 +43,6 @@ body {
 
 * {
 	margin: 0;
-}
-
-html,
-body {
-	height: 100%;
-}
-
-body {
-	line-height: 1.5;
-	-webkit-font-smoothing: antialiased;
 }
 
 img,
@@ -88,14 +77,9 @@ h6 {
 }
 
 .wrapper {
-  display: grid;
-  grid-template-columns:
-    1fr
-    min(65ch, 100%)
-    1fr;
+	display: grid;
+	grid-template-columns:
+		1fr
+		min(65ch, 100%)
+		1fr;
 }
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
