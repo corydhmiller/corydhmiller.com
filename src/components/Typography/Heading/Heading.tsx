@@ -1,5 +1,6 @@
 import cx from "classnames"
 import ValidHeadings from "./headings.constants"
+import classNames from "classnames"
 
 const Heading = ({ children, ...props }) => {
 	const {
@@ -10,7 +11,7 @@ const Heading = ({ children, ...props }) => {
 		...rest
 	}: {
 		as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6"
-		className?: object
+		className?: string
 		color?: string
 		size?: string
 	} = props
@@ -20,10 +21,10 @@ const Heading = ({ children, ...props }) => {
 	const Element = ValidHeadings[Tag]
 
 	// Construct the classes together based on the theme provided
-	const classes = cx(
-		Element.size,
-		// props.color ? props.color : Element.color,
+	const classes = classNames(
+		Element,
 		className
+		// props.color ? props.color : Element.color,
 	)
 
 	return (

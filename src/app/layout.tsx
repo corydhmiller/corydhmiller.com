@@ -11,7 +11,7 @@ export default function RootLayout({
 		<html lang="en">
 			<body>
 				<Header />
-				<main className="wrapper">{children}</main>
+				<main className="wrapper px-8">{children}</main>
 			</body>
 		</html>
 	)
