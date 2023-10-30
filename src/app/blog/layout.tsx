@@ -5,9 +5,5 @@ interface HomeProps {
 }
 
 export default function BlogPost({ children }) {
-	return (
-		<>
-			<Content>{children}</Content>
-		</>
-	)
+	return <Content>{children}</Content>
 }

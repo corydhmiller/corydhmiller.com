@@ -1,62 +1,57 @@
-import Content from "@components/Content"
-import { Heading } from "@components/Typography"
-import { getPostBySlug } from "@lib/posts"
-import fs from "fs"
+import Article from "@components/Article"
+import { getAllPosts } from "@lib/posts"
+import { notFound } from "next/navigation"
 import Markdown from "react-markdown"
-import { remark } from "remark"
-import html from "remark-html"
-const components = {
-	h1: ({ node, ...props }) => (
-		<Heading as="h1" {...props}>
-			{props.children}
-		</Heading>
-	),
-	h2: ({ node, ...props }) => (
-		<Heading as="h2" {...props}>
-			{props.children}
-		</Heading>
-	),
-}
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
+import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism"
+import remarkGfm from "remark-gfm"
 
 export default async function BlogPost({ params }) {
 	const { slug } = params
-	const post = await getPostBySlug(slug)
+	const post = getAllPosts().find((post) => post.frontmatter.slug === slug)
 
-	const processedContent = await remark().use(html).process(post.content)
-	console.log(String(processedContent))
+	if (!post) {
+		notFound()
+	}
 
 	return (
-		<Content>
-			<Markdown components={components}>{post.content}</Markdown>
-		</Content>
+		<Article
+			data={{
+				wordCount: String(post.content).split(/\s+/).length,
+			}}
+		>
+			<Markdown
+				remarkPlugins={[remarkGfm]}
+				components={{
+					code(props) {
+						const { children, className, node, ...rest } = props
+						const match = /language-(\w+)/.exec(className || "")
+						return match ? (
+							<SyntaxHighlighter
+								{...rest}
+								// eslint-disable-next-line react/no-children-prop
+								children={String(children).replace(/\n$/, "")}
+								style={oneDark}
+								language={match[1]}
+								PreTag="div"
+							/>
+						) : (
+							<code {...rest} className={className}>
+								{children}
+							</code>
+						)
+					},
+				}}
+			>
+				{post.content}
+			</Markdown>
+		</Article>
 	)
 }
 
-// export async function getStaticProps({ params }) {
-//   const { slug } = params;
-
-//   const markdownWithMetadata = fs.readFileSync(`content/${slug}.mdx`).toString();
-
-//   const { data, content } = matter(markdownWithMetadata);
-
-//   const contentHtml = processedContent.toString();
-
-//   return {
-//     props: {
-//       frontmatter: data,
-//       content: contentHtml,
-//     },
-//   };
-// }
-
 export async function generateStaticParams() {
-	const files = fs.readdirSync("content")
-	const paths = files.map(async (filename) => {
-		const slug = filename.replace(".mdx", "")
-		return {
-			slug,
-		}
-	})
+	// We want to generate the
+	const paths = getAllPosts().map((post) => ({ slug: post.frontmatter.slug }))
 
 	return paths
 }
