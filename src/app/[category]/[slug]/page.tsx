@@ -94,7 +94,11 @@ export async function generateMetadata({ params }) {
 	const post = allPosts.find((post) => post.frontmatter.slug === slug)
 
 	const { title, excerpt, category } = post.frontmatter
-	const imageUrl = `/og?title=${title}`,
+	const imageUrl = `${
+			process.env.NEXT_PUBLIC_VERCEL_ENV === "production"
+				? "https://corydhmiller.com"
+				: process.env.NEXT_PUBLIC_SITE_URL
+		}/og?title=${title}`,
 		pageUrl = `https://corydhmiller.com/${category.toLowerCase()}/${slug}`
 
 	return {
