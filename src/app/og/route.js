@@ -32,32 +32,89 @@ export async function GET(req) {
 		(
 			<div
 				style={{
-					// background: "#1c1c27",
+					background: "#1c1c27",
 					// use 1c1c27 and 28293d for gradient
 					// 10% lightere for 1c1c27
-					background: "linear-gradient(107deg, #272735 0%, #1c1c27 100%)",
+					// background: "linear-gradient(107deg, #272735 0%, #1c1c27 100%)",
 				}}
-				tw="flex justify-center flex-col  text-center w-full h-full text-white"
+				tw="flex justify-center flex-col text-left w-full h-full text-white"
 			>
+				<div
+					tw="flex w-1/2 h-full absolute bottom-1/2 left-1/2"
+					style={{
+						transform: "translateY(50%) translateX(-50%)",
+						opacity: ".31",
+						transformOrigin: "left top",
+						filter: "blur(100px)",
+						background: "#ac5cd9",
+					}}
+				></div>
+				<div
+					tw="flex h-1/2 absolute bottom-1/2 left-1/2"
+					style={{
+						transform: "rotate(10deg) translateY(50%) translateX(-50%)",
+						opacity: ".31",
+						transformOrigin: "left top",
+						filter: "blur(100px)",
+						width: "150%",
+						background: "#3d7bfa",
+					}}
+				></div>
+				<div
+					tw="flex h-1/2 absolute bottom-1/2 left-1/2"
+					style={{
+						transform: "rotate(-45deg) translateY(50%) translateX(-50%)",
+						opacity: "0.05",
+						transformOrigin: "left top",
+						filter: "blur(100px)",
+						width: "150%",
+						background: "#ff5c5c",
+					}}
+				></div>
+				<div
+					tw="flex absolute bottom-0 left-0"
+					style={{
+						opacity: "1",
+						filter: "blur(100px)",
+						background: "#fdac41",
+						height: "300px",
+						width: "300px",
+						transform: "translateY(50%) translateX(-50%)",
+					}}
+				></div>
 				<div
 					tw="flex absolute items-center justify-between w-full bottom-8 text-7 px-8"
 					style={{
 						fontFamily: "HKGrotesk",
-						color: "#ff8802",
 					}}
 				>
 					<div
-						tw={`text-gray-400 font-serif transform inline-block font-bold text-6xl cursor-pointer hover:text-orange-400 focus:text-orange-400 transition-colors duration-500`}
+						tw={`text-white font-serif transform inline-block font-bold text-6xl opacity-80`}
 					>
 						/C
 					</div>
-					<div tw="flex flex-col">
-						<div tw="flex flex-col"></div>
-						<div tw="flex flex-col">corydhmiller.com</div>
+					<div tw="flex items-center">
+							<img
+								src="https://corydhmiller.com/images/cory-miller-profile-picture.jpg"
+								tw="rounded-full w-16 h-16"
+							/>
+						<div tw="flex ml-8 text-6" style={{ color: "#fccc75" }}>
+							corydhmiller.com
+						</div>
 					</div>
 				</div>
 				<div
-					tw="flex text-24 relative leading-none mb-12 px-12"
+					tw="flex h-1/2 absolute bottom-1/2 left-1/2"
+					style={{
+						transform: "rotate(-5deg) translateY(50%) translateX(-50%)",
+						opacity: ".1",
+						filter: "blur(100px)",
+						width: "110%",
+						background: "#fdac41",
+					}}
+				></div>
+				<div
+					tw="flex justify-center items-center h-full text-24 relative leading-none mb-12 px-12 w-full opacity-90"
 					style={{
 						fontFamily: "Juana",
 					}}
