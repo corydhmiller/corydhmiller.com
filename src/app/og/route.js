@@ -5,7 +5,7 @@ export const runtime = "edge"
 
 const getJuanaFont = async () => {
 	const response = await fetch(
-		new URL("../../public/fonts/webFonts/JuanaBold/font.woff", import.meta.url)
+		new URL("../../../public/fonts/webFonts/JuanaBold/font.woff", import.meta.url)
 	)
 	const Juana = await response.arrayBuffer()
 
@@ -15,7 +15,7 @@ const getJuanaFont = async () => {
 const getHKGroteskFont = async () => {
 	const response = await fetch(
 		new URL(
-			"../../public/fonts/webFonts/HKGrotesk/HKGrotesk-SemiBold.woff",
+			"../../../public/fonts/webFonts/HKGrotesk/HKGrotesk-SemiBold.woff",
 			import.meta.url
 		)
 	)

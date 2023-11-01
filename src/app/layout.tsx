@@ -1,5 +1,6 @@
 import "@styles/app.css"
-import "@public/fonts/fonts.css"
+import "../../public/fonts/fonts.css"
+
 import Header from "@components/Header"
 
 export default function RootLayout({
