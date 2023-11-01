@@ -1,10 +1,10 @@
 import Content from "@components/Content"
-import Prose from "@components/Prose"
 import Heading from "@components/Typography/Heading"
+import Image from "next/image"
 import Link from "@components/UI/Link"
+import Prose from "@components/Prose"
 import { getAllPosts } from "@lib/posts"
 import { sanitizeUrlSegment } from "@utils/content-helpers"
-import Image from "next/image"
 
 export default function Home() {
 	const posts = getAllPosts()
@@ -63,7 +63,7 @@ export default function Home() {
 											variant="naked"
 											href={`${sanitizeUrlSegment(category)}/${slug}`}
 										>
-											<button className="bg-blue-600 text-white text-md px-2 py-1 rounded-lg transform hover:scale-105">
+											<button className="bg-blue-600 text-white text-md px-2 py-1 rounded-lg transform hover:scale-105 focus:scale-105 duration-200 transition-all">
 												Read more
 											</button>
 										</Link>
@@ -79,7 +79,20 @@ export default function Home() {
 }
 
 //metadata
-export const metadata = {
-	title: "Home",
-	description: "Home page",
+// Metadata depending on the frontmatter content
+export async function generateMetadata({ params }) {
+	const { slug } = params
+
+	const allPosts = getAllPosts()
+
+	const post = allPosts.find((post) => post.frontmatter.slug === slug)
+
+	const imageUrl = `/og?title=${"Hi! I'm Cory."}`
+
+	return {
+		title: "Thoughts by Cory Miller",
+		description:
+			"A blog about web development, music, and various thoughts on other stuff I'm interested in.",
+		openGraph: { images: [{ url: imageUrl }] },
+	}
 }

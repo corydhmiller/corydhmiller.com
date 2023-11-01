@@ -1,5 +1,5 @@
-import classNames from "classnames"
 import { default as NextLink } from "next/link"
+import classNames from "classnames"
 
 interface LinkProps {
 	children: JSX.Element | string
@@ -11,9 +11,9 @@ interface LinkProps {
 
 const variants = {
 	primary:
-		"text-orange-400 transition-colors duration-200 hover:text-orange-600 no-underline",
+		"text-orange-400 transition-all duration-200 hover:text-orange-600 no-underline",
 	secondary:
-		"text-blue-400 transition-colors duration-200 hover:text-orange-600 no-underline",
+		"text-blue-400 transition-all duration-200 hover:text-orange-600 no-underline",
 	naked: "",
 }
 

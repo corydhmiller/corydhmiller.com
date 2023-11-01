@@ -1,6 +1,6 @@
-import Prose from "@components/Prose"
 import Heading from "@components/Typography/Heading"
 import Link from "@components/UI/Link"
+import Prose from "@components/Prose"
 
 const Article = ({
 	children,
