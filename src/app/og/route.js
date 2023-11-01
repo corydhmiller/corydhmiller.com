@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unknown-property */
 import Image from "next/image"
 import { ImageResponse } from "next/og"
 
@@ -97,6 +98,7 @@ export async function GET(req) {
 							<img
 								src="https://corydhmiller.com/images/cory-miller-profile-picture.jpg"
 								tw="rounded-full w-16 h-16"
+								alt=""
 							/>
 						<div tw="flex ml-8 text-6" style={{ color: "#fccc75" }}>
 							corydhmiller.com
