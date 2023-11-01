@@ -93,11 +93,21 @@ export async function generateMetadata({ params }) {
 
 	const post = allPosts.find((post) => post.frontmatter.slug === slug)
 
-	const imageUrl = `/og?title=${post.frontmatter.title}`
+	const { title, excerpt } = post.frontmatter
+	const imageUrl = `/og?title=${title}`
 
 	return {
-		title: post.frontmatter.title,
-		description: post.frontmatter.excerpt,
-		openGraph: { images: [{ url: imageUrl }] },
+		title,
+		description: excerpt,
+		openGraph: { images: [{ url: imageUrl }], type: "article" },
+		twitter: {
+			cardType: "summary_large_image",
+			creator: "@corydhmiller",
+			site: "corydhmiller.com",
+			creatorId: "399892789",
+			description: excerpt,
+			title,
+			imageAlt: title,
+		},
 	}
 }

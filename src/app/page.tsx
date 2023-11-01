@@ -94,5 +94,15 @@ export async function generateMetadata({ params }) {
 		description:
 			"A blog about web development, music, and various thoughts on other stuff I'm interested in.",
 		openGraph: { images: [{ url: imageUrl }] },
+		twitter: {
+			cardType: "summary_large_image",
+			creator: "@corydhmiller",
+			site: "corydhmiller.com",
+			creatorId: "399892789",
+			description:
+				"A blog about web development, music, and various thoughts on other stuff I'm interested in.",
+			title: "Thoughts by Cory Miller",
+			imageAlt: "Thoughts by Cory Miller",
+		},
 	}
 }
