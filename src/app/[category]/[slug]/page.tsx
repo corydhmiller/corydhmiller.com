@@ -93,8 +93,11 @@ export async function generateMetadata({ params }) {
 
 	const post = allPosts.find((post) => post.frontmatter.slug === slug)
 
+	const imageUrl = `/og?title=${post.frontmatter.title}`
+
 	return {
 		title: post.frontmatter.title,
 		description: post.frontmatter.excerpt,
+		openGraph: { images: [{ url: imageUrl }] },
 	}
 }
