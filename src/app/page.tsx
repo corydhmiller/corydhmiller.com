@@ -1,10 +1,10 @@
 import Content from "@components/Content"
-import Heading from "@components/Typography/Heading"
-import Image from "next/image"
-import Link from "@components/UI/Link"
 import Prose from "@components/Prose"
+import Heading from "@components/Typography/Heading"
+import Link from "@components/UI/Link"
 import { getAllPosts } from "@lib/posts"
 import { sanitizeUrlSegment } from "@utils/content-helpers"
+import Image from "next/image"
 
 export default function Home() {
 	const posts = getAllPosts()
@@ -81,24 +81,30 @@ export default function Home() {
 //metadata
 // Metadata depending on the frontmatter content
 export async function generateMetadata({ params }) {
-	const { slug } = params
-
-	const allPosts = getAllPosts()
-
-	const post = allPosts.find((post) => post.frontmatter.slug === slug)
+	const pageUrl = `https://corydhmiller.com`
 
 	const imageUrl = `/og?title=${"Hi! I'm Cory."}`
+
+	const title = "Thoughts by Cory Miller",
+		description =
+			"A blog about web development, music, and various thoughts on other stuff I'm interested in."
 
 	return {
 		title: "Thoughts by Cory Miller",
 		description:
 			"A blog about web development, music, and various thoughts on other stuff I'm interested in.",
-		openGraph: { images: [{ url: imageUrl }] },
+		openGraph: {
+			title,
+			description,
+			images: [{ url: imageUrl }],
+			url: pageUrl,
+		},
 		twitter: {
 			cardType: "summary_large_image",
 			creator: "@corydhmiller",
-			site: "corydhmiller.com",
+			site: "@corydhmiller",
 			creatorId: "399892789",
+			url: pageUrl,
 			description:
 				"A blog about web development, music, and various thoughts on other stuff I'm interested in.",
 			title: "Thoughts by Cory Miller",
