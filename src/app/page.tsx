@@ -83,7 +83,7 @@ export default function Home() {
 export async function generateMetadata({ params }) {
 	const pageUrl = `https://corydhmiller.com`
 
-	const imageUrl = `/og?title=${"Hi! I'm Cory."}`
+	const imageUrl = `https://corydhmiller.com/og?title=${"Hi! I'm Cory."}`
 
 	const title = "Thoughts by Cory Miller",
 		description =
