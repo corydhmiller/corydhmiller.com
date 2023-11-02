@@ -4,20 +4,21 @@ import "../../public/fonts/fonts.css"
 
 import Header from "@components/Header"
 
-const imageUrl = `https://corydhmiller.com/og?title=${"Hi! I'm Cory."}`
+const imageUrl = `https://corydhmiller.com/og?title=${"Hi! I'm Cory."}`,
+	title = "Thoughts by Cory Miller",
+	description =
+		"A blog about web development, music, and various thoughts on other stuff I'm interested in."
 
 export const metadata: Metadata = {
 	metadataBase: new URL("https://corydhmiller.com"),
 	title: {
-		default: "Cory Miller",
-		template: "%s | Cory Miller",
+		default: title,
+		template: "%s - Cory Miller",
 	},
-	description:
-		"A blog about web development, music, and various thoughts on other stuff I'm interested in.",
+	description,
 	openGraph: {
-		title: "Cory Miller",
-		description:
-			"A blog about web development, music, and various thoughts on other stuff I'm interested in.",
+		title,
+		description,
 		url: "https://corydhmiller.com",
 		siteName: "Cory Miller",
 		locale: "en_US",
@@ -38,7 +39,6 @@ export const metadata: Metadata = {
 	twitter: {
 		title: "Cory Miller",
 		card: "summary_large_image",
-		site: "@corydhmiller",
 		images: [{ url: imageUrl }],
 	},
 }

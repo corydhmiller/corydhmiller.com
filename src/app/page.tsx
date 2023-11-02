@@ -77,38 +77,3 @@ export default function Home() {
 		</>
 	)
 }
-
-//metadata
-// Metadata depending on the frontmatter content
-export async function generateMetadata({ params }) {
-	const pageUrl = `https://corydhmiller.com`
-
-	const imageUrl = `https://corydhmiller.com/og?title=${"Hi! I'm Cory."}`
-
-	const title = "Thoughts by Cory Miller",
-		description =
-			"A blog about web development, music, and various thoughts on other stuff I'm interested in."
-
-	return {
-		title: "Thoughts by Cory Miller",
-		description:
-			"A blog about web development, music, and various thoughts on other stuff I'm interested in.",
-		openGraph: {
-			title,
-			description,
-			images: [{ url: imageUrl }],
-			url: pageUrl,
-		},
-		twitter: {
-			cardType: "summary_large_image",
-			creator: "@corydhmiller",
-			site: "@corydhmiller",
-			creatorId: "399892789",
-			url: pageUrl,
-			description:
-				"A blog about web development, music, and various thoughts on other stuff I'm interested in.",
-			title: "Thoughts by Cory Miller",
-			imageAlt: "Thoughts by Cory Miller",
-		},
-	}
-}
