@@ -106,12 +106,15 @@ export async function generateMetadata({ params }) {
 			title,
 			description: excerpt,
 			url: pageUrl,
+			siteName: "Cory Miller",
+			locale: "en_US",
 		},
 		twitter: {
 			url: pageUrl,
 			description: excerpt,
 			title,
 			imageAlt: title,
+			card: "summary_large_image",
 		},
 	}
 }
