@@ -98,12 +98,12 @@ export async function generateMetadata({ params }) {
 		pageUrl = `https://corydhmiller.com/${category.toLowerCase()}/${slug}`
 
 	return {
-		title: `${title} - Cory Miller`,
+		title,
 		description: excerpt,
 		openGraph: {
 			images: [{ url: imageUrl }],
 			type: "article",
-			title: `${title} - Cory Miller`,
+			title,
 			description: excerpt,
 			url: pageUrl,
 		},
