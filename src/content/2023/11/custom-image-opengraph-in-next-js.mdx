@@ -1,0 +1,38 @@
+---
+title: Adding a dynamic opengraph image in Next.js
+date: 2023-11-02
+slug: custom-image-opengraph-in-next-js
+excerpt: Learn how to add a dynamic opengraph image to a Next.js site using next/og.
+category: Next.js
+tags: image, next.js, opengraph
+published: false
+---
+
+While I was building this blog, I wanted to reduce as much friction as possible between writing a post and publishing it. 
+
+I wanted to be able to write a post in markdown, and have it automatically published to my blog. I also wanted to be able to share my posts on social media, and have the opengraph image be generated automatically.
+
+Fortunately, Next.js can do this for us using a wonderful library called [next/og](https://nextjs.org/docs/app/building-your-application/optimizing/metadata#dynamic-image-generation).
+
+```typescript
+import { ImageResponse } from "next/og"
+
+export const runtime = "edge"
+
+const getJuanaFont = async () => {
+	const response = await fetch(
+		new URL(
+			"../../../public/fonts/webFonts/JuanaBold/font.woff",
+			import.meta.url
+		)
+	)
+	const Juana = await response.arrayBuffer()
+
+	return Juana
+}
+
+export async function GET(req) {
+	const requestUrl = new URL(req.url)
+	const title = decodeURIComponent(requestUrl.searchParams.get("title") || "")
+}
+```

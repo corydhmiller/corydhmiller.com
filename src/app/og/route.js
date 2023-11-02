@@ -1,5 +1,4 @@
 /* eslint-disable react/no-unknown-property */
-import Image from "next/image"
 import { ImageResponse } from "next/og"
 
 export const runtime = "edge"
@@ -27,16 +26,12 @@ const getHKGroteskFont = async () => {
 export async function GET(req) {
 	const requestUrl = new URL(req.url)
 	const title = decodeURIComponent(requestUrl.searchParams.get("title") || "")
-	// const posts = getAllPosts()
-	// console.log(posts)
+
 	return new ImageResponse(
 		(
 			<div
 				style={{
 					background: "#1c1c27",
-					// use 1c1c27 and 28293d for gradient
-					// 10% lightere for 1c1c27
-					// background: "linear-gradient(107deg, #272735 0%, #1c1c27 100%)",
 				}}
 				tw="flex justify-center flex-col text-left w-full h-full text-white"
 			>
