@@ -108,10 +108,6 @@ export async function generateMetadata({ params }) {
 			url: pageUrl,
 		},
 		twitter: {
-			cardType: "summary_large_image",
-			creator: "@corydhmiller",
-			site: "@corydhmiller",
-			creatorId: "399892789",
 			url: pageUrl,
 			description: excerpt,
 			title,
