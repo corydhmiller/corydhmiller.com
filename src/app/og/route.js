@@ -3,29 +3,37 @@ import { ImageResponse } from "next/og"
 
 export const runtime = "edge"
 
-const getJuanaFont = async () => {
-	const response = await fetch(
-		new URL("../../../public/fonts/webFonts/JuanaBold/font.woff", import.meta.url)
-	)
-	const Juana = await response.arrayBuffer()
+const getFonts = async () => {
+  try {
+    const juanaFontURL = new URL("../../../public/fonts/webFonts/JuanaBold/font.woff", import.meta.url);
+    const hKGroteskFontURL = new URL("../../../public/fonts/webFonts/HKGrotesk/HKGrotesk-SemiBold.woff", import.meta.url);
 
-	return Juana
-}
+    // Fetch both fonts in parallel
+    const [juanaResponse, hKGroteskResponse] = await Promise.all([
+      fetch(juanaFontURL),
+      fetch(hKGroteskFontURL),
+    ]);
 
-const getHKGroteskFont = async () => {
-	const response = await fetch(
-		new URL(
-			"../../../public/fonts/webFonts/HKGrotesk/HKGrotesk-SemiBold.woff",
-			import.meta.url
-		)
-	)
-	const HKGrotesk = await response.arrayBuffer()
-	return HKGrotesk
-}
+    // Wait for both arrayBuffers in parallel
+    const [juanaArrayBuffer, hKGroteskArrayBuffer] = await Promise.all([
+      juanaResponse.arrayBuffer(),
+      hKGroteskResponse.arrayBuffer(),
+    ]);
+
+    return {
+      juanaFont: juanaArrayBuffer,
+      hKGroteskFont: hKGroteskArrayBuffer,
+    };
+  } catch (error) {
+    console.error('Error fetching fonts:', error);
+    throw error;
+  }
+};
 
 export async function GET(req) {
 	const requestUrl = new URL(req.url)
 	const title = decodeURIComponent(requestUrl.searchParams.get("title") || "")
+	const fonts = await getFonts()
 
 	return new ImageResponse(
 		(
@@ -85,7 +93,7 @@ export async function GET(req) {
 					}}
 				>
 					<div
-						tw={`text-white font-serif transform inline-block font-bold text-6xl opacity-80`}
+						tw={`text-white font-serif font-bold text-6xl opacity-80`}
 					>
 						/C
 					</div>
@@ -126,13 +134,13 @@ export async function GET(req) {
 			fonts: [
 				{
 					name: "Juana",
-					data: await getJuanaFont(),
+					data: fonts.juanaFont,
 					style: "normal",
 					weight: "400",
 				},
 				{
 					name: "HKGrotesk",
-					data: await getHKGroteskFont(),
+					data: fonts.hKGroteskFont,
 					style: "normal",
 					weight: "400",
 				},
