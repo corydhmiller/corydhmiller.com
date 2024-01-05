@@ -1,11 +1,12 @@
 import Article from "@components/Article"
-import { getAllPosts } from "@lib/posts"
-import { sanitizeUrlSegment } from "@utils/content-helpers"
-import { notFound } from "next/navigation"
+import Link from "@components/UI/Link"
 import Markdown from "react-markdown"
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
-import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism"
+import { coldarkDark } from "react-syntax-highlighter/dist/esm/styles/prism"
+import { getAllPosts } from "@lib/posts"
+import { notFound } from "next/navigation"
 import remarkGfm from "remark-gfm"
+import { sanitizeUrlSegment } from "@utils/content-helpers"
 
 export default async function BlogPost({
 	params,
@@ -50,15 +51,23 @@ export default async function BlogPost({
 								{...rest}
 								// eslint-disable-next-line react/no-children-prop
 								children={String(children).replace(/\n$/, "")}
-								style={oneDark}
+								style={coldarkDark}
 								language={match[1]}
 								PreTag="div"
+								// allow for wrapping
+								wrapLongLines={true}
+
 							/>
 						) : (
 							<code {...rest} className={className}>
 								{children}
 							</code>
 						)
+					},
+					a({ children, ...props }) {
+						// Use our own link component
+
+						return <Link {...props}>{children}</Link>
 					},
 				}}
 			>
@@ -93,28 +102,11 @@ export async function generateMetadata({ params }) {
 
 	const post = allPosts.find((post) => post.frontmatter.slug === slug)
 
-	const { title, excerpt, category } = post.frontmatter
-	const imageUrl = `https://corydhmiller.com/og?title=${title}`,
-		pageUrl = `https://corydhmiller.com/${category.toLowerCase()}/${slug}`
+	const imageUrl = `/og?title=${post.frontmatter.title}`
 
 	return {
-		title,
-		description: excerpt,
-		openGraph: {
-			images: [{ url: imageUrl }],
-			type: "article",
-			title,
-			description: excerpt,
-			url: pageUrl,
-			siteName: "Cory Miller",
-			locale: "en_US",
-		},
-		twitter: {
-			url: pageUrl,
-			description: excerpt,
-			title,
-			imageAlt: title,
-			card: "summary_large_image",
-		},
+		title: post.frontmatter.title,
+		description: post.frontmatter.excerpt,
+		openGraph: { images: [{ url: imageUrl }] },
 	}
 }
