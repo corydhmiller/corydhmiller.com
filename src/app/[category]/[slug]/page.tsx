@@ -1,10 +1,9 @@
 import Article from "@components/Article"
 import { getAllPosts } from "@lib/posts"
 import { sanitizeUrlSegment } from "@utils/content-helpers"
+import { MarkdownComponents } from "@utils/markdownComponents"
 import { notFound } from "next/navigation"
 import Markdown from "react-markdown"
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
-import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism"
 import remarkGfm from "remark-gfm"
 
 export default async function BlogPost({
@@ -39,29 +38,7 @@ export default async function BlogPost({
 				tags: post.frontmatter.tags,
 			}}
 		>
-			<Markdown
-				remarkPlugins={[remarkGfm]}
-				components={{
-					code(props) {
-						const { children, className, node, ...rest } = props
-						const match = /language-(\w+)/.exec(className || "")
-						return match ? (
-							<SyntaxHighlighter
-								{...rest}
-								// eslint-disable-next-line react/no-children-prop
-								children={String(children).replace(/\n$/, "")}
-								style={oneDark}
-								language={match[1]}
-								PreTag="div"
-							/>
-						) : (
-							<code {...rest} className={className}>
-								{children}
-							</code>
-						)
-					},
-				}}
-			>
+			<Markdown remarkPlugins={[remarkGfm]} components={MarkdownComponents}>
 				{post.content}
 			</Markdown>
 		</Article>
