@@ -63,7 +63,7 @@ export default function Home() {
 											variant="naked"
 											href={`${sanitizeUrlSegment(category)}/${slug}`}
 										>
-											<button className="bg-blue-600 text-white text-md px-2 py-1 rounded-lg transform hover:scale-105 focus:scale-105 duration-200 transition-all">
+											<button className="bg-blue-600 text-white text-md px-2 py-1 rounded-lg transform text-base hover:scale-105 focus:scale-105 duration-200 transition-all">
 												Read more
 											</button>
 										</Link>
