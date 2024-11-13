@@ -148,7 +148,7 @@ export default function PortfolioComponent() {
 						animate={{ opacity: 1 }}
 						exit={{ opacity: 0 }}
 						transition={{ duration: 0.3 }}
-						className="fixed inset-0 z-50 flex md:items-center md:justify-center backdrop-blur-sm bg-gray-100 bg-opacity-90"
+						className="fixed inset-0 z-50 flex md:items-center md:justify-center backdrop-blur-md bg-gray-800 bg-opacity-90"
 					>
 						<div className="flex h-full w-full flex-col md:flex-row">
 							<motion.div
@@ -162,7 +162,7 @@ export default function PortfolioComponent() {
 								<BlurImage
 									src={selectedImage.src + "/m/2000x0"}
 									alt={selectedImage.alt}
-									className="h-full w-full object-cover transition-opacity duration-500"
+									className="h-full w-full object-contain transition-opacity duration-500"
 									fill
 									sizes="100vw"
 								/>
