@@ -1,5 +1,5 @@
 import Article from "@components/Article"
-import { getAllPosts } from "@lib/posts"
+import { getAllPosts } from "@/src/lib/posts"
 import { sanitizeUrlSegment } from "@utils/content-helpers"
 import { MarkdownComponents } from "@utils/markdownComponents"
 import { notFound } from "next/navigation"
@@ -16,15 +16,16 @@ export default async function BlogPost({
 
 	// First we want to get all the posts so we can check if the content exists
 	const allPosts = getAllPosts()
-
+	
 	const post = allPosts.find((post) => post.frontmatter.slug === slug)
 	const categories = allPosts.map((post) =>
 		sanitizeUrlSegment(post.frontmatter.category)
-	)
+)
+console.log(post)
 
 	// Each post requires at least a slug and a category
 	// so if either of those are missing we want to return a 404
-	if (!post || !categories.includes(category)) {
+	if (!post) {
 		notFound()
 	}
 

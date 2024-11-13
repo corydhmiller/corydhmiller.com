@@ -1,0 +1,122 @@
+export const photos = [
+	{
+		src: "https://a.storyblok.com/f/313088/3024x2005/798f1e2721/buskers-on-grafton-street.jpg",
+		alt: "Buskers on Grafton Street",
+		title: "Buskers on Grafton Street",
+		tags: ["black & white", "street"],
+		medium: "film",
+		camera: "Minolta SRT-101",
+		description:
+			"A study of light and shadow on the streets of Vienna. The early morning sun creates dramatic shadows of pedestrians and urban elements.",
+	},
+	{
+		src: "https://a.storyblok.com/f/313088/3024x2005/f234194cdd/women-waiting-to-cross-street.jpg",
+		alt: "Women waiting to cross street",
+		title: "Women waiting to cross street",
+		tags: ["black & white", "street"],
+		medium: "film",
+		camera: "Minolta SRT-101",
+		description:
+			"Historic tram captured in the heart of the city. The black and white treatment emphasizes the timeless nature of public transportation.",
+	},
+	{
+		src: "https://a.storyblok.com/f/313088/2005x3024/b4d45cec0f/dark-building.jpg",
+		alt: "Dark building",
+		title: "Dark building",
+		tags: ["black & white", "city"],
+		medium: "film",
+		camera: "Minolta SRT-101",
+		description:
+			"The intricate details of Gothic architecture reach towards the sky, a testament to medieval craftsmanship and spiritual aspirations.",
+	},
+	{
+		src: "https://a.storyblok.com/f/313088/3024x2005/14b2359970/lizzie-mcalpine-crowd.jpg",
+		alt: "Lizzie McAlpine crowd",
+		title: "Lizzie McAlpine crowd",
+		tags: ["black & white", "music"],
+		medium: "film",
+		camera: "Hasselblad 500C/M",
+		description:
+			"The interplay of light and shadow in a dense forest creates a mysterious and ethereal atmosphere, inviting the viewer to explore deeper.",
+	},
+	{
+		src: "https://a.storyblok.com/f/313088/3024x2005/7fdae72154/lizzie-mcalpine-blank-stage.jpg",
+		alt: "Lizzie McAlpine blank stage",
+		title: "Lizzie McAlpine blank stage",
+		tags: ["black & white", "music"],
+		medium: "film",
+		camera: "Hasselblad 500C/M",
+		description:
+			"The interplay of light and shadow in a dense forest creates a mysterious and ethereal atmosphere, inviting the viewer to explore deeper.",
+	},
+	{
+		src: "https://a.storyblok.com/f/313088/3024x2005/976d2aea4d/lizzie-mcalpine-stage.jpg",
+		alt: "Lizzie McAlpine stage",
+		title: "Lizzie McAlpine stage",
+		tags: ["black & white", "music"],
+		medium: "film",
+		camera: "Hasselblad 500C/M",
+		description:
+			"A candid moment captured on a busy city street, where reflections in store windows create a layered and complex urban narrative.",
+	},
+	{
+		src: "https://a.storyblok.com/f/313088/2005x3024/a6a12feda1/man-cleaning-storefront-window.jpg",
+		alt: "Man cleaning storefront window",
+		title: "Man cleaning storefront window",
+		tags: ["black & white", "street"],
+		medium: "film",
+		camera: "Minolta SRT-101",
+		description:
+			"A striking portrait that captures the essence of the subject, with careful attention to lighting and composition to convey emotion and character.",
+	},
+	{
+		src: "https://a.storyblok.com/f/313088/3024x2005/69375f4961/walking-bicycle-shadow.jpg",
+		alt: "Walking bicycle shadow",
+		title: "Walking bicycle shadow",
+		tags: ["black & white", "street"],
+		medium: "film",
+		camera: "Minolta SRT-101",
+		description:
+			"A study of light and shadow on the streets of Vienna. The early morning sun creates dramatic shadows of pedestrians and urban elements.",
+	},
+	{
+		src: "https://a.storyblok.com/f/313088/3024x2005/b634e38c58/men-sitting-in-restaurant.jpg",
+		alt: "Men sitting in restaurant",
+		title: "Men sitting in restaurant",
+		tags: ["black & white", "street"],
+		medium: "film",
+		camera: "Minolta SRT-101",
+	},
+	{
+		src: "https://a.storyblok.com/f/313088/3024x2005/30394d2baa/men-sitting-outside-coffee-shop.jpg",
+		alt: "Men sitting outside coffee shop",
+		title: "Men sitting outside coffee shop",
+		tags: ["black & white", "street"],
+		medium: "film",
+		camera: "Minolta SRT-101",
+	},
+	{
+		src: "https://a.storyblok.com/f/313088/3024x2005/d8e11fa5ea/woman-sitting-alone-at-bus-stop.jpg",
+		alt: "Woman sitting alone at bus stop",
+		title: "Woman sitting alone at bus stop",
+		tags: ["black & white", "street"],
+		medium: "film",
+		camera: "Minolta SRT-101",
+	},
+	{
+		src: "https://a.storyblok.com/f/313088/3024x2005/d8ab8f05e4/vienna-strassenbahn-on-the-ring.jpg",
+		alt: "Vienna strassenbahn on the ring",
+		title: "Vienna strassenbahn on the ring",
+		tags: ["black & white", "street"],
+		medium: "film",
+		camera: "Minolta SRT-101",
+	},
+	{
+		src: "https://a.storyblok.com/f/313088/3024x2005/ed847e7f7f/man-listening-to-street-musician.jpg",
+		alt: "Man listening to street musician",
+		title: "Man listening to street musician",
+		tags: ["city"],
+		medium: "film",
+		camera: "Minolta SRT-101",
+	},
+]

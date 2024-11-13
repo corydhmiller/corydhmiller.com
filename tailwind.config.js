@@ -1,8 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+	darkMode: ["class"],
 	content: [
-		"./src/**/*.{js,ts,jsx,tsx}",
-		"./src/components/**/*.{js,ts,jsx,tsx}",
+		"./app/**/*.{js,ts,jsx,tsx}",
+		"./components/**/*.{js,ts,jsx,tsx}",
 	],
 	theme: {
 		extend: {
@@ -12,59 +13,40 @@ module.exports = {
 			scale: {
 				"-flip": "-100%",
 			},
+			borderRadius: {
+				lg: "var(--radius)",
+				md: "calc(var(--radius) - 2px)",
+				sm: "calc(var(--radius) - 4px)",
+			},
+			colors: {},
 		},
 		colors: {
 			transparent: "transparent",
-			black: "var(--black)",
+			black: "#0D0D0D",
+			white: "#f1f1f1",
 			gray: {
-				100: "var(--gray-100)",
-				200: "var(--gray-200)",
-				300: "var(--gray-300)",
-				400: "var(--gray-400)",
-				600: "var(--gray-600)",
-				800: "var(--gray-800)",
-			},
-			orange: {
-				100: "var(--orange-100)",
-				400: "var(--orange-400)",
-				600: "var(--orange-600)",
-			},
-			blue: {
-				100: "var(--blue-100)",
-				400: "var(--blue-400)",
-				600: "var(--blue-600)",
-				800: "var(--blue-800)",
-			},
-			purple: {
-				100: "var(--purple-100)",
-				400: "var(--purple-400)",
-				600: "var(--purple-600)",
-			},
-			red: {
-				100: "var(--red-100)",
-				400: "var(--red-400)",
-				600: "var(--red-600)",
+				100: "#D9D9D9",
+				400: "#535353",
+				800: "#111111",
 			},
 		},
 		fontFamily: {
 			sans: [
 				"HKGrotesk",
-				'"Helvetica Neue"',
+				"Helvetica Neue",
 				"Helvetica",
 				"Arial",
 				"sans-serif",
-				'"Apple Color Emoji"',
-				'"Segoe UI Emoji"',
-				'"Segoe UI Symbol"',
-				'"Noto Color Emoji"',
+				"Apple Color Emoji",
+				"Segoe UI Emoji",
+				"Segoe UI Symbol",
+				"Noto Color Emoji",
 			],
-			serif: ["Juana", "Georgia", "Cambria", '"Times New Roman"', "serif"],
+			serif: ["Juana", "Georgia", "Cambria", "Times New Roman", "serif"],
 		},
 	},
 	variants: {
 		extend: {},
 	},
-	plugins: [
-    require('@tailwindcss/typography'),
-  ],
+	plugins: [require("@tailwindcss/typography"), require("tailwindcss-animate")],
 }

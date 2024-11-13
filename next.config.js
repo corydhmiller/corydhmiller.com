@@ -4,15 +4,9 @@ const withMDX = require("@next/mdx")()
 const nextConfig = {
 	// Configure `pageExtensions`` to include MDX files
 	pageExtensions: ["js", "jsx", "mdx", "ts", "tsx"],
-
-	async redirects() {
-		return [
-			{
-				source: "/blog",
-				destination: "/",
-				permanent: true,
-			},
-		]
+	// Add images.unsplash.com to the image domains
+	images: {
+		domains: ["images.unsplash.com", "a.storyblok.com"],
 	},
 }
 

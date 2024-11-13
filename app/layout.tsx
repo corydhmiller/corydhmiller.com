@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
-import "@styles/app.css"
-import "../../public/fonts/fonts.css"
+import "@/src/styles/app.css"
+import "../public/fonts/fonts.css"
 
 import Header from "@components/Header"
 
@@ -50,9 +50,9 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang="en">
-			<body>
+			<body className="bg-gray-100">
 				<Header />
-				<main className="wrapper px-8">{children}</main>
+				<main className="wrapper px-8 text-black">{children}</main>
 			</body>
 		</html>
 	)

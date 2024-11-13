@@ -1,5 +1,5 @@
 import { default as NextLink } from "next/link"
-import classNames from "classnames"
+import { cn } from "@utils/cn.utils"
 
 interface LinkProps {
 	children: JSX.Element | string
@@ -10,10 +10,8 @@ interface LinkProps {
 }
 
 const variants = {
-	primary:
-		"text-orange-400 transition-all duration-200 hover:text-orange-600 no-underline",
-	secondary:
-		"text-blue-400 transition-all duration-200 hover:text-orange-600 no-underline",
+	primary: "no-underline hover:underline",
+	secondary: "no-underline hover:underline",
 	naked: "",
 }
 
@@ -21,7 +19,7 @@ const Link = ({ children, href, newTab, className, ...props }: LinkProps) => {
 	return (
 		<NextLink
 			href={href}
-			className={classNames(className, variants[props.variant || "primary"])}
+			className={cn(className, variants[props.variant || "primary"])}
 			passHref
 			{...(newTab && { target: "_blank", rel: "noopener noreferrer" })}
 			{...props}

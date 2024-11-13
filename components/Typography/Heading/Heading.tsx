@@ -1,6 +1,5 @@
-import cx from "classnames"
+import { cn } from "@utils/cn.utils"
 import ValidHeadings from "./headings.constants"
-import classNames from "classnames"
 
 const Heading = ({ children, ...props }) => {
 	const {
@@ -21,11 +20,8 @@ const Heading = ({ children, ...props }) => {
 	const Element = ValidHeadings[Tag]
 
 	// Construct the classes together based on the theme provided
-	const classes = classNames(
-		Element,
-		className
-		// props.color ? props.color : Element.color,
-	)
+	const classes = cn(Element, className)
+
 
 	return (
 		<Tag id={props.id} className={classes} {...rest}>
