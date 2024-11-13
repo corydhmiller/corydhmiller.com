@@ -15,7 +15,7 @@ export function BlurImage({ src, alt, className, ...props }: BlurImageProps) {
 	const lowResSrc = src.replace("/m/*", "/m/50x0")
 
 	return (
-		<div className="relative w-full h-full">
+		<>
 			{lowResSrc && (
 				<Image
 					src={lowResSrc}
@@ -44,6 +44,6 @@ export function BlurImage({ src, alt, className, ...props }: BlurImageProps) {
 				onLoad={() => setIsLoaded(true)}
 				{...props}
 			/>
-		</div>
+		</>
 	)
 }

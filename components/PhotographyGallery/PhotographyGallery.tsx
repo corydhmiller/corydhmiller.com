@@ -28,15 +28,6 @@ export default function PortfolioComponent() {
 
 	const allTags = Array.from(new Set(photos.flatMap((photo) => photo.tags)))
 
-	// Function to take an image src and return a unique but repeatable number
-	const hashSrcToNumber = (src: string) => {
-		return src.split("/").reduce((acc, part) => acc * part.length, 1)
-	}
-
-	const handleImageLoad = (src) => {
-		setLoadedImages((prev) => ({ ...prev, [src]: true }))
-	}
-
 	return (
 		<div className="min-h-screen">
 			<div className="sticky top-0 z-10 p-6 md:hidden">
@@ -76,12 +67,15 @@ export default function PortfolioComponent() {
 				</div>
 			</div>
 
-			<div className="flex flex-col md:flex-row">
+			<div className="flex flex-col md:flex-row min-h-screen">
 				<ScrollArea className="flex-grow">
-					<div className="grid grid-cols-1 gap-6 p-6 sm:grid-cols-2 lg:grid-cols-3">
+					<motion.div
+						layout
+						className="grid grid-cols-1 gap-6 p-6 sm:grid-cols-2 lg:grid-cols-3"
+					>
 						{filteredPhotos.map((photo) => (
 							<motion.div
-								key={hashSrcToNumber(photo.src)}
+								key={photo.src}
 								layout
 								initial={{ opacity: 0 }}
 								animate={{ opacity: 1 }}
@@ -97,13 +91,14 @@ export default function PortfolioComponent() {
 									<BlurImage
 										src={photo.src + "/m/500x0"}
 										alt={photo.alt}
-										className="object-cover"
+										className="h-full w-full object-cover transition-opacity duration-500"
 										fill
+										sizes="100vw"
 									/>
 								</motion.div>
 							</motion.div>
 						))}
-					</div>
+					</motion.div>
 				</ScrollArea>
 
 				<div className="hidden w-96 p-6 md:block">
@@ -167,7 +162,7 @@ export default function PortfolioComponent() {
 								<BlurImage
 									src={selectedImage.src + "/m/2000x0"}
 									alt={selectedImage.alt}
-									className="h-full w-full object-contain transition-opacity duration-500"
+									className="h-full w-full object-cover transition-opacity duration-500"
 									fill
 									sizes="100vw"
 								/>
