@@ -21,7 +21,6 @@ export default async function BlogPost({
 	const categories = allPosts.map((post) =>
 		sanitizeUrlSegment(post.frontmatter.category)
 )
-console.log(post)
 
 	// Each post requires at least a slug and a category
 	// so if either of those are missing we want to return a 404
