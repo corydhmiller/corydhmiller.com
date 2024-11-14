@@ -15,22 +15,15 @@ export default function PortfolioComponent({ photos }) {
 	const [focusedIndex, setFocusedIndex] = React.useState(-1)
 
 	const filteredPhotos = React.useMemo(() => {
-		if (selectedTags.length === 0 && !selectedMedium) {
-			return [...photos].sort((a, b) => {
-				return (
-					new Date(b.content.date).getTime() -
-					new Date(a.content.date).getTime()
-				)
-			})
-		}
-
 		return photos
-			.filter(
-				(photo) =>
-					(selectedTags.length === 0 ||
-						selectedTags.some((tag) => photo.tag_list.includes(tag))) &&
-					(!selectedMedium || photo.content.medium === selectedMedium)
-			)
+			.filter((photo) => {
+				const tagsMatch =
+					selectedTags.length === 0 ||
+					selectedTags.every((tag) => photo.tag_list.includes(tag))
+				const mediumMatch =
+					!selectedMedium || photo.content.medium === selectedMedium
+				return tagsMatch && mediumMatch
+			})
 			.sort((a, b) => {
 				return (
 					new Date(b.content.date).getTime() -
@@ -101,7 +94,7 @@ export default function PortfolioComponent({ photos }) {
 	}, [focusedIndex, filteredPhotos])
 
 	return (
-		<div className="min-h-screen flex flex-col">
+		<div className="min-h-screen w-full flex flex-col">
 			<div className="sticky top-0 z-10 p-6 md:hidden">
 				<div className="relative">
 					<button
@@ -123,7 +116,7 @@ export default function PortfolioComponent({ photos }) {
 								initial={{ height: 0, opacity: 0 }}
 								animate={{ height: "auto", opacity: 1 }}
 								exit={{ height: 0, opacity: 0 }}
-								transition={{ duration: 0.3, ease: "easeOut" }}
+								transition={{ duration: 0.3, ease: "easeInOut" }}
 								className="absolute left-0 top-8 z-20 space-y-6 overflow-hidden pt-4"
 							>
 								<FilterContent
@@ -140,45 +133,47 @@ export default function PortfolioComponent({ photos }) {
 			</div>
 
 			<div className="flex flex-1 overflow-hidden">
-				<ScrollArea className="flex-grow">
-					<AnimatePresence>
-						<motion.div
-							layout
-							className="grid grid-cols-1 gap-6 p-6 sm:grid-cols-2 lg:grid-cols-3"
-						>
-							{filteredPhotos.map((photo, index) => (
-								<motion.div
-									key={photo.id}
-									layout
-									initial={{ opacity: 0 }}
-									animate={{ opacity: 1 }}
-									exit={{ opacity: 0 }}
-									transition={{ duration: 0.5, ease: "easeOut" }}
-								>
+				<ScrollArea className="w-full">
+					<div className="p-6">
+						<AnimatePresence>
+							<motion.div
+								layout
+								className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto"
+							>
+								{filteredPhotos.map((photo, index) => (
 									<motion.div
-										id={`photo-${photo.id}`}
-										tabIndex={0}
-										whileHover={{ scale: 1.02 }}
-										transition={{ duration: 0.4, ease: "easeOut" }}
-										onClick={() => setSelectedImage(photo)}
-										onFocus={() => setFocusedIndex(index)}
-										className={cn(
-											"relative aspect-[4/3] cursor-pointer overflow-hidden rounded-lg shadow-sm max-w-[500px]",
-											focusedIndex === index && "ring-2 ring-blue-500"
-										)}
+										key={photo.id}
+										layout
+										initial={{ opacity: 0 }}
+										animate={{ opacity: 1 }}
+										exit={{ opacity: 0 }}
+										transition={{ duration: 0.5, ease: "easeInOut" }}
 									>
-										<BlurImage
-											src={photo.content.image.filename + "/m/500x0"}
-											alt={photo.content.image.alt}
-											className="h-full w-full object-cover transition-opacity duration-500"
-											fill
-											sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-										/>
+										<motion.div
+											id={`photo-${photo.id}`}
+											tabIndex={0}
+											whileHover={{ scale: 1.02 }}
+											transition={{ duration: 0.4, ease: "easeInOut" }}
+											onClick={() => setSelectedImage(photo)}
+											onFocus={() => setFocusedIndex(index)}
+											className={cn(
+												"relative aspect-[4/3] cursor-pointer overflow-hidden rounded-lg shadow-sm",
+												focusedIndex === index && "ring-2 ring-blue-500"
+											)}
+										>
+											<BlurImage
+												src={photo.content.image.filename + "/m/500x0"}
+												alt={photo.content.image.alt}
+												className="h-full w-full object-cover transition-opacity duration-500"
+												fill
+												sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+											/>
+										</motion.div>
 									</motion.div>
-								</motion.div>
-							))}
-						</motion.div>
-					</AnimatePresence>
+								))}
+							</motion.div>
+						</AnimatePresence>
+					</div>
 				</ScrollArea>
 
 				<div className="hidden w-96 p-6 md:block flex-shrink-0">
@@ -203,7 +198,7 @@ export default function PortfolioComponent({ photos }) {
 										initial={{ height: 0, opacity: 0 }}
 										animate={{ height: "auto", opacity: 1 }}
 										exit={{ height: 0, opacity: 0 }}
-										transition={{ duration: 0.3, ease: "easeOut" }}
+										transition={{ duration: 0.3, ease: "easeInOut" }}
 										className="absolute left-0 top-8 space-y-6 pt-4"
 									>
 										<FilterContent
