@@ -6,7 +6,7 @@ const Article = ({
 	children,
 	data,
 }: {
-	children: JSX.Element | string
+	children: React.ReactNode | string
 	data: {
 		title: string
 		publishDate: string

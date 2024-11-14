@@ -4,8 +4,8 @@ import Link from "@components/UI/Link"
 import { getAllPosts } from "@/src/lib/posts"
 import { sanitizeUrlSegment } from "@utils/content-helpers"
 
-export default function Home() {
-	const posts = getAllPosts()
+export default async function Home() {
+	const posts = (await getAllPosts())
 		.filter((post) => post.frontmatter.published)
 		.sort((a, b) => {
 			return (

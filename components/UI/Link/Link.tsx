@@ -2,7 +2,7 @@ import { default as NextLink } from "next/link"
 import { cn } from "@utils/cn.utils"
 
 interface LinkProps {
-	children: JSX.Element | string
+	children: React.ReactNode | string
 	href: string
 	newTab?: boolean
 	className?: string

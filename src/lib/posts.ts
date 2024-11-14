@@ -5,7 +5,7 @@ import path from "path"
 
 const _contentDirectory = "src/content"
 
-export const getPostBySlug = (slug) => {
+export const getPostBySlug = async (slug: string) => {
 	const postFilePath = path.join(_contentDirectory, `${slug}.mdx`)
 	const postFileContents = fs.readFileSync(postFilePath, "utf8")
 	const { data, content } = matter(postFileContents)
@@ -17,7 +17,7 @@ export const getPostBySlug = (slug) => {
 	}
 }
 
-export const getAllPosts = (
+export const getAllPosts = async (
 	directory = path.join(process.cwd(), _contentDirectory)
 ) => {
 	// Initialize an array to store post data
@@ -35,7 +35,7 @@ export const getAllPosts = (
 		// Check if the current item is a directory
 		if (entry.isDirectory()) {
 			// If it is, then dive deeper into this directory and spread the resulting posts into the allPosts array
-			allPosts.push(...getAllPosts(fullPath))
+			allPosts.push(...(await getAllPosts(fullPath)))
 		}
 		// Check if the current item is an .mdx file
 		else if (path.extname(entry.name) === ".mdx") {

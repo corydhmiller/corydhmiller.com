@@ -6,21 +6,20 @@ import { notFound } from "next/navigation"
 import Markdown from "react-markdown"
 import remarkGfm from "remark-gfm"
 
-export default async function BlogPost({
-	params,
-}: {
-	params: { slug: string; category: string }
+export default async function BlogPost(props: {
+	params: Promise<{ slug: string; category: string }>
 }) {
+	const params = await props.params
 	// The params are passed in by the generateStaticParams function below.
 	const { slug, category } = params
 
 	// First we want to get all the posts so we can check if the content exists
-	const allPosts = getAllPosts()
-	
+	const allPosts = await getAllPosts()
+
 	const post = allPosts.find((post) => post.frontmatter.slug === slug)
 	const categories = allPosts.map((post) =>
 		sanitizeUrlSegment(post.frontmatter.category)
-)
+	)
 
 	// Each post requires at least a slug and a category
 	// so if either of those are missing we want to return a 404
@@ -47,7 +46,7 @@ export default async function BlogPost({
 
 export async function generateStaticParams() {
 	// We want to generate the
-	const paths = getAllPosts().map((post) => {
+	const paths = (await getAllPosts()).map((post) => {
 		if (post.frontmatter.published === false) return
 		const sanitizedCategory = sanitizeUrlSegment(post.frontmatter.category)
 
@@ -63,10 +62,11 @@ export async function generateStaticParams() {
 export const dynamicParams = false
 
 // Metadata depending on the frontmatter content
-export async function generateMetadata({ params }) {
+export async function generateMetadata(props) {
+	const params = await props.params
 	const { slug } = params
 
-	const allPosts = getAllPosts()
+	const allPosts = await getAllPosts()
 
 	const post = allPosts.find((post) => post.frontmatter.slug === slug)
 

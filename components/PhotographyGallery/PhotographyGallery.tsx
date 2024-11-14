@@ -5,7 +5,6 @@ import { cn } from "@utils/cn.utils"
 import { AnimatePresence, motion } from "framer-motion"
 import { ChevronDown, X } from "lucide-react"
 import * as React from "react"
-
 import BlurImage from "../BlurImage"
 
 export default function PortfolioComponent({ photos }) {
