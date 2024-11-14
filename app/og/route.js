@@ -1,5 +1,4 @@
 /* eslint-disable react/no-unknown-property */
-import Image from "next/image"
 import { ImageResponse } from "next/og"
 
 export const runtime = "edge"
@@ -94,6 +93,7 @@ export async function GET(req) {
 						/C
 					</div>
 					<div tw="flex items-center">
+						{/* eslint-disable-next-line @next/next/no-img-element */}
 						<img
 							src="https://corydhmiller.com/images/cory-miller-profile-picture.jpg"
 							tw="rounded-full w-16 h-16"

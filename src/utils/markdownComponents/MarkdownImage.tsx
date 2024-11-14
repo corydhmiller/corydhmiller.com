@@ -20,5 +20,5 @@ export const MarkdownImage = (props) => {
 		newProps.height = dimensions.height
 	}
 
-	return <figure><Image {...newProps} /><figcaption className="block text-sm text-center">{newProps.alt}</figcaption></figure>
+	return <figure><Image alt="" {...newProps} /><figcaption className="block text-sm text-center">{newProps.alt}</figcaption></figure>
 }

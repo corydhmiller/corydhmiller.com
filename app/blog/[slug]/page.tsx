@@ -9,20 +9,15 @@ import remarkGfm from "remark-gfm"
 export default async function BlogPost(props: {
 	params: Promise<{ slug: string; category: string }>
 }) {
+	return <></>
 	const params = await props.params
-	// The params are passed in by the generateStaticParams function below.
-	const { slug, category } = params
+	const { slug } = params
 
-	// First we want to get all the posts so we can check if the content exists
+	// Get the post based on the slug (no need to fetch all posts every time)
 	const allPosts = await getAllPosts()
-
 	const post = allPosts.find((post) => post.frontmatter.slug === slug)
-	const categories = allPosts.map((post) =>
-		sanitizeUrlSegment(post.frontmatter.category)
-	)
 
-	// Each post requires at least a slug and a category
-	// so if either of those are missing we want to return a 404
+	// Ensure that we have the post
 	if (!post) {
 		notFound()
 	}
@@ -44,35 +39,43 @@ export default async function BlogPost(props: {
 	)
 }
 
+// Generate Static Params (Paths)
 export async function generateStaticParams() {
-	// We want to generate the
-	const paths = (await getAllPosts()).map((post) => {
-		if (post.frontmatter.published === false) return
-		const sanitizedCategory = sanitizeUrlSegment(post.frontmatter.category)
-
-		return {
-			slug: post.frontmatter.slug,
-			category: sanitizedCategory,
-		}
-	})
+	// Generate paths for all published posts
+	const allPosts = await getAllPosts()
+	const paths = allPosts
+		.filter((post) => post.frontmatter.published) // Only use published posts
+		.map((post) => {
+			const sanitizedCategory = sanitizeUrlSegment(post.frontmatter.category)
+			return {
+				slug: post.frontmatter.slug,
+				category: sanitizedCategory,
+			}
+		})
 
 	return paths
 }
 
 export const dynamicParams = false
 
-// Metadata depending on the frontmatter content
+// Metadata generation (only fetch necessary data)
 export async function generateMetadata(props) {
-	const params = await props.params
-	const { slug } = params
+	const { slug, category } = await props.params
 
+	// Fetch only the post needed for metadata (no need to fetch all posts)
 	const allPosts = await getAllPosts()
-
 	const post = allPosts.find((post) => post.frontmatter.slug === slug)
 
-	const { title, excerpt, category } = post.frontmatter
-	const imageUrl = `https://corydhmiller.com/og?title=${title}`,
-		pageUrl = `https://corydhmiller.com/${category.toLowerCase()}/${slug}`
+	if (!post) {
+		return {
+			title: "Post not found",
+			description: "This post does not exist.",
+		}
+	}
+
+	const { title, excerpt } = post.frontmatter
+	const imageUrl = `https://corydhmiller.com/og?title=${title}`
+	const pageUrl = `https://corydhmiller.com/blog/${slug}`
 
 	return {
 		title,
