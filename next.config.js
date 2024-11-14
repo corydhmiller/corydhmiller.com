@@ -8,6 +8,8 @@ const nextConfig = {
 	images: {
 		domains: ["images.unsplash.com", "a.storyblok.com"],
 	},
+	// make it https
+	https: true,
 }
 
 module.exports = withMDX(nextConfig)
