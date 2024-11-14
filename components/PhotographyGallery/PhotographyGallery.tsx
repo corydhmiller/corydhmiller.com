@@ -13,6 +13,8 @@ export default function PortfolioComponent({ photos }) {
 	const [isFilterOpen, setIsFilterOpen] = React.useState(false)
 	const [selectedTags, setSelectedTags] = React.useState([])
 	const [selectedMedium, setSelectedMedium] = React.useState(null)
+	const [focusedIndex, setFocusedIndex] = React.useState(-1)
+
 	const filteredPhotos = React.useMemo(() => {
 		if (selectedTags.length === 0 && !selectedMedium) {
 			return [...photos].sort((a, b) => {
@@ -40,8 +42,67 @@ export default function PortfolioComponent({ photos }) {
 
 	const allTags = Array.from(new Set(photos.flatMap((photo) => photo.tag_list)))
 
+	const handleKeyDown = React.useCallback(
+		(e: KeyboardEvent) => {
+			if (selectedImage) {
+				if (e.key === "Escape") {
+					setSelectedImage(null)
+				} else if (e.key === "ArrowLeft") {
+					const currentIndex = filteredPhotos.findIndex(
+						(photo) => photo.id === selectedImage.id
+					)
+					if (currentIndex > 0) {
+						setSelectedImage(filteredPhotos[currentIndex - 1])
+					}
+				} else if (e.key === "ArrowRight") {
+					const currentIndex = filteredPhotos.findIndex(
+						(photo) => photo.id === selectedImage.id
+					)
+					if (currentIndex < filteredPhotos.length - 1) {
+						setSelectedImage(filteredPhotos[currentIndex + 1])
+					}
+				}
+			} else {
+				if (e.key === "ArrowUp") {
+					setFocusedIndex((prev) => Math.max(prev - 3, 0))
+				} else if (e.key === "ArrowDown") {
+					setFocusedIndex((prev) =>
+						Math.min(prev + 3, filteredPhotos.length - 1)
+					)
+				} else if (e.key === "ArrowLeft") {
+					setFocusedIndex((prev) => Math.max(prev - 1, 0))
+				} else if (e.key === "ArrowRight") {
+					setFocusedIndex((prev) =>
+						Math.min(prev + 1, filteredPhotos.length - 1)
+					)
+				} else if (e.key === "Enter" && focusedIndex !== -1) {
+					setSelectedImage(filteredPhotos[focusedIndex])
+				}
+			}
+		},
+		[selectedImage, filteredPhotos, focusedIndex]
+	)
+
+	React.useEffect(() => {
+		window.addEventListener("keydown", handleKeyDown)
+		return () => {
+			window.removeEventListener("keydown", handleKeyDown)
+		}
+	}, [handleKeyDown])
+
+	React.useEffect(() => {
+		if (focusedIndex !== -1) {
+			const focusedElement = document.getElementById(
+				`photo-${filteredPhotos[focusedIndex].id}`
+			)
+			if (focusedElement) {
+				focusedElement.focus()
+			}
+		}
+	}, [focusedIndex, filteredPhotos])
+
 	return (
-		<div className="min-h-screen">
+		<div className="min-h-screen flex flex-col">
 			<div className="sticky top-0 z-10 p-6 md:hidden">
 				<div className="relative">
 					<button
@@ -79,14 +140,14 @@ export default function PortfolioComponent({ photos }) {
 				</div>
 			</div>
 
-			<div className="flex flex-col md:flex-row min-h-screen">
+			<div className="flex flex-1 overflow-hidden">
 				<ScrollArea className="flex-grow">
 					<AnimatePresence>
 						<motion.div
 							layout
 							className="grid grid-cols-1 gap-6 p-6 sm:grid-cols-2 lg:grid-cols-3"
 						>
-							{filteredPhotos.map((photo) => (
+							{filteredPhotos.map((photo, index) => (
 								<motion.div
 									key={photo.id}
 									layout
@@ -96,10 +157,16 @@ export default function PortfolioComponent({ photos }) {
 									transition={{ duration: 0.5, ease: "easeOut" }}
 								>
 									<motion.div
+										id={`photo-${photo.id}`}
+										tabIndex={0}
 										whileHover={{ scale: 1.02 }}
 										transition={{ duration: 0.4, ease: "easeOut" }}
 										onClick={() => setSelectedImage(photo)}
-										className="relative aspect-[4/3] cursor-pointer rounded-lg shadow-sm max-w-[500px]"
+										onFocus={() => setFocusedIndex(index)}
+										className={cn(
+											"relative aspect-[4/3] cursor-pointer overflow-hidden rounded-lg shadow-sm max-w-[500px]",
+											focusedIndex === index && "ring-2 ring-blue-500"
+										)}
 									>
 										<BlurImage
 											src={photo.content.image.filename + "/m/500x0"}
@@ -115,7 +182,7 @@ export default function PortfolioComponent({ photos }) {
 					</AnimatePresence>
 				</ScrollArea>
 
-				<div className="hidden w-96 p-6 md:block">
+				<div className="hidden w-96 p-6 md:block flex-shrink-0">
 					<div className="sticky top-6">
 						<div className="relative">
 							<button
