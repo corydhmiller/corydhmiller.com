@@ -79,38 +79,40 @@ export default function PortfolioComponent({ photos }) {
 				</div>
 			</div>
 
-			<div className="flex flex-col md:flex-row">
+			<div className="flex flex-col md:flex-row min-h-screen">
 				<ScrollArea className="flex-grow">
-					<motion.div
-						layout
-						className="grid grid-cols-1 gap-6 p-6 sm:grid-cols-2 lg:grid-cols-3"
-					>
-						{filteredPhotos.map((photo) => (
-							<motion.div
-								key={photo.src}
-								layout
-								initial={{ opacity: 0 }}
-								animate={{ opacity: 1 }}
-								exit={{ opacity: 0 }}
-								transition={{ duration: 0.5, ease: "easeOut" }}
-							>
+					<AnimatePresence>
+						<motion.div
+							layout
+							className="grid grid-cols-1 gap-6 p-6 sm:grid-cols-2 lg:grid-cols-3"
+						>
+							{filteredPhotos.map((photo) => (
 								<motion.div
-									whileHover={{ scale: 1.02 }}
-									transition={{ duration: 0.4, ease: "easeOut" }}
-									onClick={() => setSelectedImage(photo)}
-									className="relative aspect-[4/3] cursor-pointer overflow-hidden rounded-lg shadow-sm max-w-[500px]"
+									key={photo.id}
+									layout
+									initial={{ opacity: 0 }}
+									animate={{ opacity: 1 }}
+									exit={{ opacity: 0 }}
+									transition={{ duration: 0.5, ease: "easeOut" }}
 								>
-									<BlurImage
-										src={photo.content.image.filename + "/m/500x0"}
-										alt={photo.content.image.alt}
-										className="h-full w-full object-cover transition-opacity duration-500"
-										fill
-										sizes="100vw"
-									/>
+									<motion.div
+										whileHover={{ scale: 1.02 }}
+										transition={{ duration: 0.4, ease: "easeOut" }}
+										onClick={() => setSelectedImage(photo)}
+										className="relative aspect-[4/3] cursor-pointer rounded-lg shadow-sm max-w-[500px]"
+									>
+										<BlurImage
+											src={photo.content.image.filename + "/m/500x0"}
+											alt={photo.content.image.alt}
+											className="h-full w-full object-cover transition-opacity duration-500"
+											fill
+											sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+										/>
+									</motion.div>
 								</motion.div>
-							</motion.div>
-						))}
-					</motion.div>
+							))}
+						</motion.div>
+					</AnimatePresence>
 				</ScrollArea>
 
 				<div className="hidden w-96 p-6 md:block">
@@ -226,7 +228,7 @@ export default function PortfolioComponent({ photos }) {
 										<div className="space-y-1 text-sm text-gray-600">
 											<div>{selectedImage.tag_list.join(" / ")}</div>
 											<div className="italic">
-												taken on {selectedImage.camera}
+												taken on {selectedImage.content.camera}
 											</div>
 										</div>
 										<p className="text-sm leading-relaxed">
