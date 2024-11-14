@@ -1,32 +1,44 @@
 "use client"
 
-import * as React from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import Image from "next/image"
-import { ChevronDown, X } from "lucide-react"
 import { ScrollArea } from "@components/UI/scroll-area"
 import { cn } from "@utils/cn.utils"
-import { photos } from "./photos"
+import { AnimatePresence, motion } from "framer-motion"
+import { ChevronDown, X } from "lucide-react"
+import * as React from "react"
+
 import BlurImage from "../BlurImage"
 
-export default function PortfolioComponent() {
+export default function PortfolioComponent({ photos }) {
 	const [selectedImage, setSelectedImage] = React.useState(null)
 	const [isFilterOpen, setIsFilterOpen] = React.useState(false)
 	const [selectedTags, setSelectedTags] = React.useState([])
 	const [selectedMedium, setSelectedMedium] = React.useState(null)
-	const [loadedImages, setLoadedImages] = React.useState({})
-
 	const filteredPhotos = React.useMemo(() => {
-		if (selectedTags.length === 0 && !selectedMedium) return photos
-		return photos.filter(
-			(photo) =>
-				(selectedTags.length === 0 ||
-					selectedTags.some((tag) => photo.tags.includes(tag))) &&
-				(!selectedMedium || photo.medium === selectedMedium)
-		)
-	}, [selectedTags, selectedMedium])
+		if (selectedTags.length === 0 && !selectedMedium) {
+			return [...photos].sort((a, b) => {
+				return (
+					new Date(b.content.date).getTime() -
+					new Date(a.content.date).getTime()
+				)
+			})
+		}
 
-	const allTags = Array.from(new Set(photos.flatMap((photo) => photo.tags)))
+		return photos
+			.filter(
+				(photo) =>
+					(selectedTags.length === 0 ||
+						selectedTags.some((tag) => photo.tag_list.includes(tag))) &&
+					(!selectedMedium || photo.content.medium === selectedMedium)
+			)
+			.sort((a, b) => {
+				return (
+					new Date(b.content.date).getTime() -
+					new Date(a.content.date).getTime()
+				)
+			})
+	}, [selectedTags, selectedMedium, photos])
+
+	const allTags = Array.from(new Set(photos.flatMap((photo) => photo.tag_list)))
 
 	return (
 		<div className="min-h-screen">
@@ -59,7 +71,7 @@ export default function PortfolioComponent() {
 									setSelectedTags={setSelectedTags}
 									selectedMedium={selectedMedium}
 									setSelectedMedium={setSelectedMedium}
-									allTags={allTags}
+									allTags={allTags as string[]}
 								/>
 							</motion.div>
 						)}
@@ -67,7 +79,7 @@ export default function PortfolioComponent() {
 				</div>
 			</div>
 
-			<div className="flex flex-col md:flex-row min-h-screen">
+			<div className="flex flex-col md:flex-row">
 				<ScrollArea className="flex-grow">
 					<motion.div
 						layout
@@ -89,8 +101,8 @@ export default function PortfolioComponent() {
 									className="relative aspect-[4/3] cursor-pointer overflow-hidden rounded-lg shadow-sm max-w-[500px]"
 								>
 									<BlurImage
-										src={photo.src + "/m/500x0"}
-										alt={photo.alt}
+										src={photo.content.image.filename + "/m/500x0"}
+										alt={photo.content.image.alt}
 										className="h-full w-full object-cover transition-opacity duration-500"
 										fill
 										sizes="100vw"
@@ -131,7 +143,7 @@ export default function PortfolioComponent() {
 											setSelectedTags={setSelectedTags}
 											selectedMedium={selectedMedium}
 											setSelectedMedium={setSelectedMedium}
-											allTags={allTags}
+											allTags={allTags as string[]}
 										/>
 									</motion.div>
 								)}
@@ -160,8 +172,8 @@ export default function PortfolioComponent() {
 								onClick={(e) => e.stopPropagation()}
 							>
 								<BlurImage
-									src={selectedImage.src + "/m/2000x0"}
-									alt={selectedImage.alt}
+									src={selectedImage.content.image.filename + "/m/2000x0"}
+									alt={selectedImage.content.image.alt}
 									className="h-full w-full object-contain transition-opacity duration-500"
 									fill
 									sizes="100vw"
@@ -182,15 +194,15 @@ export default function PortfolioComponent() {
 									<span className="sr-only">Close</span>
 								</button>
 								<div className="space-y-6">
-									<h2 className="text-xl">{selectedImage.title}</h2>
+									<h2 className="text-xl">{selectedImage.name}</h2>
 									<div className="space-y-1 text-sm text-gray-600">
-										<div>{selectedImage.tags.join(" / ")}</div>
+										<div>{selectedImage.tag_list.join(" / ")}</div>
 										<div className="italic">
-											taken on {selectedImage.camera}
+											taken on {selectedImage.content.camera}
 										</div>
 									</div>
 									<p className="text-sm leading-relaxed">
-										{selectedImage.description}
+										{selectedImage.content.description}
 									</p>
 								</div>
 							</motion.div>
@@ -210,15 +222,15 @@ export default function PortfolioComponent() {
 								</button>
 								<ScrollArea className="h-[40vh]">
 									<div className="space-y-6">
-										<h2 className="text-xl">{selectedImage.title}</h2>
+										<h2 className="text-xl">{selectedImage.name}</h2>
 										<div className="space-y-1 text-sm text-gray-600">
-											<div>{selectedImage.tags.join(" / ")}</div>
+											<div>{selectedImage.tag_list.join(" / ")}</div>
 											<div className="italic">
 												taken on {selectedImage.camera}
 											</div>
 										</div>
 										<p className="text-sm leading-relaxed">
-											{selectedImage.description}
+											{selectedImage.content.description}
 										</p>
 									</div>
 								</ScrollArea>

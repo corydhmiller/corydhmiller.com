@@ -3,6 +3,7 @@ import "@/src/styles/app.css"
 import "../public/fonts/fonts.css"
 
 import Header from "@components/Header"
+import StoryblokProvider from "@/components/Storyblok/StoryblokProvider"
 
 const imageUrl = `https://corydhmiller.com/og?title=${"Hi! I'm Cory."}`,
 	title = "Thoughts by Cory Miller",
@@ -49,11 +50,13 @@ export default function RootLayout({
 	children: React.ReactNode
 }) {
 	return (
-		<html lang="en">
-			<body className="bg-gray-100">
-				<Header />
-				<main className="wrapper px-8 text-black">{children}</main>
-			</body>
-		</html>
+		<StoryblokProvider>
+			<html lang="en">
+				<body className="bg-gray-100">
+					<Header />
+					<main className="wrapper px-8 text-black">{children}</main>
+				</body>
+			</html>
+		</StoryblokProvider>
 	)
 }

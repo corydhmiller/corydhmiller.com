@@ -27,8 +27,7 @@ const getHKGroteskFont = async () => {
 export async function GET(req) {
 	const requestUrl = new URL(req.url)
 	const title = decodeURIComponent(requestUrl.searchParams.get("title") || "")
-	// const posts = getAllPosts()
-	// console.log(posts)
+
 	return new ImageResponse(
 		(
 			<div
@@ -95,11 +94,11 @@ export async function GET(req) {
 						/C
 					</div>
 					<div tw="flex items-center">
-							<img
-								src="https://corydhmiller.com/images/cory-miller-profile-picture.jpg"
-								tw="rounded-full w-16 h-16"
-								alt=""
-							/>
+						<img
+							src="https://corydhmiller.com/images/cory-miller-profile-picture.jpg"
+							tw="rounded-full w-16 h-16"
+							alt=""
+						/>
 						<div tw="flex ml-8 text-6" style={{ color: "#fccc75" }}>
 							corydhmiller.com
 						</div>

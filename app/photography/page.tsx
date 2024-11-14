@@ -1,6 +1,29 @@
+"use client"
+import { useState, useEffect } from "react"
 import PhotographyGallery from "@components/PhotographyGallery"
+import {
+	apiPlugin,
+	getStoryblokApi,
+	storyblokInit,
+	useStoryblokState,
+} from "@storyblok/react"
 
-export default function Home() {
+export default function Photography() {
+	const [photos, setPhotos] = useState([])
+
+	useEffect(() => {
+		async function fetchData() {
+			const storyblokApi = getStoryblokApi()
+			const { data } = await storyblokApi.get(`cdn/stories`, {
+				starts_with: "photography/",
+				version: "published",
+			})
+			setPhotos(data.stories)
+		}
+
+		fetchData()
+	}, [])
+
 	return (
 		<div>
 			<div className="fixed inset-0 z-0 opacity-[.02] pointer-events-none">
@@ -14,7 +37,7 @@ export default function Home() {
 					Photo<span className="block">graphy</span>
 				</div>
 			</div>
-			<PhotographyGallery />
+			<PhotographyGallery photos={photos} />
 		</div>
 	)
 }
