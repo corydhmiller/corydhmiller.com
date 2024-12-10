@@ -13,6 +13,8 @@ const PaginationControls = ({
 }: PaginationControlsProps) => {
 	const totalPages = Math.ceil(totalPosts / postsPerPage) || 1
 
+	if (totalPages === 1) return null
+
 	return (
 		<div className="flex justify-between items-center mt-8">
 			{currentPage > 1 && (

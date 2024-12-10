@@ -19,11 +19,11 @@ export default async function Blog({
 }: {
 	searchParams: { [key: string]: string | string[] | undefined }
 }) {
-	const page = typeof searchParams.page === 'string' ? Number(searchParams.page) : 1
+	const page =
+		typeof searchParams.page === "string" ? Number(searchParams.page) : 1
 	const { data, total } = await fetchData(page)
-	const posts = data.stories
 
-	const currentPost = posts[0] // Since we're showing one post per page
+	const posts = data.stories
 
 	return (
 		<>
@@ -33,27 +33,31 @@ export default async function Blog({
 					<Heading as="h1">Blog</Heading>
 				</Prose>
 				<Prose className="prose-lg mx-auto">
-					{currentPost && (
+					{posts && (
 						<div className="grid gap-8">
-							<div>
-								<Link href={`/blog/${currentPost.slug}`}>{currentPost.name}</Link>
-								{currentPost.created_at && (
-									<span className="text-sm block opacity-60">
-										{formatDate(currentPost.created_at)}
-									</span>
-								)}
-								{currentPost.content?.excerpt && (
-									<span className="prose-xl text-gray-800 dark:text-gray-100">
-										{currentPost.content.excerpt}
-									</span>
-								)}
-							</div>
+							{posts.map((post) => (
+								<div>
+									<Link href={`/blog/${post.slug}`}>
+										{post.name}
+									</Link>
+									{post.created_at && (
+										<span className="text-sm block opacity-60">
+											{formatDate(post.created_at)}
+										</span>
+									)}
+									{post.content?.excerpt && (
+										<span className="prose-xl text-gray-800 dark:text-gray-100">
+											{post.content.excerpt}
+										</span>
+									)}
+								</div>
+							))}
 						</div>
 					)}
-					<PaginationControls 
-						currentPage={page} 
-						totalPosts={total} 
-						postsPerPage={1}
+					<PaginationControls
+						currentPage={page}
+						totalPosts={total}
+						postsPerPage={10}
 					/>
 				</Prose>
 			</Content>
@@ -66,13 +70,13 @@ async function fetchData(page: number) {
 	const response = await storyblokApi.get("cdn/stories", {
 		starts_with: "blog/",
 		version: "published",
-		per_page: 1,
+		per_page: 10,
 		page,
 	})
+	console.log(response.data.total)
 
 	return {
 		data: response.data,
-		total: parseInt(response.headers.get("total") || "0", 10),
+		total: response.data.total,
 	}
 }
-
