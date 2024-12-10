@@ -5,22 +5,36 @@ import { useEffect, useState } from "react"
 
 export function DarkModeToggle() {
 	const [isDark, setIsDark] = useState(false)
+	const [mounted, setMounted] = useState(false)
 
 	useEffect(() => {
-		// Check initial dark mode preference
-		const isDarkMode = document.documentElement.classList.contains('dark')
-		setIsDark(isDarkMode)
+		setMounted(true)
+		const theme = document.documentElement.getAttribute('data-theme')
+		setIsDark(theme === 'dark')
 	}, [])
 
 	const toggleDarkMode = () => {
-		if (isDark) {
-			document.documentElement.classList.remove('dark')
-			localStorage.theme = 'light'
-		} else {
+		const newTheme = !isDark ? 'dark' : 'light'
+		
+		// Update DOM
+		if (newTheme === 'dark') {
 			document.documentElement.classList.add('dark')
-			localStorage.theme = 'dark'
+		} else {
+			document.documentElement.classList.remove('dark')
 		}
+		
+		// Update data attribute
+		document.documentElement.setAttribute('data-theme', newTheme)
+		
+		// Update localStorage and trigger storage event
+		localStorage.setItem('theme', newTheme)
+		
 		setIsDark(!isDark)
+	}
+
+	// Prevent hydration mismatch by not rendering until mounted
+	if (!mounted) {
+		return null
 	}
 
 	return (

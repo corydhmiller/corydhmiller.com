@@ -1,10 +1,10 @@
-import type { Metadata } from "next"
 import "@/src/styles/app.css"
+import type { Metadata } from "next"
 import "../public/fonts/fonts.css"
 
-import Header from "@components/Header"
 import StoryblokProvider from "@/components/Storyblok/StoryblokProvider"
-import { Scripts } from "./scripts"
+import Header from "@components/Header"
+import { themeScript } from "./theme-script"
 
 const imageUrl = `https://corydhmiller.com/og?title=${"Hi! I'm Cory."}`,
 	title = "Thoughts by Cory Miller",
@@ -52,13 +52,13 @@ export default function RootLayout({
 }) {
 	return (
 		<StoryblokProvider>
-			<html lang="en">
-				<Scripts />
+			<html lang="en" suppressHydrationWarning>
+				<head>
+					<script dangerouslySetInnerHTML={{ __html: themeScript }} />
+				</head>
 				<body className="bg-white dark:bg-gray-800 text-gray-800 dark:text-white transition-colors duration-300">
 					<Header />
-					<main className="wrapper">
-						{children}
-					</main>
+					<main className="wrapper">{children}</main>
 				</body>
 			</html>
 		</StoryblokProvider>
