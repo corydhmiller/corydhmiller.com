@@ -22,7 +22,7 @@ module.exports = {
 			primary: "#5955f4",
 			secondary: "#fb7649",
 			black: "#0D0D0D",
-			white: "#f1f1f1",
+			white: "#efefef",
 			gray: {
 				100: "#f4eff9",
 				400: "#535353",

@@ -56,7 +56,7 @@ export default function RootLayout({
 				<Scripts />
 				<body className="bg-white dark:bg-gray-800 text-gray-800 dark:text-white transition-colors duration-300">
 					<Header />
-					<main className="wrapper">
+					<main className="wrapper px-8">
 						{children}
 					</main>
 				</body>
