@@ -1,5 +1,5 @@
 import { COMPONENTS } from "@/components/Storyblok/components"
-import { apiPlugin, getStoryblokApi, storyblokInit } from "@storyblok/react/rsc"
+import { apiPlugin, getStoryblokApi, storyblokInit } from "@storyblok/react"
 import Heading from "@/components/Typography/Heading"
 import Link from "@/components/UI/Link"
 import { formatDate } from "@/src/utils/dates.utils"
@@ -72,6 +72,7 @@ async function fetchData(page: number) {
 
 	return {
 		data: response.data,
-		total: parseInt(response.headers.total, 10) // Get total from headers
+		total: parseInt(response.headers.get("total") || "0", 10),
 	}
 }
+
