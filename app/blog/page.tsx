@@ -36,10 +36,8 @@ export default async function Blog({
 					{posts && (
 						<div className="grid gap-8">
 							{posts.map((post) => (
-								<div>
-									<Link href={`/blog/${post.slug}`}>
-										{post.name}
-									</Link>
+								<div key={post.slug}>
+									<Link href={`/blog/${post.slug}`}>{post.name}</Link>
 									{post.created_at && (
 										<span className="text-sm block opacity-60">
 											{formatDate(post.created_at)}
