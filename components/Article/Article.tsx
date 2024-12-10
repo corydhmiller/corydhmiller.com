@@ -1,6 +1,7 @@
 import Heading from "@components/Typography/Heading"
 import Link from "@components/UI/Link"
 import Prose from "@components/Prose"
+import { formatDate } from "@/src/utils/dates.utils"
 
 const Article = ({
 	children,
@@ -15,20 +16,15 @@ const Article = ({
 		wordCount?: number
 	}
 }) => {
-	// Format the date like October 20, 2020
-	const publishDate = new Date(data.publishDate).toLocaleDateString("en-US", {
-		month: "long",
-		day: "numeric",
-		year: "numeric",
-	})
-	const tagsArray = data.tags.toString().split(",")
+	const publishDate = formatDate(data.publishDate)
+	const tagsArray = data.tags?.toString().split(",")
 	return (
 		<>
 			<Prose className="col-span-3 w-full max-w-7xl mx-auto sm:text-center">
 				<Heading as="h1">{data.title}</Heading>
 			</Prose>
-			<article className="col-start-2">
-				<Prose className="prose-lg my-6 text-center">
+			<article className="mx-auto">
+				<Prose className="prose-lg my-6 sm:text-center sm:mx-auto">
 					{publishDate && (
 						<div>
 							<span className="opacity-60 prose-lg">
@@ -39,16 +35,15 @@ const Article = ({
 						</div>
 					)}
 
-					<Link href="/" className="prose-lg" variant="secondary">
+					<Link href="/blog" className="prose-lg" variant="primary">
 						&larr; Back
 					</Link>
 				</Prose>
 
-				<div className="h-1 bg-gray-600 my-12"></div>
-				<Prose>{children}</Prose>
-				<div className="h-px bg-gray-600 my-12 w-1/2"></div>
+				<div className="h-1 bg-gray-600 mt-4 sm:my-12"></div>
+				<Prose className="sm:mx-auto">{children}</Prose>
 				{tagsArray && (
-					<Prose className="grid prose-lg my-6">
+					<Prose className="grid prose-lg my-6 sm:mx-auto">
 						<div>
 							<span className="opacity-60 prose-lg">
 								tags:{" "}

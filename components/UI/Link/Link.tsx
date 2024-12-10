@@ -10,7 +10,8 @@ interface LinkProps {
 }
 
 const variants = {
-	primary: "no-underline hover:underline",
+	primary:
+		"no-underline font-bold hover:underline text-primary cursor-pointer decoration-primary decoration-2 underline-offset-2 decorat",
 	secondary: "no-underline hover:underline",
 	naked: "",
 }

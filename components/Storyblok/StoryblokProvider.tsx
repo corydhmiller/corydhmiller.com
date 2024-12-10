@@ -1,9 +1,11 @@
 "use client"
-import { storyblokInit, apiPlugin } from "@storyblok/react"
+import { COMPONENTS } from "@/components/Storyblok/components"
+import { apiPlugin, storyblokInit } from "@storyblok/react"
 
-storyblokInit({
+export const initStoryblock = storyblokInit({
 	accessToken: process.env.NEXT_PUBLIC_STORYBLOK_API_TOKEN,
 	use: [apiPlugin],
+	components: COMPONENTS,
 })
 
 export default function StoryblokProvider({ children }) {

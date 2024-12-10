@@ -1,21 +1,25 @@
 import Article from "@components/Article"
-import { getAllPosts } from "@/src/lib/posts"
+import { getAllPosts, getPostBySlug } from "@/src/lib/posts"
 import { sanitizeUrlSegment } from "@utils/content-helpers"
 import { MarkdownComponents } from "@utils/markdownComponents"
 import { notFound } from "next/navigation"
 import Markdown from "react-markdown"
 import remarkGfm from "remark-gfm"
+import { COMPONENTS } from "@/components/Storyblok/components"
+import { apiPlugin, storyblokInit } from "@storyblok/react"
+
+storyblokInit({
+	accessToken: process.env.NEXT_PUBLIC_STORYBLOK_API_TOKEN,
+	use: [apiPlugin],
+	components: COMPONENTS,
+})
 
 export default async function BlogPost(props: {
 	params: Promise<{ slug: string; category: string }>
 }) {
-	return <></>
-	const params = await props.params
-	const { slug } = params
+	const slug = (await props.params).slug
 
-	// Get the post based on the slug (no need to fetch all posts every time)
-	const allPosts = await getAllPosts()
-	const post = allPosts.find((post) => post.frontmatter.slug === slug)
+	const post = await getPostBySlug(slug)
 
 	// Ensure that we have the post
 	if (!post) {
@@ -25,11 +29,11 @@ export default async function BlogPost(props: {
 	return (
 		<Article
 			data={{
-				title: post.frontmatter.title,
-				wordCount: String(post.content).split(/\s+/).length,
-				publishDate: post.frontmatter.date,
-				category: post.frontmatter.category,
-				tags: post.frontmatter.tags,
+				title: post?.title,
+				wordCount: 100,
+				publishDate: post?.date,
+				category: "Blog",
+				tags: post?.tags,
 			}}
 		>
 			<Markdown remarkPlugins={[remarkGfm]} components={MarkdownComponents}>
@@ -43,6 +47,7 @@ export default async function BlogPost(props: {
 export async function generateStaticParams() {
 	// Generate paths for all published posts
 	const allPosts = await getAllPosts()
+
 	const paths = allPosts
 		.filter((post) => post.frontmatter.published) // Only use published posts
 		.map((post) => {

@@ -1,42 +1,46 @@
+import { COMPONENTS } from "@/components/Storyblok/components"
+import { apiPlugin, getStoryblokApi, storyblokInit } from "@storyblok/react/rsc"
+
+import Link from "@/components/UI/Link"
 import Content from "@components/Content"
 import Prose from "@components/Prose"
-import Link from "@components/UI/Link"
-import { getAllPosts } from "@/src/lib/posts"
-import { sanitizeUrlSegment } from "@utils/content-helpers"
+import { cn } from "@/src/utils/cn.utils"
+import Button from "@/components/UI/Button/Button"
+import { formatDate } from "@/src/utils/dates.utils"
+import Heading from "@/components/Typography/Heading"
 
-export default async function Home() {
-	const posts = (await getAllPosts())
-		.filter((post) => post.frontmatter.published)
-		.sort((a, b) => {
-			return (
-				new Date(b.frontmatter.date).getTime() -
-				new Date(a.frontmatter.date).getTime()
-			)
-		})
+storyblokInit({
+	accessToken: process.env.NEXT_PUBLIC_STORYBLOK_API_TOKEN,
+	use: [apiPlugin],
+	components: COMPONENTS,
+})
 
+export default async function Blog() {
+	const { data } = await fetchData()
+	const posts = data.stories
 	return (
 		<>
 			<Content>
-				<Prose>
+				<Prose className="col-span-3 w-full max-w-7xl mx-auto sm:text-center mb-6">
+					<Heading as="h1">Blog</Heading>
+				</Prose>
+				<Prose className="prose-lg mx-auto">
 					<div className="grid gap-8">
-						{posts.map((post) => {
-							const { slug, title, category, excerpt, date } = post.frontmatter
+						{posts.map((post, index) => {
+							const { slug, name, content, created_at } = post
+							console.log(post)
+							const postUrl = `/blog/${slug}`
 							return (
-								<div className="bg-blue-800 p-4 rounded-lg" key={slug}>
-									<Link href={`${sanitizeUrlSegment(category)}/${slug}`}>
-										<div>{title}</div>
-									</Link>
-									<span className="prose-xl">{excerpt}</span>
-									<div className="mt-4">
-										<Link
-											variant="naked"
-											href={`${sanitizeUrlSegment(category)}/${slug}`}
-										>
-											<button className="text-white text-md px-2 py-1 rounded-lg transform text-base hover:scale-105 focus:scale-105 duration-200 transition-all">
-												Read more
-											</button>
-										</Link>
-									</div>
+								<div key={slug}>
+									<Link href={postUrl}>{name}</Link>
+									{created_at && (
+										<span className="text-sm block">
+											{formatDate(created_at)}
+										</span>
+									)}
+									{content?.excerpt && (
+										<span className="prose-xl">{content.excerpt}</span>
+									)}
 								</div>
 							)
 						})}
@@ -45,4 +49,12 @@ export default async function Home() {
 			</Content>
 		</>
 	)
+}
+
+export async function fetchData() {
+	const storyblokApi = getStoryblokApi()
+	return storyblokApi.get("cdn/stories", {
+		starts_with: "blog/",
+		version: "published",
+	})
 }

@@ -75,3 +75,7 @@ h6 {
 		--radius: 0.5rem;
 	}
 }
+
+a {
+	cursor: pointer;
+}

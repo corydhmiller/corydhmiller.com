@@ -1,12 +1,9 @@
 "use client"
-import { useState, useEffect } from "react"
 import PhotographyGallery from "@components/PhotographyGallery"
 import {
-	apiPlugin,
-	getStoryblokApi,
-	storyblokInit,
-	useStoryblokState,
+	getStoryblokApi
 } from "@storyblok/react"
+import { useEffect, useState } from "react"
 
 export default function Photography() {
 	const [photos, setPhotos] = useState([])
