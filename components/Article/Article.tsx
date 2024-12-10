@@ -1,7 +1,7 @@
+import { formatDate } from "@/src/utils/dates.utils"
+import Prose from "@components/Prose"
 import Heading from "@components/Typography/Heading"
 import Link from "@components/UI/Link"
-import Prose from "@components/Prose"
-import { formatDate } from "@/src/utils/dates.utils"
 import { BackgroundText } from "../BackgroundText"
 
 const Article = ({
@@ -22,6 +22,7 @@ const Article = ({
 	return (
 		<>
 			<BackgroundText text={data.title} />
+
 			<Prose className="w-full my-8 sm:my-24 max-w-7xl mx-auto sm:text-center">
 				<Heading as="h1">{data.title}</Heading>
 			</Prose>
