@@ -4,6 +4,7 @@ import {
 	getStoryblokApi
 } from "@storyblok/react"
 import { useEffect, useState } from "react"
+import { BackgroundText } from "@/components/BackgroundText"
 
 export default function Photography() {
 	const [photos, setPhotos] = useState([])
@@ -23,17 +24,7 @@ export default function Photography() {
 
 	return (
 		<div>
-			<div className="fixed inset-0 z-0 opacity-[.02] pointer-events-none">
-				<div
-					className="text-black text-5xl font-serif font-bold"
-					style={{
-						fontSize: `calc(round(calc(100vw/2.5),2px))`,
-						maxWidth: "100vw",
-					}}
-				>
-					Photo<span className="block">graphy</span>
-				</div>
-			</div>
+			<BackgroundText text={["Photo", "graphy"]} />
 			<PhotographyGallery photos={photos} />
 		</div>
 	)

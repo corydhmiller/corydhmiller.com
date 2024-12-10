@@ -247,7 +247,7 @@ export default function PortfolioComponent({ photos }) {
 								initial={{ x: 20, opacity: 0 }}
 								animate={{ x: 0, opacity: 1 }}
 								exit={{ x: 20, opacity: 0 }}
-								className="relative hidden w-96 bg-white p-6 md:block"
+								className="relative hidden w-96 bg-white dark:bg-gray-400 p-6 md:block"
 							>
 								<button
 									onClick={() => setSelectedImage(null)}

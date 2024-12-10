@@ -2,6 +2,7 @@ import Heading from "@components/Typography/Heading"
 import Link from "@components/UI/Link"
 import Prose from "@components/Prose"
 import { formatDate } from "@/src/utils/dates.utils"
+import { BackgroundText } from "../BackgroundText"
 
 const Article = ({
 	children,
@@ -20,6 +21,7 @@ const Article = ({
 	const tagsArray = data.tags?.toString().split(",")
 	return (
 		<>
+			<BackgroundText text={data.title} />
 			<Prose className="col-span-3 w-full max-w-7xl mx-auto sm:text-center">
 				<Heading as="h1">{data.title}</Heading>
 			</Prose>
@@ -41,7 +43,9 @@ const Article = ({
 				</Prose>
 
 				<div className="h-1 bg-gray-600 mt-4 sm:my-12"></div>
-				<Prose className="sm:mx-auto">{children}</Prose>
+				<Prose className="sm:mx-auto">
+					{children}
+				</Prose>
 				{tagsArray && (
 					<Prose className="grid prose-lg my-6 sm:mx-auto">
 						<div>

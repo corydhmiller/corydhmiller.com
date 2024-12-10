@@ -4,6 +4,7 @@ import "../public/fonts/fonts.css"
 
 import Header from "@components/Header"
 import StoryblokProvider from "@/components/Storyblok/StoryblokProvider"
+import { Scripts } from "./scripts"
 
 const imageUrl = `https://corydhmiller.com/og?title=${"Hi! I'm Cory."}`,
 	title = "Thoughts by Cory Miller",
@@ -52,9 +53,12 @@ export default function RootLayout({
 	return (
 		<StoryblokProvider>
 			<html lang="en">
-				<body className="bg-gray-100">
+				<Scripts />
+				<body className="bg-white dark:bg-gray-800 text-gray-800 dark:text-white transition-colors duration-300">
 					<Header />
-					<main className="wrapper px-8 text-black">{children}</main>
+					<main className="wrapper">
+						{children}
+					</main>
 				</body>
 			</html>
 		</StoryblokProvider>
