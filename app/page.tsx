@@ -1,6 +1,5 @@
 import Heading from "@/components/Typography/Heading"
 import { HoverGlow } from "@/components/UI/HoverGlow"
-import Content from "@components/Content"
 import Prose from "@components/Prose"
 import Link from "@components/UI/Link"
 
@@ -10,10 +9,10 @@ const PageContent = () => {
 			<div className="prose-h1:m-0 prose-lg m-8 sm:m-24">
 				<Prose>
 					<Heading as="h1">
-						Hi, I'm <span className="text-secondary">Cory</span>.
+						Hi, I&apos;m <span className="text-secondary">Cory</span>.
 					</Heading>
 					<p>
-						I'm a web developer currently working at{" "}
+						I&apos;m a web developer currently working at{" "}
 						<Link href="https://kit.com" variant="primary" newTab>
 							Kit
 						</Link>
