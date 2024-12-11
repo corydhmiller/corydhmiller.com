@@ -22,7 +22,7 @@ const BlogArchivePostCard = ({
 		<div
 			className={cn(
 				styles.card,
-				"dark:hover:bg-gray-800 dark:bg-opacity-100 hover:bg-white hover:bg-opacity-100 hover:rounded-xl"
+				"dark:hover:bg-gray-800 dark:bg-opacity-100 hover:bg-white hover:bg-opacity-100 hover:rounded-xl p-4 sm:p-8"
 			)}
 		>
 			<Link href={`/blog/${slug}`}>{name}</Link>

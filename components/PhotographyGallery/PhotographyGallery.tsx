@@ -6,13 +6,31 @@ import FeatherIcon from "feather-icons-react"
 import { AnimatePresence, motion } from "framer-motion"
 import * as React from "react"
 import BlurImage from "../BlurImage"
+import { useEffect } from "react"
+import { getStoryblokApi } from "@storyblok/react"
+import { useState } from "react"
 
-export default function PortfolioComponent({ photos }) {
+export default function PortfolioComponent() {
+	const [photos, setPhotos] = useState([])
+
 	const [selectedImage, setSelectedImage] = React.useState(null)
 	const [isFilterOpen, setIsFilterOpen] = React.useState(false)
 	const [selectedTags, setSelectedTags] = React.useState([])
 	const [selectedMedium, setSelectedMedium] = React.useState(null)
 	const [focusedIndex, setFocusedIndex] = React.useState(-1)
+
+	useEffect(() => {
+		async function fetchData() {
+			const storyblokApi = getStoryblokApi()
+			const { data } = await storyblokApi.get(`cdn/stories`, {
+				starts_with: "photography/",
+				version: "published",
+			})
+			setPhotos(data.stories)
+		}
+
+		fetchData()
+	}, [])
 
 	const filteredPhotos = React.useMemo(() => {
 		return photos

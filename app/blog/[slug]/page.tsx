@@ -1,10 +1,9 @@
 import Article from "@components/Article"
 import { getAllPosts, getPostBySlug } from "@/src/lib/posts"
-import { sanitizeUrlSegment } from "@utils/content-helpers"
-import { MarkdownComponents } from "@utils/markdownComponents"
 import { notFound } from "next/navigation"
 import Markdown from "react-markdown"
 import remarkGfm from "remark-gfm"
+import { MarkdownComponents } from "@utils/markdownComponents"
 import { COMPONENTS } from "@/components/Storyblok/components"
 import { apiPlugin, storyblokInit } from "@storyblok/react"
 
@@ -15,13 +14,11 @@ storyblokInit({
 })
 
 export default async function BlogPost(props: {
-	params: Promise<{ slug: string; category: string }>
+	params: Promise<{ slug: string }>
 }) {
 	const slug = (await props.params).slug
-
 	const post = await getPostBySlug(slug)
 
-	// Ensure that we have the post
 	if (!post) {
 		notFound()
 	}
@@ -29,11 +26,11 @@ export default async function BlogPost(props: {
 	return (
 		<Article
 			data={{
-				title: post?.title,
+				title: post.title,
 				wordCount: 100,
-				publishDate: post?.date,
+				publishDate: post.date,
 				category: "Blog",
-				tags: post?.tags,
+				tags: post.tags,
 			}}
 		>
 			<Markdown remarkPlugins={[remarkGfm]} components={MarkdownComponents}>
@@ -45,31 +42,21 @@ export default async function BlogPost(props: {
 
 // Generate Static Params (Paths)
 export async function generateStaticParams() {
-	// Generate paths for all published posts
 	const allPosts = await getAllPosts()
-
-	const paths = allPosts
-		.filter((post) => post.frontmatter.published) // Only use published posts
-		.map((post) => {
-			const sanitizedCategory = sanitizeUrlSegment(post.frontmatter.category)
-			return {
-				slug: post.frontmatter.slug,
-				category: sanitizedCategory,
-			}
-		})
+	
+	const paths = allPosts.map((post) => ({
+		slug: post.slug,
+	}))
 
 	return paths
 }
 
 export const dynamicParams = false
 
-// Metadata generation (only fetch necessary data)
+// Metadata generation
 export async function generateMetadata(props) {
-	const { slug, category } = await props.params
-
-	// Fetch only the post needed for metadata (no need to fetch all posts)
-	const allPosts = await getAllPosts()
-	const post = allPosts.find((post) => post.frontmatter.slug === slug)
+	const { slug } = await props.params
+	const post = await getPostBySlug(slug)
 
 	if (!post) {
 		return {
@@ -78,27 +65,26 @@ export async function generateMetadata(props) {
 		}
 	}
 
-	const { title, excerpt } = post.frontmatter
-	const imageUrl = `https://corydhmiller.com/og?title=${title}`
+	const imageUrl = `https://corydhmiller.com/og?title=${post.title}`
 	const pageUrl = `https://corydhmiller.com/blog/${slug}`
 
 	return {
-		title,
-		description: excerpt,
+		title: post.title,
+		description: post.excerpt,
 		openGraph: {
 			images: [{ url: imageUrl }],
 			type: "article",
-			title,
-			description: excerpt,
+			title: post.title,
+			description: post.excerpt,
 			url: pageUrl,
 			siteName: "Cory Miller",
 			locale: "en_US",
 		},
 		twitter: {
 			url: pageUrl,
-			description: excerpt,
-			title,
-			imageAlt: title,
+			description: post.excerpt,
+			title: post.title,
+			imageAlt: post.title,
 			card: "summary_large_image",
 		},
 	}

@@ -24,11 +24,11 @@ const Article = ({
 		<>
 			<BackgroundText text={data.title} />
 			<Content>
-				<Prose className="w-full my-32 sm:my-32 max-w-7xl mx-auto sm:text-center">
+				<Prose className="w-full mt-32 mb-8 sm:mt-32 max-w-7xl mx-auto sm:text-center">
 					<Heading as="h1">{data.title}</Heading>
 				</Prose>
 				<article className="mx-auto mb-24">
-					<Prose className="prose-lg my-6 sm:text-center sm:mx-auto">
+					<Prose className="prose-lg my-6 sm:text-center sm:mx-auto mb-24">
 						{publishDate && (
 							<div>
 								<span className="opacity-60 prose-lg">

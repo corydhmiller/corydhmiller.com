@@ -45,7 +45,7 @@ export async function GET(req) {
 						opacity: ".31",
 						transformOrigin: "left top",
 						filter: "blur(100px)",
-						background: "#ac5cd9",
+						background: "#111111",
 					}}
 				></div>
 				<div
@@ -56,7 +56,7 @@ export async function GET(req) {
 						transformOrigin: "left top",
 						filter: "blur(100px)",
 						width: "150%",
-						background: "#3d7bfa",
+						background: "#0D0D0D",
 					}}
 				></div>
 				<div
@@ -67,20 +67,10 @@ export async function GET(req) {
 						transformOrigin: "left top",
 						filter: "blur(100px)",
 						width: "150%",
-						background: "#ff5c5c",
+						background: "#0D0D0D",
 					}}
 				></div>
-				<div
-					tw="flex absolute bottom-0 left-0"
-					style={{
-						opacity: "1",
-						filter: "blur(100px)",
-						background: "#fdac41",
-						height: "300px",
-						width: "300px",
-						transform: "translateY(50%) translateX(-50%)",
-					}}
-				></div>
+
 				<div
 					tw="flex absolute items-center justify-between w-full bottom-8 text-7 px-8"
 					style={{
@@ -88,20 +78,10 @@ export async function GET(req) {
 					}}
 				>
 					<div
-						tw={`text-white font-serif transform inline-block font-bold text-6xl opacity-80`}
+						tw={`font-serif transform inline-block font-bold text-6xl opacity-100`}
+						style={{ color: "#fb7649" }}
 					>
-						/C
-					</div>
-					<div tw="flex items-center">
-						{/* eslint-disable-next-line @next/next/no-img-element */}
-						<img
-							src="https://corydhmiller.com/images/cory-miller-profile-picture.jpg"
-							tw="rounded-full w-16 h-16"
-							alt=""
-						/>
-						<div tw="flex ml-8 text-6" style={{ color: "#fccc75" }}>
-							corydhmiller.com
-						</div>
+						/c
 					</div>
 				</div>
 				<div
@@ -111,7 +91,7 @@ export async function GET(req) {
 						opacity: ".1",
 						filter: "blur(100px)",
 						width: "110%",
-						background: "#fdac41",
+						background: "#5955f4",
 					}}
 				></div>
 				<div

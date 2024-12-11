@@ -22,12 +22,23 @@ const PageContent = () => {
 						I write about{" "}
 						<Link href="/blog" variant="primary">
 							web development and other stuff
+						</Link>{" "}
+						that comes to mind. I'm a{" "}
+						<Link href="/photography" variant="primary" className="w-16">
+							photographer
 						</Link>
-						, sharing my{" "}
-						<Link href="/photography" variant="primary">
-							photography
-						</Link>
-						, or working on making the web a better place.
+						, a musician, and a creative at heart.
+					</p>
+					<p>
+						I'm not a fan of social media, but I'm on{" "}
+						<Link
+							href="https://bsky.app/profile/corydhmiller.com"
+							variant="primary"
+							newTab
+						>
+							Bluesky
+						</Link>{" "}
+						if you want to say hi.
 					</p>
 				</Prose>
 			</div>
