@@ -11,8 +11,8 @@ interface BlurImageProps extends Omit<ImageProps, "src"> {
 
 export function BlurImage({ src, alt, className, ...props }: BlurImageProps) {
 	const [isLoaded, setIsLoaded] = useState(false)
-	// Replace /m/wildcard with /m/50x0
-	const lowResSrc = src.replace("/m/*", "/m/50x0")
+	// Replace any dimensions after /m/ with 50x0
+	const lowResSrc = src.replace(/\/m\/\d+x\d+/, "/m/50x0")
 
 	return (
 		<div className="relative w-full h-full">
@@ -39,7 +39,7 @@ export function BlurImage({ src, alt, className, ...props }: BlurImageProps) {
 					className
 				)}
 				quality={90}
-				onLoad={() => setIsLoaded(true)}
+				onLoadingComplete={() => setIsLoaded(true)}
 				{...props}
 			/>
 		</div>

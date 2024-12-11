@@ -30,7 +30,7 @@ export function FilterPanel({
 		: "hidden w-96 p-6 md:block flex-shrink-0"
 
 	const filterContentClasses = isMobile
-		? "absolute left-0 top-12 z-20 space-y-6 overflow-hidden bg-white dark:bg-gray-800"
+		? "absolute left-0 top-8 z-20 space-y-6 overflow-hidden bg-white dark:bg-gray-800"
 		: "absolute left-0 top-8 space-y-6 pt-4"
 
 	return (
