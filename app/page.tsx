@@ -30,17 +30,6 @@ const PageContent = () => {
 						</Link>
 						, a musician, and a creative at heart.
 					</p>
-					<p>
-						I'm not a fan of social media, but I'm on{" "}
-						<Link
-							href="https://bsky.app/profile/corydhmiller.com"
-							variant="primary"
-							newTab
-						>
-							Bluesky
-						</Link>{" "}
-						if you want to say hi.
-					</p>
 				</Prose>
 			</div>
 		</div>
@@ -53,7 +42,7 @@ export default function Home() {
 			<BackgroundText text="Hello." />
 			<HoverGlow>
 				<PageContent />
-				</HoverGlow>
+			</HoverGlow>
 		</>
 	)
 }

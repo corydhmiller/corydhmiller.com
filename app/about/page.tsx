@@ -61,12 +61,21 @@ export default function About() {
 					<p>
 						While I&apos;m not a big fan of social media, you can find me on{" "}
 						<Link
+							href="https://www.instagram.com/corydhmiller"
+							variant="primary"
+							newTab
+						>
+							Instagram
+						</Link>{" "}
+						or{" "}
+						<Link
 							href="https://bsky.app/profile/corydhmiller.com"
 							variant="primary"
 							newTab
 						>
 							Bluesky
-						</Link>.
+						</Link>
+						.
 					</p>
 				</Prose>
 			</Content>
