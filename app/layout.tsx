@@ -4,7 +4,7 @@ import "../public/fonts/fonts.css"
 
 import StoryblokProvider from "@/components/Storyblok/StoryblokProvider"
 import Header from "@components/Header"
-import { themeScript } from "./theme-script"
+import { themeScript } from './theme-utils'
 
 const imageUrl = `https://corydhmiller.com/og?title=${"Hi! I'm Cory."}`,
 	title = "Thoughts by Cory Miller",

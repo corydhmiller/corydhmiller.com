@@ -9,33 +9,17 @@ export function DarkModeToggle() {
 
 	useEffect(() => {
 		setMounted(true)
-		const theme = document.documentElement.getAttribute("data-theme")
-		setIsDark(theme === "dark")
+		setIsDark(document.documentElement.classList.contains('dark'))
 	}, [])
 
 	const toggleDarkMode = () => {
 		const newTheme = !isDark ? "dark" : "light"
-
-		// Update DOM
-		if (newTheme === "dark") {
-			document.documentElement.classList.add("dark")
-		} else {
-			document.documentElement.classList.remove("dark")
-		}
-
-		// Update data attribute
-		document.documentElement.setAttribute("data-theme", newTheme)
-
-		// Update localStorage and trigger storage event
-		localStorage.setItem("theme", newTheme)
-
+		document.documentElement.classList.toggle('dark')
+		localStorage.theme = newTheme
 		setIsDark(!isDark)
 	}
 
-	// Prevent hydration mismatch by not rendering until mounted
-	if (!mounted) {
-		return null
-	}
+	if (!mounted) return null
 
 	return (
 		<button

@@ -71,10 +71,9 @@ async function fetchData(page: number) {
 		per_page: 10,
 		page,
 	})
-	console.log(response.data.total)
 
 	return {
 		data: response.data,
-		total: response.data.total,
+		total: response.total,
 	}
 }
