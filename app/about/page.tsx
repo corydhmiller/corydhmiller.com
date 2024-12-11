@@ -49,29 +49,24 @@ export default function About() {
 						something new.
 					</p>
 					<p>
-						I specialize in front-end code, with a focus on React and
-						Next.js. I enjoy solving problems and creating enjoyable moments for
-						people.
+						I specialize in front-end code, with a focus on React and Next.js. I
+						enjoy solving problems and creating enjoyable moments for people.
 					</p>
-          <p>
-            Writing code isn't the sole focus of my creative life. I also have a collection of film and digital cameras and enjoy getting out into the world and making memories.
-          </p>
-
+					<p>
+						Writing code isn't the sole focus of my creative life. I also have a
+						collection of film and digital cameras and enjoy getting out into
+						the world and making memories.
+					</p>
 					<h2>Get in Touch</h2>
 					<p>
-						While I&apos;m not big on social media, you can find me on{" "}
+						While I&apos;m not a big fan of social media, you can find me on{" "}
 						<Link
 							href="https://bsky.app/profile/corydhmiller.com"
 							variant="primary"
 							newTab
 						>
 							Bluesky
-						</Link>{" "}
-						or check out my{" "}
-						<Link href="/blog" variant="primary">
-							blog
-						</Link>{" "}
-						where I write about web development and other interests.
+						</Link>.
 					</p>
 				</Prose>
 			</Content>
