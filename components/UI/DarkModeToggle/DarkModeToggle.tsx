@@ -9,26 +9,26 @@ export function DarkModeToggle() {
 
 	useEffect(() => {
 		setMounted(true)
-		const theme = document.documentElement.getAttribute('data-theme')
-		setIsDark(theme === 'dark')
+		const theme = document.documentElement.getAttribute("data-theme")
+		setIsDark(theme === "dark")
 	}, [])
 
 	const toggleDarkMode = () => {
-		const newTheme = !isDark ? 'dark' : 'light'
-		
+		const newTheme = !isDark ? "dark" : "light"
+
 		// Update DOM
-		if (newTheme === 'dark') {
-			document.documentElement.classList.add('dark')
+		if (newTheme === "dark") {
+			document.documentElement.classList.add("dark")
 		} else {
-			document.documentElement.classList.remove('dark')
+			document.documentElement.classList.remove("dark")
 		}
-		
+
 		// Update data attribute
-		document.documentElement.setAttribute('data-theme', newTheme)
-		
+		document.documentElement.setAttribute("data-theme", newTheme)
+
 		// Update localStorage and trigger storage event
-		localStorage.setItem('theme', newTheme)
-		
+		localStorage.setItem("theme", newTheme)
+
 		setIsDark(!isDark)
 	}
 
@@ -40,14 +40,10 @@ export function DarkModeToggle() {
 	return (
 		<button
 			onClick={toggleDarkMode}
-			className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+			className="p-2 rounded-lg bg-transparent transition-colors"
 			aria-label="Toggle dark mode"
 		>
-			{isDark ? (
-				<Sun className="h-5 w-5" />
-			) : (
-				<Moon className="h-5 w-5" />
-			)}
+			{isDark ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
 		</button>
 	)
 }
