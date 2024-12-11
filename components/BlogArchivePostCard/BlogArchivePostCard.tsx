@@ -25,7 +25,9 @@ const BlogArchivePostCard = ({
 				"dark:hover:bg-gray-800 dark:bg-opacity-100 hover:bg-white hover:bg-opacity-100 hover:rounded-xl p-4 sm:p-8"
 			)}
 		>
-			<Link href={`/blog/${slug}`}>{name}</Link>
+			<Link href={`/blog/${slug}`} className="text-2xl sm:text-3xl">
+				{name}
+			</Link>
 			{created_at && (
 				<span className="text-sm block opacity-60">
 					{formatDate(created_at)}

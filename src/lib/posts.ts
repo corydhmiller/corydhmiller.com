@@ -8,12 +8,11 @@ export const getAllPosts = async () => {
 			starts_with: "blog/", // Assuming your blog posts are in a 'blog' folder
 			version: process.env.NODE_ENV === "production" ? "published" : "draft",
 		})
-
 		// Transform the Storyblok response into the expected format
 		const allPosts = data.stories.map((story) => ({
 			frontmatter: {
 				title: story.content.title,
-				date: story.content.date,
+				date: story.first_published_at,
 				description: story.content.description,
 				slug: story.slug,
 				// Add any other frontmatter fields you need
@@ -39,7 +38,7 @@ export const getPostBySlug = async (slug: string): Promise<any> => {
 		// Transform the Storyblok response into the expected format
 		const post = {
 			title: data.story.content.title,
-			date: data.story.content.date,
+			date: data.story.first_published_at,
 			excerpt: data.story.content.excerpt,
 			slug: data.story.slug,
 			content: data.story.content?.content, // Assuming your main content is in a 'content' field

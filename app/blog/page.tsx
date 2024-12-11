@@ -38,7 +38,7 @@ export default async function Blog(props: {
 									<BlogArchivePostCard
 										slug={post.slug}
 										name={post.name}
-										created_at={post.created_at}
+										created_at={post.first_published_at}
 										content={post.content}
 									/>
 								</div>
@@ -65,6 +65,7 @@ async function fetchData(page: number) {
 		version: "published",
 		per_page: 10,
 		page,
+		sort_by: "first_published_at:desc",
 	})
 
 	return {

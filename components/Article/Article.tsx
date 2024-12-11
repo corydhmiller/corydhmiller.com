@@ -24,11 +24,11 @@ const Article = ({
 		<>
 			<BackgroundText text={data.title} />
 			<Content>
-				<Prose className="w-full mt-32 mb-8 sm:mt-32 max-w-7xl mx-auto sm:text-center">
+				<Prose className="w-full mt-24 mb-8 max-w-7xl">
 					<Heading as="h1">{data.title}</Heading>
 				</Prose>
-				<article className="mx-auto mb-24">
-					<Prose className="prose-lg my-6 sm:text-center sm:mx-auto mb-24">
+				<article>
+					<Prose className="prose-lg my-6 mb-24">
 						{publishDate && (
 							<div>
 								<span className="opacity-60 prose-lg">
@@ -44,9 +44,9 @@ const Article = ({
 						</Link>
 					</Prose>
 
-					<Prose className="sm:mx-auto">{children}</Prose>
+					<Prose className="">{children}</Prose>
 					{tagsArray && (
-						<Prose className="grid prose-lg my-6 sm:mx-auto">
+						<Prose className="grid prose-lg mt-12">
 							<div>
 								<span className="opacity-60 prose-lg">
 									tags:{" "}
