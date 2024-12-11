@@ -1,4 +1,4 @@
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 import FeatherIcon from "feather-icons-react"
 import { ScrollArea } from "@components/UI/scroll-area"
 import BlurImage from "../BlurImage"
@@ -55,6 +55,15 @@ const KeyboardHint = () => {
 }
 
 export function PhotoModal({ selectedImage, onClose }: PhotoModalProps) {
+	const [isLoading, setIsLoading] = useState(true)
+	const [currentImage, setCurrentImage] = useState(selectedImage)
+
+	// Update current image when selected image changes
+	useEffect(() => {
+		setIsLoading(true)
+		setCurrentImage(selectedImage)
+	}, [selectedImage])
+
 	if (!selectedImage) return null
 
 	return (
@@ -74,18 +83,36 @@ export function PhotoModal({ selectedImage, onClose }: PhotoModalProps) {
 					className="relative h-[100vh] w-full lg:h-screen lg:flex-grow"
 					onClick={(e) => e.stopPropagation()}
 				>
-					<BlurImage
-						src={selectedImage.content.image.filename + "/m/2000x0"}
-						alt={selectedImage.content.image.alt}
-						className="h-full w-full object-contain transition-opacity duration-500"
-						fill
-						sizes="100vw"
-					/>
+					<AnimatePresence mode="wait">
+						<motion.div
+							key={currentImage.id}
+							initial={{ opacity: 0 }}
+							animate={{ opacity: 1 }}
+							exit={{ opacity: 0 }}
+							transition={{ duration: 0.3 }}
+							className="absolute inset-0"
+						>
+							{isLoading && (
+								<div className="absolute inset-0 flex items-center justify-center">
+									<div className="w-8 h-8 border-4 border-primary border-t-transparent rounded-full animate-spin" />
+								</div>
+							)}
+							
+							<BlurImage
+								src={currentImage.content.image.filename + "/m/2000x0"}
+								alt={currentImage.content.image.alt}
+								className="h-full w-full object-contain"
+								fill
+								sizes="100vw"
+								onLoad={() => setIsLoading(false)}
+							/>
+						</motion.div>
+					</AnimatePresence>
 					<KeyboardHint />
 				</motion.div>
 
 				<PhotoInfoPanel
-					selectedImage={selectedImage}
+					selectedImage={currentImage}
 					onClose={onClose}
 					isMobile={window.innerWidth < 768}
 					className="lg:max-w-[400px] lg:min-w-[400px]"
