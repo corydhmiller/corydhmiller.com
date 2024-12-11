@@ -1,58 +1,53 @@
-'use server'
-import fs from "fs"
-import matter from "gray-matter"
-import path from "path"
+import { getStoryblokApi } from "@storyblok/react"
 
-const _contentDirectory = "src/content"
+export const getAllPosts = async () => {
+	try {
+		const storyblokApi = getStoryblokApi()
+		// Fetch all blog posts from Storyblok
+		const { data } = await storyblokApi.get("cdn/stories", {
+			starts_with: "blog/", // Assuming your blog posts are in a 'blog' folder
+			version: process.env.NODE_ENV === "production" ? "published" : "draft",
+		})
+		// Transform the Storyblok response into the expected format
+		const allPosts = data.stories.map((story) => ({
+			frontmatter: {
+				title: story.content.title,
+				date: story.first_published_at,
+				description: story.content.description,
+				slug: story.slug,
+				// Add any other frontmatter fields you need
+			},
+			content: story.content.content, // Assuming your main content is in a 'content' field
+			slug: story.slug,
+		}))
 
-export const getPostBySlug = (slug) => {
-	const postFilePath = path.join(_contentDirectory, `${slug}.mdx`)
-	const postFileContents = fs.readFileSync(postFilePath, "utf8")
-	const { data, content } = matter(postFileContents)
-
-	return {
-		frontmatter: data,
-		content,
-		slug: data.slug, // Here we extract the slug from the frontmatter
+		return allPosts
+	} catch (error) {
+		console.error("Error fetching posts from Storyblok:", error)
+		return []
 	}
 }
 
-export const getAllPosts = (
-	directory = path.join(process.cwd(), _contentDirectory)
-) => {
-	// Initialize an array to store post data
-	const allPosts = []
-
-	// Read the contents of the directory. 'withFileTypes' ensures that the resulting array contains fs.Dirent objects
-	// This allows us to identify if an item is a directory or a regular file without another fs call.
-	const entries = fs.readdirSync(directory, { withFileTypes: true })
-
-	// Iterate through each item (file or directory) in the directory
-	for (const entry of entries) {
-		// Construct the full path to the item
-		const fullPath = path.join(directory, entry.name)
-
-		// Check if the current item is a directory
-		if (entry.isDirectory()) {
-			// If it is, then dive deeper into this directory and spread the resulting posts into the allPosts array
-			allPosts.push(...getAllPosts(fullPath))
+export const getPostBySlug = async (slug: string): Promise<any> => {
+	try {
+		const storyblokApi = getStoryblokApi()
+		// Fetch all blog posts from Storyblok
+		const { data } = await storyblokApi.get(`cdn/stories/blog/${slug}`, {
+			version: process.env.NODE_ENV === "production" ? "published" : "draft",
+		})
+		// Transform the Storyblok response into the expected format
+		const post = {
+			title: data.story.content.title,
+			date: data.story.first_published_at,
+			excerpt: data.story.content.excerpt,
+			slug: data.story.slug,
+			content: data.story.content?.content, // Assuming your main content is in a 'content' field
+			tags: data.story?.tag_list,
 		}
-		// Check if the current item is an .mdx file
-		else if (path.extname(entry.name) === ".mdx") {
-			// If it is, read its contents
-			const fileContents = fs.readFileSync(fullPath, "utf8")
-			// Use the 'matter' library to parse the file's frontmatter and content
-			const { data, content } = matter(fileContents)
 
-			// Push the post data into the allPosts array
-			allPosts.push({
-				frontmatter: data, // metadata of the post
-				content: content, // actual content of the post
-				slug: data.slug, // the slug derived from the frontmatter
-			})
-		}
+		return post
+	} catch (error) {
+		console.error("Error fetching posts from Storyblok:", error)
+		return []
 	}
-
-	// Return the populated array of posts
-	return allPosts
 }
