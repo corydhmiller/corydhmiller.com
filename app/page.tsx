@@ -1,3 +1,4 @@
+import { BackgroundText } from "@/components/BackgroundText"
 import Heading from "@/components/Typography/Heading"
 import { HoverGlow } from "@/components/UI/HoverGlow"
 import Prose from "@components/Prose"
@@ -48,8 +49,11 @@ const PageContent = () => {
 
 export default function Home() {
 	return (
-		<HoverGlow>
-			<PageContent />
-		</HoverGlow>
+		<>
+			<BackgroundText text="Hello." />
+			<HoverGlow>
+				<PageContent />
+				</HoverGlow>
+		</>
 	)
 }
