@@ -1,7 +1,7 @@
 "use client"
 
-import { Moon, Sun } from "lucide-react"
 import { useEffect, useState } from "react"
+import FeatherIcon from "feather-icons-react"
 
 export function DarkModeToggle() {
 	const [isDark, setIsDark] = useState(false)
@@ -9,12 +9,12 @@ export function DarkModeToggle() {
 
 	useEffect(() => {
 		setMounted(true)
-		setIsDark(document.documentElement.classList.contains('dark'))
+		setIsDark(document.documentElement.classList.contains("dark"))
 	}, [])
 
 	const toggleDarkMode = () => {
 		const newTheme = !isDark ? "dark" : "light"
-		document.documentElement.classList.toggle('dark')
+		document.documentElement.classList.toggle("dark")
 		localStorage.theme = newTheme
 		setIsDark(!isDark)
 	}
@@ -27,7 +27,11 @@ export function DarkModeToggle() {
 			className="p-2 rounded-lg bg-transparent transition-colors"
 			aria-label="Toggle dark mode"
 		>
-			{isDark ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+			{isDark ? (
+				<FeatherIcon icon="sun" size={16} />
+			) : (
+				<FeatherIcon icon="moon" size={16} />
+			)}
 		</button>
 	)
 }

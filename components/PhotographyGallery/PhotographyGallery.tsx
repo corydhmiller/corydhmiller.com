@@ -2,8 +2,8 @@
 
 import { ScrollArea } from "@components/UI/scroll-area"
 import { cn } from "@utils/cn.utils"
+import FeatherIcon from "feather-icons-react"
 import { AnimatePresence, motion } from "framer-motion"
-import { ChevronDown, X } from "lucide-react"
 import * as React from "react"
 import BlurImage from "../BlurImage"
 
@@ -95,17 +95,19 @@ export default function PortfolioComponent({ photos }) {
 
 	return (
 		<div className="min-h-screen w-full flex flex-col">
-			<div className="sticky top-0 z-10 p-6 md:hidden">
-				<div className="relative">
+			<div className="sticky top-0 z-10 md:hidden bg-white w-full dark:bg-gray-800">
+				<div className="relative w-full p-6">
 					<button
 						onClick={() => setIsFilterOpen(!isFilterOpen)}
 						className="flex items-center gap-2 text-sm text-gray-600"
 					>
 						filter
-						<ChevronDown
+						<FeatherIcon
+							icon="chevron-down"
+							size={16}
 							className={cn(
 								"h-4 w-4 transition-transform",
-								isFilterOpen && "rotate-180"
+								isFilterOpen && "-rotate-180"
 							)}
 						/>
 					</button>
@@ -117,15 +119,17 @@ export default function PortfolioComponent({ photos }) {
 								animate={{ height: "auto", opacity: 1 }}
 								exit={{ height: 0, opacity: 0 }}
 								transition={{ duration: 0.3, ease: "easeInOut" }}
-								className="absolute left-0 top-8 z-20 space-y-6 overflow-hidden pt-4"
+								className="absolute left-0 top-12 z-20 space-y-6 overflow-hidden bg-white dark:bg-gray-800"
 							>
-								<FilterContent
-									selectedTags={selectedTags}
-									setSelectedTags={setSelectedTags}
-									selectedMedium={selectedMedium}
-									setSelectedMedium={setSelectedMedium}
-									allTags={allTags as string[]}
-								/>
+								<div className="p-6">
+									<FilterContent
+										selectedTags={selectedTags}
+										setSelectedTags={setSelectedTags}
+										selectedMedium={selectedMedium}
+										setSelectedMedium={setSelectedMedium}
+										allTags={allTags as string[]}
+									/>
+								</div>
 							</motion.div>
 						)}
 					</AnimatePresence>
@@ -184,10 +188,12 @@ export default function PortfolioComponent({ photos }) {
 								className="flex items-center gap-2 text-sm text-gray-600"
 							>
 								filter
-								<ChevronDown
+								<FeatherIcon
+									icon="chevron-down"
+									size={16}
 									className={cn(
 										"h-4 w-4 transition-transform",
-										isFilterOpen && "rotate-180"
+										isFilterOpen && "-rotate-180"
 									)}
 								/>
 							</button>
@@ -253,7 +259,7 @@ export default function PortfolioComponent({ photos }) {
 									onClick={() => setSelectedImage(null)}
 									className="absolute right-6 top-6 text-gray-900"
 								>
-									<X className="h-6 w-6" />
+									<FeatherIcon icon="x" size={24} />
 									<span className="sr-only">Close</span>
 								</button>
 								<div className="space-y-6">
@@ -280,7 +286,7 @@ export default function PortfolioComponent({ photos }) {
 									onClick={() => setSelectedImage(null)}
 									className="absolute right-6 top-6 text-gray-900"
 								>
-									<X className="h-6 w-6" />
+									<FeatherIcon icon="x" size={24} />
 									<span className="sr-only">Close</span>
 								</button>
 								<ScrollArea className="h-[40vh]">

@@ -2197,6 +2197,11 @@ fault@^1.0.0:
   dependencies:
     format "^0.2.0"
 
+feather-icons-react@^0.7.0:
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/feather-icons-react/-/feather-icons-react-0.7.0.tgz#4c31f3180ff739b5cc06cab5c73c3db883279246"
+  integrity sha512-IAHpKhrpxag3gKWcZYC7zmewfjMQLI34tmrpH3+52mvC61Q4FRBjJXl1WmPyKefGnk3sbS0wiqWDD3QIHiJBaA==
+
 file-entry-cache@^8.0.0:
   version "8.0.0"
   resolved "https://registry.yarnpkg.com/file-entry-cache/-/file-entry-cache-8.0.0.tgz#7787bddcf1131bffb92636c69457bbc0edd6d81f"
@@ -3286,11 +3291,6 @@ lowlight@^1.17.0:
   dependencies:
     fault "^1.0.0"
     highlight.js "~10.7.0"
-
-lucide-react@^0.456.0:
-  version "0.456.0"
-  resolved "https://registry.yarnpkg.com/lucide-react/-/lucide-react-0.456.0.tgz#14906c3355cc65d3380b7b2294b331aeda1bb392"
-  integrity sha512-DIIGJqTT5X05sbAsQ+OhA8OtJYyD4NsEMCA/HQW/Y6ToPQ7gwbtujIoeAaup4HpHzV35SQOarKAWH8LYglB6eA==
 
 markdown-extensions@^2.0.0:
   version "2.0.0"

@@ -1,4 +1,7 @@
 import Link from "@components/UI/Link"
+import FeatherIcon from "feather-icons-react"
+
+import Button from "../UI/Button/Button"
 
 interface PaginationControlsProps {
 	currentPage: number
@@ -17,19 +20,33 @@ const PaginationControls = ({
 
 	return (
 		<div className="flex justify-between items-center mt-8">
-			{currentPage > 1 && (
-				<Link href={`/blog?page=${currentPage - 1}`} variant="primary">
-					← Previous
-				</Link>
-			)}
-			<span className="text-sm">
+			<div>
+				{currentPage > 1 && (
+					<Link
+						href={`/blog?page=${currentPage - 1}`}
+						variant="primary"
+						className="flex items-center gap-1 text-sm"
+					>
+						<FeatherIcon icon="chevron-left" size={16} />
+						<span className="hidden sm:inline">Previous</span>
+					</Link>
+				)}
+			</div>
+			<span className="text-sm opacity-60">
 				Page {currentPage} of {totalPages}
 			</span>
-			{currentPage < totalPages && (
-				<Link href={`/blog?page=${currentPage + 1}`} variant="primary">
-					Next →
-				</Link>
-			)}
+			<div>
+				{currentPage < totalPages && (
+					<Link
+						href={`/blog?page=${currentPage + 1}`}
+						variant="primary"
+						className="flex items-center gap-1 text-sm"
+					>
+						<span className="hidden sm:inline">Next</span>
+						<FeatherIcon icon="chevron-right" size={16} />
+					</Link>
+				)}
+			</div>
 		</div>
 	)
 }

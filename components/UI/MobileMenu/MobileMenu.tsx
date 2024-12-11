@@ -1,5 +1,6 @@
 "use client"
-import { Menu, X } from "lucide-react"
+import FeatherIcon from "feather-icons-react"
+
 import Link from "../Link"
 import { useState } from "react"
 import { AnimatePresence, motion } from "framer-motion"
@@ -19,7 +20,11 @@ export const MobileMenu = () => {
 				onClick={() => setIsOpen(!isOpen)}
 				className="p-2 text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors duration-500"
 			>
-				{isOpen ? <X size={24} /> : <Menu size={24} />}
+				{isOpen ? (
+					<FeatherIcon icon="x" size={24} />
+				) : (
+					<FeatherIcon icon="menu" size={24} />
+				)}
 			</button>
 
 			<AnimatePresence>

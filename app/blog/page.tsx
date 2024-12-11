@@ -1,12 +1,11 @@
+import { BackgroundText } from "@/components/BackgroundText"
+import { BlogArchivePostCard } from "@/components/BlogArchivePostCard"
+import PaginationControls from "@/components/PaginationControls"
 import { COMPONENTS } from "@/components/Storyblok/components"
-import { apiPlugin, getStoryblokApi, storyblokInit } from "@storyblok/react"
 import Heading from "@/components/Typography/Heading"
-import Link from "@/components/UI/Link"
-import { formatDate } from "@/src/utils/dates.utils"
 import Content from "@components/Content"
 import Prose from "@components/Prose"
-import { BackgroundText } from "@/components/BackgroundText"
-import PaginationControls from "@/components/PaginationControls"
+import { apiPlugin, getStoryblokApi, storyblokInit } from "@storyblok/react"
 
 storyblokInit({
 	accessToken: process.env.NEXT_PUBLIC_STORYBLOK_API_TOKEN,
@@ -14,11 +13,10 @@ storyblokInit({
 	components: COMPONENTS,
 })
 
-export default async function Blog({
-	searchParams,
-}: {
-	searchParams: { [key: string]: string | string[] | undefined }
+export default async function Blog(props: {
+	searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }) {
+	const searchParams = await props.searchParams
 	const page =
 		typeof searchParams.page === "string" ? Number(searchParams.page) : 1
 	const { data, total } = await fetchData(page)
@@ -29,29 +27,26 @@ export default async function Blog({
 		<>
 			<BackgroundText text="Blog" />
 			<Content>
-				<Prose className="col-span-3 w-full max-w-7xl mx-auto sm:text-center mb-6">
+				<Prose className="w-full max-w-7xl mx-auto sm:text-center my-8 sm:my-24">
 					<Heading as="h1">Blog</Heading>
 				</Prose>
-				<Prose className="prose-lg mx-auto">
+				<Prose className="prose-lg mx-auto mb-24">
 					{posts && (
-						<div className="grid gap-8">
+						<div className="grid gap-12">
 							{posts.map((post) => (
 								<div key={post.slug}>
-									<Link href={`/blog/${post.slug}`}>{post.name}</Link>
-									{post.created_at && (
-										<span className="text-sm block opacity-60">
-											{formatDate(post.created_at)}
-										</span>
-									)}
-									{post.content?.excerpt && (
-										<span className="prose-xl text-gray-800 dark:text-gray-100">
-											{post.content.excerpt}
-										</span>
-									)}
+									<BlogArchivePostCard
+										slug={post.slug}
+										name={post.name}
+										created_at={post.created_at}
+										content={post.content}
+									/>
 								</div>
 							))}
 						</div>
 					)}
+				</Prose>
+				<Prose className="prose-lg mx-auto mb-24">
 					<PaginationControls
 						currentPage={page}
 						totalPosts={total}

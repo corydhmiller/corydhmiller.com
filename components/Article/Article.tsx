@@ -24,7 +24,7 @@ const Article = ({
 		<>
 			<BackgroundText text={data.title} />
 			<Content>
-				<Prose className="w-full my-8 sm:my-24 max-w-7xl mx-auto sm:text-center">
+				<Prose className="w-full my-32 sm:my-32 max-w-7xl mx-auto sm:text-center">
 					<Heading as="h1">{data.title}</Heading>
 				</Prose>
 				<article className="mx-auto mb-24">
@@ -44,7 +44,6 @@ const Article = ({
 						</Link>
 					</Prose>
 
-					<div className="h-1 bg-gray-600 mt-4 sm:my-12"></div>
 					<Prose className="sm:mx-auto">{children}</Prose>
 					{tagsArray && (
 						<Prose className="grid prose-lg my-6 sm:mx-auto">

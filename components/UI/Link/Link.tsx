@@ -10,10 +10,11 @@ interface LinkProps {
 	onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void
 }
 
+const defaultClasses =
+	"no-underline hover:underline text-primary cursor-pointer decoration-2 underline-offset-2 decoration-solid"
 const variants = {
-	primary:
-		"no-underline hover:underline text-primary cursor-pointer decoration-primary decoration-2 underline-offset-2 decorat",
-	secondary: "no-underline hover:underline",
+	primary: "text-primary decoration-primary",
+	secondary: "text-secondary decoration-secondary",
 	naked: "",
 }
 
@@ -28,7 +29,11 @@ const Link = ({
 	return (
 		<NextLink
 			href={href}
-			className={cn(className, variants[props.variant || "primary"])}
+			className={cn(
+				defaultClasses,
+				variants[props.variant || "primary"],
+				className,
+			)}
 			passHref
 			onClick={onClick}
 			{...(newTab && { target: "_blank", rel: "noopener noreferrer" })}

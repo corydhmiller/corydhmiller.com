@@ -1,5 +1,5 @@
 const headings = {
-	h1: "font-bold font-serif text-8xl",
+	h1: "font-bold font-serif",
 	h2: "font-semibold font-serif text-5xl",
 	h3: "font-semibold text-4xl",
 	h4: "font-semibold text-3xl",
