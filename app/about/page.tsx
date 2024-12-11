@@ -38,7 +38,7 @@ export default function About() {
 						<Link href="https://kit.com" variant="primary" newTab>
 							Kit
 						</Link>{" "}
-						where I run the marketing site (note: it's pretty cool being in
+						where I run the marketing site (note: it&apos;s pretty cool being in
 						charge of a three-letter domain).
 					</p>
 					<p>
@@ -53,7 +53,7 @@ export default function About() {
 						enjoy solving problems and creating enjoyable moments for people.
 					</p>
 					<p>
-						Writing code isn't the sole focus of my creative life. I also have a
+						Writing code isn&apos;t the sole focus of my creative life. I also have a
 						collection of film and digital cameras and enjoy getting out into
 						the world and making memories.
 					</p>

@@ -24,7 +24,7 @@ const PageContent = () => {
 						<Link href="/blog" variant="primary">
 							web development and other stuff
 						</Link>{" "}
-						that comes to mind. I'm a{" "}
+						that comes to mind. I&apos;m a{" "}
 						<Link href="/photography" variant="primary" className="w-16">
 							photographer
 						</Link>
