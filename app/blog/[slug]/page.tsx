@@ -3,6 +3,7 @@ import { getAllPosts, getPostBySlug } from "@/src/lib/posts"
 import { notFound } from "next/navigation"
 import Markdown from "react-markdown"
 import remarkGfm from "remark-gfm"
+import rehypeUnwrapImages from 'rehype-unwrap-images'
 import { MarkdownComponents } from "@utils/markdownComponents"
 import { COMPONENTS } from "@/components/Storyblok/components"
 import { apiPlugin, storyblokInit } from "@storyblok/react"
@@ -33,7 +34,11 @@ export default async function BlogPost(props: {
 				tags: post.tags,
 			}}
 		>
-			<Markdown remarkPlugins={[remarkGfm]} components={MarkdownComponents}>
+			<Markdown 
+				remarkPlugins={[remarkGfm]}
+				rehypePlugins={[rehypeUnwrapImages]}
+				components={MarkdownComponents}
+			>
 				{post.content}
 			</Markdown>
 		</Article>
