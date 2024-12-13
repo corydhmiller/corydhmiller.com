@@ -1,6 +1,9 @@
-import getImageSize from "image-size"
 import Image from "next/image"
-import path from "path"
+
+// Because we will always get a storyblok image here, like this:
+// https://a.storyblok.com/f/313088/882x544/fbcf8b5617/song-lyrics-with-dates-as-titles.jpg
+// We need to extract the width and height from the url otherwise it'll
+// throw an error.
 
 export const MarkdownImage = (props) => {
 	// Copy props into new object since it's locked
@@ -8,17 +11,21 @@ export const MarkdownImage = (props) => {
 
 	const isLocalImage = !props.src.startsWith("http")
 
-	// If no dimensions are defined, let's find it!
-	if (!props.width && !props.height && isLocalImage) {
-		// Extract the file name and path. You may need to adjust this for your app.
-		const fileName = props.src.replace("/images", "") // e.g. file.png, or /subdir/file.png
-		const filePath = path.join(process.cwd(), "public", "images", fileName)
-
-		const dimensions = getImageSize(filePath)
-
-		newProps.width = dimensions.width
-		newProps.height = dimensions.height
+	// Extract dimensions from Storyblok URL if it's not a local image
+	if (!isLocalImage && props.src.includes("storyblok.com")) {
+		const dimensionsMatch = props.src.match(/\/(\d+)x(\d+)\//)
+		if (dimensionsMatch) {
+			newProps.width = parseInt(dimensionsMatch[1])
+			newProps.height = parseInt(dimensionsMatch[2])
+		}
 	}
 
-	return <figure><Image alt="" {...newProps} /><figcaption className="block text-sm text-center">{newProps.alt}</figcaption></figure>
+	return (
+		<figure className="flex flex-col" role="figure">
+			<Image {...newProps} />
+			<figcaption>
+				{newProps.alt}
+			</figcaption>
+		</figure>
+	)
 }
