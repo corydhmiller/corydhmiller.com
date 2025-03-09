@@ -73,3 +73,6 @@ async function fetchData(page: number) {
 		total: response.total,
 	}
 }
+
+export const dynamic = "force-static"
+export const revalidate = 10
