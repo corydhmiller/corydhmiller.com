@@ -9,10 +9,14 @@ interface FilterPanelProps {
 	setIsFilterOpen: (open: boolean) => void
 	selectedTags: string[]
 	setSelectedTags: (tags: string[]) => void
-	selectedMedium: string | null
-	setSelectedMedium: (medium: string | null) => void
+	selectedMedium: string[]
+	setSelectedMedium: (medium: string[]) => void
+	selectedCamera: string[]
+	setSelectedCamera: (camera: string[]) => void
 	allTags: string[]
+	allCameras: string[]
 	isMobile?: boolean
+	resetAllFilters: () => void
 }
 
 export function FilterPanel({
@@ -22,8 +26,12 @@ export function FilterPanel({
 	setSelectedTags,
 	selectedMedium,
 	setSelectedMedium,
+	selectedCamera,
+	setSelectedCamera,
 	allTags,
+	allCameras,
 	isMobile = false,
+	resetAllFilters,
 }: FilterPanelProps) {
 	const containerClasses = isMobile
 		? "sticky top-0 z-10 md:hidden bg-white w-full dark:bg-gray-800"
@@ -37,20 +45,31 @@ export function FilterPanel({
 		<div className={containerClasses}>
 			<div className={isMobile ? "relative w-full p-6" : "sticky top-6"}>
 				<div className="relative">
-					<button
-						onClick={() => setIsFilterOpen(!isFilterOpen)}
-						className="flex items-center gap-2 text-sm text-gray-600"
-					>
-						filter
-						<FeatherIcon
-							icon="chevron-down"
-							size={16}
-							className={cn(
-								"h-4 w-4 transition-transform",
-								isFilterOpen && "-rotate-180"
-							)}
-						/>
-					</button>
+					<div className="flex justify-between items-center">
+						<button
+							onClick={() => setIsFilterOpen(!isFilterOpen)}
+							className="flex items-center gap-2 text-sm text-gray-600"
+						>
+							filter
+							<FeatherIcon
+								icon="chevron-down"
+								size={16}
+								className={cn(
+									"h-4 w-4 transition-transform",
+									isFilterOpen && "-rotate-180"
+								)}
+							/>
+						</button>
+						
+						{(selectedTags.length > 0 || selectedMedium.length > 0 || selectedCamera.length > 0) && (
+							<button 
+								onClick={resetAllFilters} 
+								className="text-sm text-gray-600 hover:text-primary"
+							>
+								Reset all
+							</button>
+						)}
+					</div>
 
 					<AnimatePresence>
 						{isFilterOpen && (
@@ -67,7 +86,10 @@ export function FilterPanel({
 										setSelectedTags={setSelectedTags}
 										selectedMedium={selectedMedium}
 										setSelectedMedium={setSelectedMedium}
+										selectedCamera={selectedCamera}
+										setSelectedCamera={setSelectedCamera}
 										allTags={allTags}
+										allCameras={allCameras}
 									/>
 								</div>
 							</motion.div>
@@ -84,13 +106,19 @@ function FilterContent({
 	setSelectedTags,
 	selectedMedium,
 	setSelectedMedium,
+	selectedCamera,
+	setSelectedCamera,
 	allTags,
+	allCameras,
 }: {
 	selectedTags: string[]
 	setSelectedTags: (tags: string[]) => void
-	selectedMedium: string | null
-	setSelectedMedium: (medium: string | null) => void
+	selectedMedium: string[]
+	setSelectedMedium: (medium: string[]) => void
+	selectedCamera: string[]
+	setSelectedCamera: (camera: string[]) => void
 	allTags: string[]
+	allCameras: string[]
 }) {
 	return (
 		<>
@@ -120,7 +148,7 @@ function FilterContent({
 				</div>
 			</div>
 
-			<div className="space-y-2">
+			<div className="space-y-2 mt-4">
 				<div className="text-sm font-medium text-gray-600">medium</div>
 				<div className="flex flex-wrap gap-x-2 gap-y-1 text-lg">
 					{["digital", "film"].map((medium, i) => (
@@ -128,12 +156,42 @@ function FilterContent({
 							{i > 0 && <span className="text-gray-400">/</span>}
 							<button
 								onClick={() =>
-									setSelectedMedium(selectedMedium === medium ? null : medium)
+									setSelectedMedium(
+										selectedMedium.includes(medium)
+											? selectedMedium.filter((m) => m !== medium)
+											: [...selectedMedium, medium]
+									)
 								}
 								className="relative hover:opacity-70"
 							>
 								{medium}
-								{selectedMedium === medium && (
+								{selectedMedium.includes(medium) && (
+									<span className="absolute -right-1 -top-1 h-2 w-2 rounded-full bg-primary" />
+								)}
+							</button>
+						</Fragment>
+					))}
+				</div>
+			</div>
+
+			<div className="space-y-2 mt-4">
+				<div className="text-sm font-medium text-gray-600">camera</div>
+				<div className="flex flex-wrap gap-x-2 gap-y-1 text-lg">
+					{allCameras.map((camera, i) => (
+						<Fragment key={camera}>
+							{i > 0 && <span className="text-gray-400">/</span>}
+							<button
+								onClick={() =>
+									setSelectedCamera(
+										selectedCamera.includes(camera)
+											? selectedCamera.filter((c) => c !== camera)
+											: [...selectedCamera, camera]
+									)
+								}
+								className="relative hover:opacity-70"
+							>
+								{camera}
+								{selectedCamera.includes(camera) && (
 									<span className="absolute -right-1 -top-1 h-2 w-2 rounded-full bg-primary" />
 								)}
 							</button>
