@@ -14,7 +14,8 @@ export default function PortfolioComponent() {
 	const [selectedImage, setSelectedImage] = React.useState(null)
 	const [isFilterOpen, setIsFilterOpen] = React.useState(false)
 	const [selectedTags, setSelectedTags] = React.useState([])
-	const [selectedMedium, setSelectedMedium] = React.useState(null)
+	const [selectedMedium, setSelectedMedium] = React.useState([])
+	const [selectedCamera, setSelectedCamera] = React.useState([])
 	const [focusedIndex, setFocusedIndex] = React.useState(-1)
 
 	useEffect(() => {
@@ -30,6 +31,12 @@ export default function PortfolioComponent() {
 		fetchData()
 	}, [])
 
+	const resetAllFilters = React.useCallback(() => {
+		setSelectedTags([])
+		setSelectedMedium([])
+		setSelectedCamera([])
+	}, [])
+
 	const filteredPhotos = React.useMemo(() => {
 		return photos
 			.filter((photo) => {
@@ -37,8 +44,12 @@ export default function PortfolioComponent() {
 					selectedTags.length === 0 ||
 					selectedTags.every((tag) => photo.tag_list.includes(tag))
 				const mediumMatch =
-					!selectedMedium || photo.content.medium === selectedMedium
-				return tagsMatch && mediumMatch
+					selectedMedium.length === 0 || 
+					selectedMedium.includes(photo.content.medium)
+				const cameraMatch = 
+					selectedCamera.length === 0 ||
+					selectedCamera.includes(photo.content.camera)
+				return tagsMatch && mediumMatch && cameraMatch
 			})
 			.sort((a, b) => {
 				return (
@@ -46,9 +57,10 @@ export default function PortfolioComponent() {
 					new Date(a.content.date).getTime()
 				)
 			})
-	}, [selectedTags, selectedMedium, photos])
+	}, [selectedTags, selectedMedium, selectedCamera, photos])
 
 	const allTags = Array.from(new Set(photos.flatMap((photo) => photo.tag_list)))
+	const allCameras = Array.from(new Set(photos.map((photo) => photo.content.camera))).filter(Boolean)
 
 	const handleKeyDown = React.useCallback(
 		(e: KeyboardEvent) => {
@@ -118,8 +130,12 @@ export default function PortfolioComponent() {
 				setSelectedTags={setSelectedTags}
 				selectedMedium={selectedMedium}
 				setSelectedMedium={setSelectedMedium}
+				selectedCamera={selectedCamera}
+				setSelectedCamera={setSelectedCamera}
 				allTags={allTags}
+				allCameras={allCameras}
 				isMobile={true}
+				resetAllFilters={resetAllFilters}
 			/>
 
 			<div className="flex flex-1 overflow-hidden">
@@ -152,8 +168,12 @@ export default function PortfolioComponent() {
 					setSelectedTags={setSelectedTags}
 					selectedMedium={selectedMedium}
 					setSelectedMedium={setSelectedMedium}
+					selectedCamera={selectedCamera}
+					setSelectedCamera={setSelectedCamera}
 					allTags={allTags}
+					allCameras={allCameras}
 					isMobile={false}
+					resetAllFilters={resetAllFilters}
 				/>
 			</div>
 
