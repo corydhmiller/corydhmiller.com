@@ -13,7 +13,7 @@ const Footer = () => {
 						About Me
 					</h3>
 					<p className="text-gray-400 dark:text-gray-400 text-lg">
-						Web developer, photographer, and musician based in Vienna, Austria.
+						Web engineer, photographer, and musician based in Vienna, Austria.
 						Currently working at Kit, specializing in React and Next.js
 						development.
 					</p>

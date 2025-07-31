@@ -15,7 +15,7 @@ const PageContent = () => {
 							Hi, I&apos;m <span className="text-secondary">Cory</span>.
 						</Heading>
 						<p>
-							I&apos;m a web developer currently working at{" "}
+							I&apos;m a web engineer currently working at{" "}
 							<Link href="https://kit.com" variant="primary" newTab>
 								Kit
 							</Link>

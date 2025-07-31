@@ -10,7 +10,7 @@ import { Footer } from "@/components/Footer"
 const imageUrl = `https://corydhmiller.com/og?title=${"Hi! I'm Cory."}`,
 	title = "Thoughts by Cory Miller",
 	description =
-		"A blog about web development, music, and various thoughts on other stuff I'm interested in."
+		"A blog about photography, music, and various thoughts on other stuff I'm interested in."
 
 export const metadata: Metadata = {
 	metadataBase: new URL("https://corydhmiller.com"),
