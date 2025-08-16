@@ -12,7 +12,7 @@ const Footer = () => {
 					<h3 className="text-xl font-bold text-gray-800 dark:text-white">
 						About Me
 					</h3>
-					<p className="text-gray-400 dark:text-gray-400 text-lg">
+					<p className="text-gray-400/50 dark:text-gray-100/50 text-lg">
 						Web engineer, photographer, and musician based in Vienna, Austria.
 						Currently working at Kit, specializing in React and Next.js
 						development.

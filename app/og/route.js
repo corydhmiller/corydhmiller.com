@@ -91,7 +91,7 @@ export async function GET(req) {
 						opacity: ".1",
 						filter: "blur(100px)",
 						width: "110%",
-						background: "#5955f4",
+						background: "#cfa473",
 					}}
 				></div>
 				<div

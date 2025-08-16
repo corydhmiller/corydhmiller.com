@@ -19,15 +19,15 @@ module.exports = {
 		},
 		colors: {
 			transparent: "transparent",
-			primary: "#5955f4",
+			primary: "#cfa473",
 			secondary: "#fb7649",
 			black: "#0D0D0D",
-			white: "#efefef",
+			white: "#EEEEEC",
 			gray: {
-				100: "#f4eff9",
+				100: "#EEEEEC",
 				200: "#c9c0d9",
 				400: "#535353",
-				800: "#111111",
+				800: "#141414",
 			},
 		},
 		fontFamily: {
