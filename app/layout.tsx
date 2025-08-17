@@ -4,13 +4,13 @@ import "../public/fonts/fonts.css"
 
 import StoryblokProvider from "@/components/Storyblok/StoryblokProvider"
 import Header from "@components/Header"
-import { themeScript } from './theme-utils'
+import { themeScript } from "./theme-utils"
 import { Footer } from "@/components/Footer"
 
 const imageUrl = `https://corydhmiller.com/og?title=${"Hi! I'm Cory."}`,
 	title = "Thoughts by Cory Miller",
 	description =
-		"A blog about web development, music, and various thoughts on other stuff I'm interested in."
+		"A blog about photography, music, and various thoughts on other stuff I'm interested in."
 
 export const metadata: Metadata = {
 	metadataBase: new URL("https://corydhmiller.com"),
@@ -57,7 +57,7 @@ export default function RootLayout({
 				<head>
 					<script dangerouslySetInnerHTML={{ __html: themeScript }} />
 				</head>
-				<body className="bg-white dark:bg-gray-800 text-gray-800 dark:text-white transition-colors duration-300 min-h-screen flex flex-col">
+				<body className="bg-white dark:bg-gray-800 text-gray-800 dark:text-white transition-colors duration-300 flex flex-col">
 					<Header />
 					<main className="wrapper flex-1">{children}</main>
 					<Footer />

@@ -28,7 +28,7 @@ export default function About() {
 				<Prose className="prose-lg mx-auto mb-24">
 					<p>
 						I was born in Washington, raised in California, and currently live
-						in Vienna, Austria. I&apos;m a web developer, photographer,
+						in Vienna, Austria. I&apos;m a web engineer, photographer,
 						musician, and creative at heart.
 					</p>
 
@@ -85,10 +85,10 @@ export default function About() {
 
 export const metadata = {
 	title: "About",
-	description: "Learn more about Cory Miller, web developer and creative.",
+	description: "Learn more about Cory Miller, web engineer and creative.",
 	openGraph: {
 		title: "About - Cory Miller",
-		description: "Learn more about Cory Miller, web developer and creative.",
+		description: "Learn more about Cory Miller, web engineer and creative.",
 		url: "https://corydhmiller.com/about",
 		siteName: "Cory Miller",
 		locale: "en_US",

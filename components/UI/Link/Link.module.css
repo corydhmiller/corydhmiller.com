@@ -1,0 +1,29 @@
+.Link {
+	display: inline;
+	white-space: nowrap;
+	position: relative;
+	z-index: 1;
+}
+.Link:before,
+.Link:after {
+	content: attr(data-text);
+	position: absolute;
+	left: 0;
+	top: 0;
+	opacity: 0;
+	transition: all 0.2s ease-out;
+	color: var(--secondary);
+	z-index: -1;
+}
+
+.Link:hover:before {
+  opacity: 0.3;
+	transform: translate(-2px, 2px);
+}
+
+.Link:hover:after {
+  color: var(--black);
+  opacity: 0.3;
+	transform: translate(-4px, 4px);
+  filter: blur(1px);
+}
