@@ -24,10 +24,10 @@ export default function PortfolioComponent() {
 			const { data } = await storyblokApi.get(`cdn/stories`, {
 				starts_with: "photography/",
 				version: "published",
+				per_page:100
 			})
 			setPhotos(data.stories)
 		}
-
 		fetchData()
 	}, [])
 
