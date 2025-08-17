@@ -10,6 +10,7 @@ const PageContent = () => {
 				height={1536}
 				quality={50}
 				className="min-h-screen object-cover"
+				priority
 			/>
 		</>
 	)

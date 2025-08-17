@@ -1,15 +1,31 @@
 import { BackgroundText } from "@/components/BackgroundText"
 import PhotographyGallery from "@components/PhotographyGallery"
 import { Metadata } from "next"
+import { apiPlugin, getStoryblokApi, storyblokInit } from "@storyblok/react"
 
-export default function Photography() {
+storyblokInit({
+	accessToken: process.env.NEXT_PUBLIC_STORYBLOK_API_TOKEN,
+	use: [apiPlugin],
+})
+
+export default async function Photography() {
+	const storyblokApi = getStoryblokApi()
+	const { data } = await storyblokApi.get("cdn/stories", {
+		starts_with: "photography/",
+		version: "published",
+		per_page: 100,
+	})
+
 	return (
 		<div>
 			<BackgroundText text={["Photo", "graphy"]} />
-			<PhotographyGallery />
+			<PhotographyGallery photos={data.stories} />
 		</div>
 	)
 }
+
+export const dynamic = "force-static"
+export const revalidate = 60
 
 export const metadata: Metadata = {
 	metadataBase: new URL("https://corydhmiller.com"),
