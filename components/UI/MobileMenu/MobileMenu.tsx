@@ -33,18 +33,19 @@ export const MobileMenu = () => {
 						initial={{ opacity: 0, y: -20 }}
 						animate={{ opacity: 1, y: 0 }}
 						exit={{ opacity: 0, y: -20 }}
-						className="absolute left-0 right-0 top-[100px] bg-white shadow-lg z-50 dark:bg-black dark:bg-opacity-50 dark:backdrop-blur-lg"
+						className="absolute left-0 right-0 top-[80px] bg-white shadow-lg z-50 dark:bg-black dark:bg-opacity-80 dark:backdrop-blur-lg"
 					>
 						<nav className="flex flex-col p-4">
-							{links.map(({ href, label }) => (
-								<Link
-									key={href}
-									href={href}
-									className="py-2"
-									onClick={() => setIsOpen(false)}
-								>
-									{label}
-								</Link>
+							{links.map(({ href, label }, index) => (
+								<span key={index}>
+									<Link
+										href={href}
+										className="py-2"
+										onClick={() => setIsOpen(false)}
+									>
+										{label}
+									</Link>
+								</span>
 							))}
 						</nav>
 					</motion.div>

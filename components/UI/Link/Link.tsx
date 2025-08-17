@@ -1,5 +1,6 @@
 import { default as NextLink } from "next/link"
 import { cn } from "@utils/cn.utils"
+import styles from "./Link.module.css"
 
 interface LinkProps {
 	children: React.ReactNode | string
@@ -11,7 +12,7 @@ interface LinkProps {
 }
 
 const defaultClasses =
-	"no-underline hover:underline text-primary cursor-pointer decoration-2 underline-offset-2 decoration-solid"
+	"text-primary cursor-pointer relative"
 const variants = {
 	primary: "text-primary decoration-primary",
 	secondary: "text-secondary decoration-secondary",
@@ -33,11 +34,13 @@ const Link = ({
 				defaultClasses,
 				variants[props.variant || "primary"],
 				className,
+				styles.Link
 			)}
 			passHref
 			onClick={onClick}
 			{...(newTab && { target: "_blank", rel: "noopener noreferrer" })}
 			{...props}
+			data-text={typeof children === "string" ? children.toString() : ""}
 		>
 			{children}
 		</NextLink>
