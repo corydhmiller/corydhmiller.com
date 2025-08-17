@@ -3,33 +3,32 @@
 import { ScrollArea } from "@components/UI/scroll-area"
 import { AnimatePresence, motion } from "framer-motion"
 import * as React from "react"
-import { useEffect, useState } from "react"
-import { getStoryblokApi } from "@storyblok/react"
+import { useState } from "react"
 import { PhotoCard } from "./PhotoCard"
 import { PhotoModal } from "./PhotoModal"
 import { FilterPanel } from "./FilterPanel"
 
-export default function PortfolioComponent() {
-	const [photos, setPhotos] = useState([])
-	const [selectedImage, setSelectedImage] = React.useState(null)
-	const [isFilterOpen, setIsFilterOpen] = React.useState(false)
-	const [selectedTags, setSelectedTags] = React.useState([])
-	const [selectedMedium, setSelectedMedium] = React.useState([])
-	const [selectedCamera, setSelectedCamera] = React.useState([])
-	const [focusedIndex, setFocusedIndex] = React.useState(-1)
+type Photo = {
+	id: number
+	name: string
+	slug: string
+	tag_list: string[]
+	content: {
+		image: { filename: string; alt?: string }
+		medium?: string
+		camera?: string
+		date?: string
+		description?: string
+	}
+}
 
-	useEffect(() => {
-		async function fetchData() {
-			const storyblokApi = getStoryblokApi()
-			const { data } = await storyblokApi.get(`cdn/stories`, {
-				starts_with: "photography/",
-				version: "published",
-				per_page:100
-			})
-			setPhotos(data.stories)
-		}
-		fetchData()
-	}, [])
+export default function PortfolioComponent({ photos }: { photos: Photo[] }) {
+	const [selectedImage, setSelectedImage] = React.useState<Photo | null>(null)
+	const [isFilterOpen, setIsFilterOpen] = React.useState(false)
+	const [selectedTags, setSelectedTags] = React.useState<string[]>([])
+	const [selectedMedium, setSelectedMedium] = React.useState<string[]>([])
+	const [selectedCamera, setSelectedCamera] = React.useState<string[]>([])
+	const [focusedIndex, setFocusedIndex] = React.useState(-1)
 
 	const resetAllFilters = React.useCallback(() => {
 		setSelectedTags([])
@@ -59,8 +58,14 @@ export default function PortfolioComponent() {
 			})
 	}, [selectedTags, selectedMedium, selectedCamera, photos])
 
-	const allTags = Array.from(new Set(photos.flatMap((photo) => photo.tag_list)))
-	const allCameras = Array.from(new Set(photos.map((photo) => photo.content.camera))).filter(Boolean)
+	const allTags = React.useMemo(
+		() => Array.from(new Set(photos.flatMap((photo) => photo.tag_list))),
+		[photos]
+	)
+	const allCameras = React.useMemo(
+		() => Array.from(new Set(photos.map((photo) => photo.content.camera))).filter(Boolean),
+		[photos]
+	)
 
 	const handleKeyDown = React.useCallback(
 		(e: KeyboardEvent) => {
