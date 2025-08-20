@@ -2,6 +2,7 @@ import Link from "../UI/Link"
 import { DarkModeToggle } from "../UI/DarkModeToggle/DarkModeToggle"
 import { MobileMenu } from "../UI/MobileMenu/MobileMenu"
 import { cn } from "@/src/utils/cn.utils"
+import Logo from "../Logo/Logo"
 
 const links = [
 	{ href: "/blog", label: "Blog" },
@@ -13,15 +14,15 @@ export const Header = () => {
 	return (
 		<header
 			className={cn(
-				"px-2 py-3 w-100vw flex justify-between items-center relative",
-				"bg-white dark:bg-gray-800",
+				"px-4 py-3 w-100vw flex justify-between items-center relative",
+				"bg-white dark:bg-gray-800"
 			)}
 		>
-			<Link href="/" variant="primary">
+			<Link href="/" variant="naked">
 				<div
-					className={`text-gray-400 dark:text-gray-500 font-serif transform inline-block font-bold text-6xl cursor-pointer hover:text-primary focus:text-secondary transition-colors duration-500`}
+					className={`text-gray-400 dark:text-gray-500 font-serif transform cursor-pointer hover:text-primary focus:text-secondary transition-colors duration-500`}
 				>
-					/C
+					<Logo width={85} />
 				</div>
 			</Link>
 
