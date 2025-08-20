@@ -1,8 +1,8 @@
 import Image from "next/image"
 
-const PageContent = () => {
+export default function Home() {
 	return (
-		<>
+		<div className="relative">
 			<Image
 				src="/images/corydhmiller-home-background.jpg"
 				alt="Cory Miller"
@@ -12,16 +12,6 @@ const PageContent = () => {
 				className="min-h-screen object-cover"
 				priority
 			/>
-		</>
-	)
-}
-
-export default function Home() {
-	return (
-		<>
-			<div className="relative">
-				<PageContent />
-			</div>
-		</>
+		</div>
 	)
 }
