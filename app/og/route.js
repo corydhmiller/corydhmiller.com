@@ -31,7 +31,7 @@ export async function GET(req) {
 		(
 			<div
 				style={{
-					background: "#1c1c27",
+					background: "#1e1e1e",
 					// use 1c1c27 and 28293d for gradient
 					// 10% lightere for 1c1c27
 					// background: "linear-gradient(107deg, #272735 0%, #1c1c27 100%)",
@@ -71,19 +71,7 @@ export async function GET(req) {
 					}}
 				></div>
 
-				<div
-					tw="flex absolute items-center justify-between w-full bottom-8 text-7 px-8"
-					style={{
-						fontFamily: "HKGrotesk",
-					}}
-				>
-					<div
-						tw={`font-serif transform inline-block font-bold text-6xl opacity-100`}
-						style={{ color: "#fb7649" }}
-					>
-						/c
-					</div>
-				</div>
+				
 				<div
 					tw="flex h-1/2 absolute bottom-1/2 left-1/2"
 					style={{
