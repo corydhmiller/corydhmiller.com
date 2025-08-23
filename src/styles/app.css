@@ -1,8 +1,8 @@
 :root {
-	--sans-serif: "HKGrotesk", '"Helvetica Neue"', "Helvetica", "Arial",
+	--sans-serif: "GrazieMille", '"Helvetica Neue"', "Helvetica", "Arial",
 		"sans-serif", '"Apple Color Emoji"', '"Segoe UI Emoji"', '"Segoe UI Symbol"',
 		'"Noto Color Emoji"';
-	--serif: "Juana", "Georgia", "Cambria", '"Times New Roman"', "serif";
+	--serif: "GrazieMille", "Georgia", "Cambria", '"Times New Roman"', "serif";
 	--primary: #cfa473;
 	--secondary: #F06517;
 	--tertiary: #981905;

@@ -1,1 +1,0 @@
-export { BackgroundText } from './BackgroundText' 

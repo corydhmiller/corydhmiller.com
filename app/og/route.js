@@ -3,24 +3,16 @@ import { ImageResponse } from "next/og"
 
 export const runtime = "edge"
 
-const getJuanaFont = async () => {
-	const response = await fetch(
-		new URL("../../public/fonts/webFonts/JuanaBold/font.woff", import.meta.url)
-	)
-	const Juana = await response.arrayBuffer()
-
-	return Juana
-}
-
-const getHKGroteskFont = async () => {
+const getGrazieMilleFont = async () => {
 	const response = await fetch(
 		new URL(
-			"../../public/fonts/webFonts/HKGrotesk/HKGrotesk-SemiBold.woff",
+			"../../public/fonts/webFonts/grazie_mille/variable/GrazieMille.woff",
 			import.meta.url
 		)
 	)
-	const HKGrotesk = await response.arrayBuffer()
-	return HKGrotesk
+	const GrazieMille = await response.arrayBuffer()
+
+	return GrazieMille
 }
 
 export async function GET(req) {
@@ -31,64 +23,32 @@ export async function GET(req) {
 		(
 			<div
 				style={{
-					background: "#1e1e1e",
-					// use 1c1c27 and 28293d for gradient
-					// 10% lightere for 1c1c27
-					// background: "linear-gradient(107deg, #272735 0%, #1c1c27 100%)",
+					background: "#141414",
 				}}
 				tw="flex justify-center flex-col text-left w-full h-full text-white"
 			>
 				<div
-					tw="flex w-1/2 h-full absolute bottom-1/2 left-1/2"
+					tw="flex flex-col justify-center items-center h-3/5 absolute right-0 top-1/2 transform w-48 rounded-12 overflow-hidden"
 					style={{
-						transform: "translateY(50%) translateX(-50%)",
-						opacity: ".31",
-						transformOrigin: "left top",
-						filter: "blur(100px)",
-						background: "#111111",
+						transform: "translateY(-50%) translateX(50%)",
+						background: "#EEEEEC",
 					}}
 				></div>
 				<div
-					tw="flex h-1/2 absolute bottom-1/2 left-1/2"
+					tw="flex justify-center items-center h-full text-24 relative font-black leading-none mb-12 mr-28 pl-12 opacity-100"
 					style={{
-						transform: "rotate(10deg) translateY(50%) translateX(-50%)",
-						opacity: ".31",
-						transformOrigin: "left top",
-						filter: "blur(100px)",
-						width: "150%",
-						background: "#0D0D0D",
-					}}
-				></div>
-				<div
-					tw="flex h-1/2 absolute bottom-1/2 left-1/2"
-					style={{
-						transform: "rotate(-45deg) translateY(50%) translateX(-50%)",
-						opacity: "0.05",
-						transformOrigin: "left top",
-						filter: "blur(100px)",
-						width: "150%",
-						background: "#0D0D0D",
-					}}
-				></div>
-
-				
-				<div
-					tw="flex h-1/2 absolute bottom-1/2 left-1/2"
-					style={{
-						transform: "rotate(-5deg) translateY(50%) translateX(-50%)",
-						opacity: ".1",
-						filter: "blur(100px)",
-						width: "110%",
-						background: "#cfa473",
-					}}
-				></div>
-				<div
-					tw="flex justify-center items-center h-full text-24 relative leading-none mb-12 px-12 w-full opacity-90"
-					style={{
-						fontFamily: "Juana",
+						fontFamily: "GrazieMille",
 					}}
 				>
 					{title}
+				</div>
+				<div
+					tw="flex justify-center items-center text-8 absolute bottom-0 left-0 leading-none mb-4 px-12 opacity-50"
+					style={{
+						fontFamily: "GrazieMille",
+					}}
+				>
+					corydhmiller.com
 				</div>
 			</div>
 		),
@@ -97,14 +57,8 @@ export async function GET(req) {
 			height: 600,
 			fonts: [
 				{
-					name: "Juana",
-					data: await getJuanaFont(),
-					style: "normal",
-					weight: "400",
-				},
-				{
-					name: "HKGrotesk",
-					data: await getHKGroteskFont(),
+					name: "GrazieMille",
+					data: await getGrazieMilleFont(),
 					style: "normal",
 					weight: "400",
 				},

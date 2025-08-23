@@ -1,4 +1,3 @@
-import { BackgroundText } from "@/components/BackgroundText"
 import { BlogArchivePostCard } from "@/components/BlogArchivePostCard"
 import PaginationControls from "@/components/PaginationControls"
 import { COMPONENTS } from "@/components/Storyblok/components"
@@ -25,7 +24,6 @@ export default async function Blog(props: {
 
 	return (
 		<>
-			<BackgroundText text="Blog" />
 			<Content>
 				<Prose className="w-full max-w-7xl mx-auto sm:text-center my-8 sm:my-24">
 					<Heading as="h1">Blog</Heading>
