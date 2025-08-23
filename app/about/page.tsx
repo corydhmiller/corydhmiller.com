@@ -1,14 +1,11 @@
-import { BackgroundText } from "@/components/BackgroundText"
-import Heading from "@/components/Typography/Heading"
 import Content from "@components/Content"
-import Link from "@components/UI/Link"
 import Prose from "@components/Prose"
+import Link from "@components/UI/Link"
 import Image from "next/image"
 
 export default function About() {
 	return (
 		<>
-			<BackgroundText text="Me" />
 			<Content>
 				<div className="flex items-center justify-center relative">
 					<div className="transform relative block">

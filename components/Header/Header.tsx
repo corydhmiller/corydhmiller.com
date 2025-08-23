@@ -5,8 +5,8 @@ import { cn } from "@/src/utils/cn.utils"
 import Logo from "../Logo/Logo"
 
 const links = [
+	{ href: "/photography", label: "Gallery" },
 	{ href: "/blog", label: "Blog" },
-	{ href: "/photography", label: "Photography" },
 	{ href: "/about", label: "About" },
 ]
 

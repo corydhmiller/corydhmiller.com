@@ -1,7 +1,6 @@
-import { BackgroundText } from "@/components/BackgroundText"
 import PhotographyGallery from "@components/PhotographyGallery"
-import { Metadata } from "next"
 import { apiPlugin, getStoryblokApi, storyblokInit } from "@storyblok/react"
+import { Metadata } from "next"
 
 storyblokInit({
 	accessToken: process.env.NEXT_PUBLIC_STORYBLOK_API_TOKEN,
@@ -18,7 +17,6 @@ export default async function Photography() {
 
 	return (
 		<div>
-			<BackgroundText text={["Photo", "graphy"]} />
 			<PhotographyGallery photos={data.stories} />
 		</div>
 	)

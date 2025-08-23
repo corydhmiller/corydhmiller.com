@@ -1,6 +1,6 @@
 import Link from "@/components/UI/Link"
 import { formatDate } from "@/src/utils/dates.utils"
-import styles from "./BlogArchivePostCard.module.css"
+
 import { cn } from "@/src/utils/cn.utils"
 
 type BlogArchivePostCardProps = {
@@ -21,11 +21,10 @@ const BlogArchivePostCard = ({
 	return (
 		<div
 			className={cn(
-				styles.card,
-				"dark:hover:bg-gray-800 dark:bg-opacity-100 hover:bg-white hover:bg-opacity-100 hover:rounded-xl p-4 sm:p-8"
+				"p-4 sm:p-8"
 			)}
 		>
-			<Link href={`/blog/${slug}`} className="text-2xl sm:text-3xl">
+			<Link href={`/blog/${slug}`} className="text-2xl sm:text-3xl font-bold">
 				{name}
 			</Link>
 			{created_at && (
