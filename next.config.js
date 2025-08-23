@@ -6,7 +6,10 @@ const nextConfig = {
 	pageExtensions: ["js", "jsx", "mdx", "ts", "tsx"],
 	// Add images.unsplash.com to the image domains
 	images: {
-		domains: ["images.unsplash.com", "a.storyblok.com"],
+		remotePatterns: [
+			{ protocol: "https", hostname: "images.unsplash.com", pathname: "/**" },
+			{ protocol: "https", hostname: "a.storyblok.com", pathname: "/**" },
+		],
 	},
 }
 
