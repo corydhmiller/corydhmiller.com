@@ -57,11 +57,11 @@ export default function About() {
 
 					<h2 className="text-5xl font-bold">What I Use</h2>
 					<p>
-						I don't have any brand loyalty or affiliations, all of the cameras
-						and technology I use is from years of trial and error, or just for
-						the sake of fun.
+						I don&apos;t have any brand loyalty or affiliations, all of the
+						cameras and technology I use is from years of trial and error, or
+						just for the sake of fun.
 					</p>
-					<p>Here's a list of the equipment I use:</p>
+					<p>Here&apos;s a list of the equipment I use:</p>
 					<ul className="list-disc list-inside">
 						<li>
 							Cameras
