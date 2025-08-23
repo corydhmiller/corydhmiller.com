@@ -6,28 +6,20 @@ import Image from "next/image"
 export default function About() {
 	return (
 		<>
-			<Content>
+			<div className="grid sm:grid-cols-2 gap-4 mb-12">
+				<Image
+					src="/images/about-cory-miller.jpeg"
+					alt="Cory Miller"
+					width={717}
+					height={477}
+					quality={50}
+					className="w-full h-auto object-cover rounded-b-2xl sm:rounded-bl-none"
+				/>
 				<div className="flex items-center justify-center relative">
-					<div className="transform relative block">
-						<div className="after:content-[''] after:absolute after:left-0 after:h-3/5 after:bottom-1 after:bg-primary after:rounded-t-full after:transition-all after:duration-300 after:ease-in-out after:-z-1 after:w-full"></div>
-						<Image
-							src="/images/cory-miller-profile-picture.png"
-							alt="Cory Miller"
-							width={384}
-							height={384}
-							className="w-48 sm:w-96 h-48 sm:h-96 z-1 relative"
-						/>
-					</div>
+					<span className="text-white font-serif text-3xl sm:text-6xl font-bold">
+						I&apos;m Cory Miller.
+					</span>
 				</div>
-			</Content>
-			<div className="w-full bg-primary py-12 mb-24">
-				<Content>
-					<Prose className="prose-2xl text-6xl mx-auto text-center">
-						<span className="text-black font-serif font-black">
-							I&apos;m Cory Miller.
-						</span>
-					</Prose>
-				</Content>
 			</div>
 			<Content>
 				<Prose className="prose-lg mx-auto mb-24">
