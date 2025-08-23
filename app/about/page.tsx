@@ -23,7 +23,9 @@ export default function About() {
 			<div className="w-full bg-primary py-12 mb-24">
 				<Content>
 					<Prose className="prose-2xl text-6xl mx-auto text-center">
-						<span className="text-black font-serif font-black">I'm Cory Miller.</span>
+						<span className="text-black font-serif font-black">
+							I&apos;m Cory Miller.
+						</span>
 					</Prose>
 				</Content>
 			</div>
