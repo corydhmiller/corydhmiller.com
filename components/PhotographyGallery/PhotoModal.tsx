@@ -16,7 +16,7 @@ const KeyboardHint = () => {
 
 	useEffect(() => {
 		// Check if hint was already dismissed this session
-		const hintDismissed = sessionStorage.getItem('keyboardHintDismissed')
+		const hintDismissed = sessionStorage.getItem("keyboardHintDismissed")
 		if (hintDismissed) {
 			setShowHint(false)
 		}
@@ -29,9 +29,9 @@ const KeyboardHint = () => {
 		}
 
 		const handleKeyDown = (e: KeyboardEvent) => {
-			if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+			if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
 				setShowHint(false)
-				sessionStorage.setItem('keyboardHintDismissed', 'true')
+				sessionStorage.setItem("keyboardHintDismissed", "true")
 			}
 		}
 
@@ -49,7 +49,8 @@ const KeyboardHint = () => {
 
 	return (
 		<div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-sm text-gray-300 bg-black/80 border border-primary px-3 py-1 rounded-full">
-			Use <kbd className="font-mono">←</kbd> / <kbd className="font-mono">→</kbd> keys to navigate photos
+			Use <kbd className="font-mono">←</kbd> /{" "}
+			<kbd className="font-mono">→</kbd> keys to navigate photos
 		</div>
 	)
 }
@@ -97,7 +98,7 @@ export function PhotoModal({ selectedImage, onClose }: PhotoModalProps) {
 									<div className="w-8 h-8 border-4 border-primary border-t-transparent rounded-full animate-spin" />
 								</div>
 							)}
-							
+
 							<BlurImage
 								src={currentImage.content.image.filename + "/m/2000x0"}
 								alt={currentImage.content.image.alt}
@@ -134,12 +135,14 @@ function PhotoInfoPanel({ selectedImage, onClose, isMobile, className }) {
 				<FeatherIcon icon="x" size={24} />
 				<span className="sr-only">Close</span>
 			</button>
-			<h2 className="text-xl dark:text-gray-100">{selectedImage.name}</h2>
-			<div className="space-y-1 text-sm text-gray-600 dark:text-gray-200">
+			<h2 className="text-4xl dark:text-gray-100 font-semibold hyphens-manual">
+				{selectedImage.name}
+			</h2>
+			<div className="space-y-1 text-sm text-gray-600 dark:text-white">
 				<div>{selectedImage.tag_list.join(" / ")}</div>
 				<div className="italic">taken on {selectedImage.content.camera}</div>
 			</div>
-			<p className="text-sm leading-relaxed dark:text-gray-100">
+			<p className="text-md leading-relaxed dark:text-gray-100">
 				{selectedImage.content.description}
 			</p>
 		</div>

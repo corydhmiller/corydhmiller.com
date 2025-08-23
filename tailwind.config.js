@@ -32,7 +32,7 @@ module.exports = {
 		},
 		fontFamily: {
 			sans: [
-				"HKGrotesk",
+				"GrazieMille",
 				"Helvetica Neue",
 				"Helvetica",
 				"Arial",
@@ -42,7 +42,7 @@ module.exports = {
 				"Segoe UI Symbol",
 				"Noto Color Emoji",
 			],
-			serif: ["Juana", "Georgia", "Cambria", "Times New Roman", "serif"],
+			serif: ["GrazieMille", "Georgia", "Cambria", "Times New Roman", "serif"],
 		},
 	},
 	variants: {

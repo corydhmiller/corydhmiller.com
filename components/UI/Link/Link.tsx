@@ -1,6 +1,5 @@
-import { default as NextLink } from "next/link"
 import { cn } from "@utils/cn.utils"
-import styles from "./Link.module.css"
+import { default as NextLink } from "next/link"
 
 interface LinkProps {
 	children: React.ReactNode | string
@@ -12,7 +11,7 @@ interface LinkProps {
 }
 
 const defaultClasses =
-	"text-primary cursor-pointer relative"
+	"text-primary cursor-pointer relative hover:underline hover:underline-offset-4"
 const variants = {
 	primary: "text-primary decoration-primary",
 	secondary: "text-secondary decoration-secondary",
@@ -33,8 +32,7 @@ const Link = ({
 			className={cn(
 				defaultClasses,
 				variants[props.variant || "primary"],
-				className,
-				styles.Link
+				className
 			)}
 			passHref
 			onClick={onClick}
