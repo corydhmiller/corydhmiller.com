@@ -1,3 +1,5 @@
+"use client"
+
 import { motion, AnimatePresence } from "framer-motion"
 import FeatherIcon from "feather-icons-react"
 import { ScrollArea } from "@components/UI/scroll-area"
@@ -5,8 +7,22 @@ import BlurImage from "../BlurImage"
 import { cn } from "@/src/utils/cn.utils"
 import { useState, useEffect } from "react"
 
+type Photo = {
+	id: number
+	name: string
+	slug: string
+	tag_list: string[]
+	content: {
+		image: { filename: string; alt?: string }
+		medium?: string
+		camera?: string
+		date?: string
+		description?: string
+	}
+}
+
 interface PhotoModalProps {
-	selectedImage: any
+	selectedImage: Photo
 	onClose: () => void
 }
 
@@ -48,21 +64,81 @@ const KeyboardHint = () => {
 	if (!hasKeyboard || !showHint) return null
 
 	return (
-		<div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-sm text-gray-300 bg-black/80 border border-primary px-3 py-1 rounded-full">
-			Use <kbd className="font-mono">←</kbd> /{" "}
-			<kbd className="font-mono">→</kbd> keys to navigate photos
+		<div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-sm text-gray-300 bg-black/80 border border-primary px-3 py-1 rounded-full whitespace-nowrap text-center">
+			Use <kbd>←</kbd> / <kbd>→</kbd> keys to navigate photos
 		</div>
+	)
+}
+
+function ActionButton({
+	onClick,
+	icon,
+	ariaLabel,
+	className,
+	variant = "dark",
+	children,
+}: {
+	onClick: () => void
+	icon: string
+	ariaLabel?: string
+	className?: string
+	variant?: "dark" | "light"
+	children?: React.ReactNode
+}) {
+	const baseClasses =
+		"inline-flex items-center gap-2 rounded-full border transition-colors focus:outline-none focus:ring-2"
+	const colorClasses =
+		variant === "light"
+			? "text-white bg-white/10 border-white/20 hover:bg-white/20 focus:ring-white/40"
+			: "text-white bg-black/60 border-white/20 hover:bg-black/50 focus:ring-white/40"
+	return (
+		<button
+			onClick={onClick}
+			className={cn(baseClasses, colorClasses, "p-2", className)}
+			aria-label={ariaLabel}
+		>
+			<FeatherIcon icon={icon} size={20} />
+			{children}
+		</button>
 	)
 }
 
 export function PhotoModal({ selectedImage, onClose }: PhotoModalProps) {
 	const [isLoading, setIsLoading] = useState(true)
-	const [currentImage, setCurrentImage] = useState(selectedImage)
+	const [currentImage, setCurrentImage] = useState<Photo>(selectedImage)
+	const [showInfo, setShowInfo] = useState(false)
+
+	// Close only the visible layer on Escape
+	useEffect(() => {
+		const handleEscCapture = (e: KeyboardEvent) => {
+			if (e.key === "Escape" && showInfo) {
+				e.preventDefault()
+				e.stopPropagation()
+				e.stopImmediatePropagation()
+				setShowInfo(false)
+			}
+		}
+		if (showInfo) {
+			window.addEventListener("keydown", handleEscCapture, true)
+			return () => window.removeEventListener("keydown", handleEscCapture, true)
+		}
+	}, [showInfo])
+
+	useEffect(() => {
+		const handleEsc = (e: KeyboardEvent) => {
+			if (e.key === "Escape" && !showInfo) {
+				onClose()
+			}
+		}
+		window.addEventListener("keydown", handleEsc)
+		return () => window.removeEventListener("keydown", handleEsc)
+	}, [onClose, showInfo])
 
 	// Update current image when selected image changes
 	useEffect(() => {
 		setIsLoading(true)
 		setCurrentImage(selectedImage)
+		setShowInfo(false)
 	}, [selectedImage])
 
 	if (!selectedImage) return null
@@ -110,54 +186,70 @@ export function PhotoModal({ selectedImage, onClose }: PhotoModalProps) {
 						</motion.div>
 					</AnimatePresence>
 					<KeyboardHint />
+
+					{/* Modal close button */}
+					<ActionButton
+						onClick={onClose}
+						icon="x"
+						className="absolute top-4 right-4 z-30"
+						ariaLabel="Close photo"
+					/>
+
+					{/* Info toggle button */}
+					<ActionButton
+						onClick={() => setShowInfo(true)}
+						icon="aperture"
+						className="absolute bottom-4 right-4 z-30 p-2"
+						ariaLabel="Show photo information"
+					/>
+
+					{/* Fullscreen info overlay */}
+					<AnimatePresence>
+						{showInfo && (
+							<motion.div
+								initial={{ opacity: 0 }}
+								animate={{ opacity: 1 }}
+								exit={{ opacity: 0 }}
+								transition={{ duration: 0.2 }}
+								className="absolute inset-0 z-40"
+							>
+								<div
+									className="absolute inset-0 bg-black/95 backdrop-blur-md"
+									onClick={() => setShowInfo(false)}
+								/>
+								<div className="absolute inset-0">
+									<ScrollArea className="h-full w-full">
+										<div className="relative mx-auto max-w-2xl w-full p-6 sm:p-8 text-white">
+											<ActionButton
+												onClick={() => setShowInfo(false)}
+												icon="x"
+												className="absolute right-4 top-4 z-10"
+												ariaLabel="Close info overlay"
+											/>
+											<h2 className="text-3xl sm:text-4xl font-semibold hyphens-manual mr-10">
+												{currentImage.name}
+											</h2>
+											<div className="mt-3 space-y-1 text-sm text-gray-200">
+												<div>{currentImage.tag_list.join(" / ")}</div>
+												{currentImage.content.camera && (
+													<div className="italic">
+														taken on {currentImage.content.camera}
+													</div>
+												)}
+											</div>
+											{currentImage.content.description && (
+												<p className="mt-6 text-base leading-relaxed text-gray-100">
+													{currentImage.content.description}
+												</p>
+											)}
+										</div>
+									</ScrollArea>
+								</div>
+							</motion.div>
+						)}
+					</AnimatePresence>
 				</motion.div>
-
-				<PhotoInfoPanel
-					selectedImage={currentImage}
-					onClose={onClose}
-					isMobile={window.innerWidth < 768}
-					className="lg:max-w-[400px] lg:min-w-[400px]"
-				/>
 			</div>
-		</motion.div>
-	)
-}
-
-function PhotoInfoPanel({ selectedImage, onClose, isMobile, className }) {
-	const baseClasses = "relative bg-white dark:bg-gray-400 p-6"
-
-	const content = (
-		<div className="space-y-6 pt-8">
-			<button
-				onClick={onClose}
-				className="absolute right-4 top-4 text-gray-900 dark:text-gray-100 z-10 hover:opacity-75 transition-opacity"
-			>
-				<FeatherIcon icon="x" size={24} />
-				<span className="sr-only">Close</span>
-			</button>
-			<h2 className="text-4xl dark:text-gray-100 font-semibold hyphens-manual">
-				{selectedImage.name}
-			</h2>
-			<div className="space-y-1 text-sm text-gray-600 dark:text-white">
-				<div>{selectedImage.tag_list.join(" / ")}</div>
-				<div className="italic">taken on {selectedImage.content.camera}</div>
-			</div>
-			<p className="text-md leading-relaxed dark:text-gray-100">
-				{selectedImage.content.description}
-			</p>
-		</div>
-	)
-
-	return (
-		<motion.div
-			initial={isMobile ? { y: 20, opacity: 0 } : { x: 20, opacity: 0 }}
-			animate={isMobile ? { y: 0, opacity: 1 } : { x: 0, opacity: 1 }}
-			exit={isMobile ? { y: 20, opacity: 0 } : { x: 20, opacity: 0 }}
-			className={cn(baseClasses, className)}
-		>
-			<ScrollArea className="h-full lg:h-auto max-h-[70vh] lg:max-h-[80vh]">
-				{content}
-			</ScrollArea>
 		</motion.div>
 	)
 }

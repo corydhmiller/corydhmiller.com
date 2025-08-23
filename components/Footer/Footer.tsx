@@ -23,11 +23,11 @@ const Footer = () => {
 						Links
 					</h3>
 					<nav className="flex flex-col space-y-2 text-lg">
+						<Link href="/photography" variant="primary">
+							Gallery
+						</Link>
 						<Link href="/blog" variant="primary">
 							Blog
-						</Link>
-						<Link href="/photography" variant="primary">
-							Photography
 						</Link>
 						<Link href="/about" variant="primary">
 							About
