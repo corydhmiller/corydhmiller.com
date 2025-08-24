@@ -15,9 +15,19 @@ const getGrazieMilleFont = async () => {
 	return GrazieMille
 }
 
+function sanitizeTitle(title) {
+	// Remove HTML tags and limit length
+	return title
+		.replace(/<[^>]*>/g, '') // Remove HTML tags
+		.replace(/[^\w\s\-_.,!?]/g, '') // Allow only safe characters
+		.trim()
+		.slice(0, 100) // Limit length
+}
+
 export async function GET(req) {
 	const requestUrl = new URL(req.url)
-	const title = decodeURIComponent(requestUrl.searchParams.get("title") || "")
+	const rawTitle = requestUrl.searchParams.get("title") || ""
+	const title = sanitizeTitle(decodeURIComponent(rawTitle))
 
 	return new ImageResponse(
 		(
