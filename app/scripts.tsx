@@ -1,11 +1,11 @@
 "use client"
 
 import { useEffect } from "react"
-import { initializeDarkMode } from "./darkMode"
+import { initializeTheme } from "@/lib/theme"
 
 export function Scripts() {
   useEffect(() => {
-    initializeDarkMode()
+    initializeTheme()
   }, [])
 
   return null

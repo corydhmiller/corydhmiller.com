@@ -1,5 +1,6 @@
 import "@/src/styles/app.css"
 import type { Metadata } from "next"
+import Script from "next/script"
 import "../public/fonts/fonts.css"
 import StoryblokProvider from "@/components/Storyblok/StoryblokProvider"
 import Header from "@components/Header"
@@ -53,10 +54,10 @@ export default function RootLayout({
 		<StoryblokProvider>
 			<html lang="en" suppressHydrationWarning>	
 				<head>
-					<script src="/theme-script.js" />
 					<link rel="icon" href="/favicon.ico" sizes="any" />
 				</head>
 				<body className="bg-white dark:bg-gray-800 text-gray-800 dark:text-white transition-colors duration-300 flex flex-col">
+					<Script src="/theme-script.js" strategy="beforeInteractive" />
 					<Header />
 					<main className="wrapper flex-1">{children}</main>
 					<Footer />
