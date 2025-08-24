@@ -1,19 +1,24 @@
-// Theme script - safe version without dangerouslySetInnerHTML
+// Minimal theme initialization script - runs before React hydration
 (function() {
-  let theme = localStorage.theme;
-  if (!theme) {
-    theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    localStorage.theme = theme;
+  function getTheme() {
+    if (localStorage.theme) return localStorage.theme;
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
   }
-  document.documentElement.classList[theme === 'dark' ? 'add' : 'remove']('dark');
-  document.documentElement.setAttribute('data-theme', theme);
-
-  // Listen for storage changes
+  
+  function applyTheme(theme) {
+    document.documentElement.classList[theme === 'dark' ? 'add' : 'remove']('dark');
+    document.documentElement.setAttribute('data-theme', theme);
+  }
+  
+  // Initialize theme immediately to prevent flash
+  const theme = getTheme();
+  localStorage.theme = theme; // Ensure it's persisted
+  applyTheme(theme);
+  
+  // Listen for changes from other tabs
   window.addEventListener('storage', function(e) {
     if (e.key === 'theme') {
-      const newTheme = e.newValue || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-      document.documentElement.classList[newTheme === 'dark' ? 'add' : 'remove']('dark');
-      document.documentElement.setAttribute('data-theme', newTheme);
+      applyTheme(e.newValue || getTheme());
     }
   });
 })();

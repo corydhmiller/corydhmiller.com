@@ -15,7 +15,7 @@ export const Header = () => {
 		<header
 			className={cn(
 				"px-4 py-3 w-100vw flex justify-between items-center relative",
-				"bg-white dark:bg-gray-800"
+				"transition-colors duration-300 bg-white dark:bg-gray-800"
 			)}
 		>
 			<Link href="/" variant="naked">

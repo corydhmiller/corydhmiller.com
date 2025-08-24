@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react"
 import FeatherIcon from "feather-icons-react"
+import { getThemePreference, toggleTheme } from "@/lib/theme"
 
 export function DarkModeToggle() {
 	const [isDark, setIsDark] = useState(false)
@@ -9,21 +10,19 @@ export function DarkModeToggle() {
 
 	useEffect(() => {
 		setMounted(true)
-		setIsDark(document.documentElement.classList.contains("dark"))
+		setIsDark(getThemePreference() === 'dark')
 	}, [])
 
-	const toggleDarkMode = () => {
-		const newTheme = !isDark ? "dark" : "light"
-		document.documentElement.classList.toggle("dark")
-		localStorage.theme = newTheme
-		setIsDark(!isDark)
+	const handleToggle = () => {
+		const newTheme = toggleTheme()
+		setIsDark(newTheme === 'dark')
 	}
 
 	if (!mounted) return null
 
 	return (
 		<button
-			onClick={toggleDarkMode}
+			onClick={handleToggle}
 			className="p-2 rounded-lg bg-transparent transition-colors"
 			aria-label="Toggle dark mode"
 		>
