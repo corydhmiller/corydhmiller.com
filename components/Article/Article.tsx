@@ -5,6 +5,7 @@ import Link from "@components/UI/Link"
 import Content from "../Content"
 import Image from "next/image"
 import FeatherIcon from "feather-icons-react"
+import { updateStoryblokImageDimensions } from "@/app/lib/storyblok-image"
 
 const Article = ({
 	children,
@@ -32,10 +33,13 @@ const Article = ({
 			{data.image && (
 				<div className="max-w-7xl mx-auto sm:-mb-64">
 					<Image
-						src={data.image.filename}
+						src={updateStoryblokImageDimensions(data.image.filename, {
+							width: 1200,
+							height: 600,
+						})}
 						alt={data.image.alt}
-						width={1000}
-						height={1000}
+						width={1200}
+						height={600}
 						quality={60}
 						priority
 						className="w-full h-auto rounded-lg"

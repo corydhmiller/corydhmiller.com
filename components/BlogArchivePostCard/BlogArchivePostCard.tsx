@@ -3,6 +3,7 @@ import { formatDate } from "@/src/utils/dates.utils"
 
 import { cn } from "@/src/utils/cn.utils"
 import Image from "next/image"
+import { updateStoryblokImageDimensions } from "@/app/lib/storyblok-image"
 
 type BlogArchivePostCardProps = {
 	slug: string
@@ -35,7 +36,10 @@ const BlogArchivePostCard = ({
 			{content?.image && (
 				<Link variant="naked" href={`/blog/${slug}`}>
 					<Image
-						src={content.image.filename}
+						src={updateStoryblokImageDimensions(content.image.filename, {
+							width: 488,
+							height: 323,
+						})}
 						alt={content.image.alt}
 						width={488}
 						height={323}
