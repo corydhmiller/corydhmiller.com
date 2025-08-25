@@ -39,6 +39,6 @@ export const metadata: Metadata = {
 		url: "https://corydhmiller.com/photography",
 		siteName: "Cory Miller",
 		locale: "en_US",
-		images: [{ url: "https://corydhmiller.com/og?title=Photography+by+Cory" }],
+		images: [{ url: "https://corydhmiller.com/og?title=Photography+by+Cory&image=https://corydhmiller.com/images/gallery-background.jpg" }],
 	},
 }
