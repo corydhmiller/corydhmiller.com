@@ -2,27 +2,27 @@ import Content from "@components/Content"
 import Prose from "@components/Prose"
 import Link from "@components/UI/Link"
 import Image from "next/image"
+import Heading from "@components/Typography/Heading"
 
 export default function About() {
 	return (
 		<>
-			<div className="grid sm:grid-cols-2 gap-4 mb-12">
+			<div className="max-w-7xl mx-auto sm:-mb-64">
 				<Image
 					src="/images/about-cory-miller.jpeg"
 					alt="Cory Miller"
-					width={717}
-					height={477}
-					quality={50}
-					className="w-full h-auto object-cover rounded-b-2xl sm:rounded-bl-none"
+					width={1200}
+					height={600}
+					quality={60}
+					priority
+					className="w-full h-auto rounded-lg"
 				/>
-				<div className="flex items-center justify-center relative">
-					<span className="text-white font-serif text-3xl sm:text-6xl font-bold">
-						I&apos;m Cory Miller.
-					</span>
-				</div>
 			</div>
 			<Content>
-				<Prose className="prose-lg mx-auto mb-24">
+				<Prose className="mt-12 sm:mt-24 max-w-7xl sm:dark:bg-gray-800/80 relative px-4 -mx-4 sm:bg-gray-100/80 rounded-t">
+					<Heading as="h1">I&apos;m Cory Miller.</Heading>
+				</Prose>
+				<Prose className="prose-base mb-24 relative px-4 -mx-4 sm:dark:bg-gray-800/80 sm:bg-gray-100/80 rounded-b">
 					<p>
 						I was born in Washington, raised in California, and currently live
 						in Vienna, Austria. I&apos;m a photographer, web engineer, musician,
@@ -30,7 +30,7 @@ export default function About() {
 					</p>
 
 					<h2 className="text-5xl font-bold">What I Do</h2>
-					<ul className="list-disc list-inside">
+					<ul className="list-disc list-inside pl-0">
 						<li>
 							I take pictures of people around the world, streets photography
 							and portraits.
@@ -62,10 +62,10 @@ export default function About() {
 						just for the sake of fun.
 					</p>
 					<p>Here&apos;s a list of the equipment I use:</p>
-					<ul className="list-disc list-inside">
+					<ul className="list-disc list-inside pl-0">
 						<li>
 							Cameras
-							<ul className="list-disc list-inside ml-4">
+							<ul className="list-disc list-inside sm:ml-4">
 								<li>Sony A7C</li>
 								<li>Fujifilm X-Pro 2</li>
 								<li>Canon AE-1 Program</li>
@@ -75,7 +75,7 @@ export default function About() {
 						</li>
 						<li>
 							Lenses
-							<ul className="list-disc list-inside ml-4">
+							<ul className="list-disc list-inside sm:ml-4">
 								<li>Sony FE 40mm f/2.5 G</li>
 								<li>Sony FE 85mm f/1.8</li>
 								<li>Fujifilm XF 23mm f/1.4 R</li>
