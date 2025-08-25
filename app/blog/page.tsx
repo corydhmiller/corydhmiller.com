@@ -21,29 +21,31 @@ export default async function Blog(props: {
 	const { data, total } = await fetchData(page)
 
 	const posts = data.stories
-
 	return (
 		<>
 			<Content>
-				<Prose className="w-full max-w-7xl mx-auto sm:text-center my-8 sm:my-24">
+				<Prose className="w-full mx-auto sm:text-center my-8 sm:my-24">
 					<Heading as="h1">Blog</Heading>
 				</Prose>
-				<Prose className="prose-lg mx-auto mb-24">
+				<div className="mx-auto mb-24">
 					{posts && (
-						<div className="grid gap-12">
-							{posts.map((post) => (
-								<div key={post.slug}>
-									<BlogArchivePostCard
-										slug={post.slug}
-										name={post.name}
-										created_at={post.first_published_at}
-										content={post.content}
-									/>
-								</div>
-							))}
+						<div className="grid gap-12 grid-cols-1 sm:grid-cols-2">
+							{posts.map((post, index) => {
+								return (
+									<div key={post.slug}>
+										<BlogArchivePostCard
+											slug={post.slug}
+											name={post.content.title}
+											created_at={post.first_published_at}
+											content={post.content}
+											priority={index === 0}
+										/>
+									</div>
+								)
+							})}
 						</div>
 					)}
-				</Prose>
+				</div>
 				<Prose className="prose-lg mx-auto mb-24">
 					<PaginationControls
 						currentPage={page}

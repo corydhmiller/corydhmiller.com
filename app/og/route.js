@@ -18,6 +18,7 @@ const getGrazieMilleFont = async () => {
 export async function GET(req) {
 	const requestUrl = new URL(req.url)
 	const title = decodeURIComponent(requestUrl.searchParams.get("title") || "")
+	const image = decodeURIComponent(requestUrl.searchParams.get("image") || "")
 
 	return new ImageResponse(
 		(
@@ -25,19 +26,28 @@ export async function GET(req) {
 				style={{
 					background: "#141414",
 				}}
-				tw="flex justify-center flex-col text-left w-full h-full text-white"
+				tw="relative overflow-hidden flex justify-center flex-col text-left w-full h-full text-white"
 			>
+				{image ? (
+					<img
+						src={image}
+						alt="background"
+						tw="absolute inset-0 w-full h-full object-cover opacity-10"
+					/>
+				) : null}
 				<div
 					tw="flex flex-col justify-center items-center h-3/5 absolute right-0 top-1/2 transform w-48 rounded-12 overflow-hidden"
 					style={{
-						transform: "translateY(-50%) translateX(50%)",
+						transform: "translateY(-50%) translateX(70%)",
 						background: "#EEEEEC",
+						zIndex: 10,
 					}}
 				></div>
 				<div
 					tw="flex justify-center items-center h-full text-24 relative font-black leading-none mb-12 mr-28 pl-12 opacity-100"
 					style={{
 						fontFamily: "GrazieMille",
+						zIndex: 20,
 					}}
 				>
 					{title}
@@ -46,6 +56,7 @@ export async function GET(req) {
 					tw="flex justify-center items-center text-8 absolute bottom-0 left-0 leading-none mb-4 px-12 opacity-50"
 					style={{
 						fontFamily: "GrazieMille",
+						zIndex: 30,
 					}}
 				>
 					corydhmiller.com

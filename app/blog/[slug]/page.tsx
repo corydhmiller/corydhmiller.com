@@ -3,10 +3,11 @@ import { getAllPosts, getPostBySlug } from "@/src/lib/posts"
 import { notFound } from "next/navigation"
 import Markdown from "react-markdown"
 import remarkGfm from "remark-gfm"
-import rehypeUnwrapImages from 'rehype-unwrap-images'
+import rehypeUnwrapImages from "rehype-unwrap-images"
 import { MarkdownComponents } from "@utils/markdownComponents"
 import { COMPONENTS } from "@/components/Storyblok/components"
 import { apiPlugin, storyblokInit } from "@storyblok/react"
+import { updateStoryblokImageDimensions } from "@/app/lib/storyblok-image"
 
 storyblokInit({
 	accessToken: process.env.NEXT_PUBLIC_STORYBLOK_API_TOKEN,
@@ -19,7 +20,6 @@ export default async function BlogPost(props: {
 }) {
 	const slug = (await props.params).slug
 	const post = await getPostBySlug(slug)
-
 	if (!post) {
 		notFound()
 	}
@@ -32,9 +32,10 @@ export default async function BlogPost(props: {
 				publishDate: post.date,
 				category: "Blog",
 				tags: post.tags,
+				image: post?.image,
 			}}
 		>
-			<Markdown 
+			<Markdown
 				remarkPlugins={[remarkGfm]}
 				rehypePlugins={[rehypeUnwrapImages]}
 				components={MarkdownComponents}
@@ -48,7 +49,7 @@ export default async function BlogPost(props: {
 // Generate Static Params (Paths)
 export async function generateStaticParams() {
 	const allPosts = await getAllPosts()
-	
+
 	const paths = allPosts.map((post) => ({
 		slug: post.slug,
 	}))
@@ -72,7 +73,12 @@ export async function generateMetadata(props) {
 		}
 	}
 
-	const imageUrl = `https://corydhmiller.com/og?title=${post.title}`
+	const imageUrl = `https://corydhmiller.com/og?title=${
+		post.title
+	}&image=${updateStoryblokImageDimensions(post.image.filename, {
+		width: 600,
+		height: 300,
+	})}`
 	const pageUrl = `https://corydhmiller.com/blog/${slug}`
 
 	return {
