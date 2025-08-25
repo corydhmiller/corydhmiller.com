@@ -3,7 +3,6 @@ import { formatDate } from "@/src/utils/dates.utils"
 
 import { cn } from "@/src/utils/cn.utils"
 import Image from "next/image"
-import BlurImage from "../BlurImage"
 
 type BlogArchivePostCardProps = {
 	slug: string
@@ -30,17 +29,17 @@ const BlogArchivePostCard = ({
 	return (
 		<div
 			className={cn(
-				"relative overflow-hidden dark:bg-gray-100/10 rounded border border-gray-800/10 hover:scale-[101%] transition-transform duration-200 group"
+				"relative overflow-hidden dark:bg-gray-400/20 rounded border border-gray-800/10 hover:scale-[101%] transition-transform duration-200 group"
 			)}
 		>
 			{content?.image && (
 				<Link variant="naked" href={`/blog/${slug}`}>
-					<BlurImage
+					<Image
 						src={content.image.filename}
 						alt={content.image.alt}
 						width={488}
 						height={323}
-						className="w-full max-h-[300px] object-cover group-hover:opacity-100 opacity-80 transition-opacity duration-300"
+						className="w-full max-h-[300px] object-cover group-hover:opacity-100 opacity-75 transition-opacity duration-300"
 						priority={priority}
 					/>
 				</Link>
