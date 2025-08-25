@@ -6,7 +6,7 @@ import Header from "@components/Header"
 import { themeScript } from "./theme-utils"
 import { Footer } from "@/components/Footer"
 
-const imageUrl = `https://corydhmiller.com/og?title=${"Hi! I'm Cory."}`,
+const imageUrl = `https://corydhmiller.com/og?title=${"Photography by Cory"}&image=https://corydhmiller.com/images/about-cory-miller.jpeg`,
 	title = "Photography by Cory Miller",
 	description =
 		"A portfolio of photography, music, and various thoughts on other stuff I'm interested in."
@@ -24,8 +24,16 @@ export const metadata: Metadata = {
 			{ url: "/favicon.ico" },
 			{ url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
 			{ url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-			{ url: "/android-chrome-192x192.png", sizes: "192x192", type: "image/png" },
-			{ url: "/android-chrome-512x512.png", sizes: "512x512", type: "image/png" },
+			{
+				url: "/android-chrome-192x192.png",
+				sizes: "192x192",
+				type: "image/png",
+			},
+			{
+				url: "/android-chrome-512x512.png",
+				sizes: "512x512",
+				type: "image/png",
+			},
 		],
 		apple: "/apple-touch-icon.png",
 	},
@@ -63,7 +71,7 @@ export default function RootLayout({
 }) {
 	return (
 		<StoryblokProvider>
-			<html lang="en" suppressHydrationWarning>	
+			<html lang="en" suppressHydrationWarning>
 				<head>
 					<script dangerouslySetInnerHTML={{ __html: themeScript }} />
 				</head>

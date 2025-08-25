@@ -13,7 +13,8 @@ interface LinkProps {
 const defaultClasses =
 	"text-primary cursor-pointer relative hover:underline hover:underline-offset-4"
 const variants = {
-	primary: "text-primary decoration-primary",
+	primary:
+		"text-black decoration-primary dark:text-primary font-bold dark:font-normal underline",
 	secondary: "text-secondary decoration-secondary",
 	naked: "",
 }

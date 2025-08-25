@@ -32,7 +32,12 @@ export async function GET(req) {
 					<img
 						src={image}
 						alt="background"
-						tw="absolute inset-0 w-full h-full object-cover opacity-10"
+						width={1200}
+						height={600}
+						tw="absolute inset-0 w-full h-full opacity-10"
+						style={{
+							objectFit: "cover",
+						}}
 					/>
 				) : null}
 				<div
