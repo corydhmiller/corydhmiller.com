@@ -120,5 +120,6 @@ export const metadata = {
 		siteName: "Cory Miller",
 		locale: "en_US",
 		type: "website",
+		images: [{ url: `https://corydhmiller.com/og?title=About - Cory Miller&image=https://corydhmiller.com/images/about-cory-miller.jpeg` }],
 	},
 }
