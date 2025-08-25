@@ -2,6 +2,8 @@ import Link from "@/components/UI/Link"
 import { formatDate } from "@/src/utils/dates.utils"
 
 import { cn } from "@/src/utils/cn.utils"
+import Image from "next/image"
+import BlurImage from "../BlurImage"
 
 type BlogArchivePostCardProps = {
 	slug: string
@@ -9,7 +11,13 @@ type BlogArchivePostCardProps = {
 	created_at: string
 	content: {
 		excerpt: string
+		image: {
+			filename: string
+			alt: string
+			description: string
+		}
 	}
+	priority?: boolean
 }
 
 const BlogArchivePostCard = ({
@@ -17,22 +25,37 @@ const BlogArchivePostCard = ({
 	name,
 	created_at,
 	content,
+	priority,
 }: BlogArchivePostCardProps) => {
 	return (
-		<div className={cn("py-4 sm:py-12 sm:pr-28 relative overflow-hidden border-b border-gray-200/50 dark:border-gray-700")}>
-			<Link href={`/blog/${slug}`} className="text-2xl sm:text-3xl font-bold">
-				{name}
-			</Link>
-			{created_at && (
-				<span className="text-sm block opacity-60">
-					{formatDate(created_at)}
-				</span>
+		<div
+			className={cn(
+				"relative overflow-hidden dark:bg-gray-100/10 rounded border border-gray-800/10 hover:scale-[101%] transition-transform duration-200 group"
 			)}
-			{content?.excerpt && (
-				<span className="prose-xl text-gray-800 dark:text-gray-100">
-					{content.excerpt}
-				</span>
+		>
+			{content?.image && (
+				<Link variant="naked" href={`/blog/${slug}`}>
+					<BlurImage
+						src={content.image.filename}
+						alt={content.image.alt}
+						width={488}
+						height={323}
+						className="w-full max-h-[300px] object-cover group-hover:opacity-100 opacity-80 transition-opacity duration-300"
+						priority={priority}
+					/>
+				</Link>
 			)}
+			<div className="p-4 flex flex-col gap-4">
+				<Link href={`/blog/${slug}`} className="text-2xl sm:text-3xl font-bold">
+					{name}
+				</Link>
+				{created_at && (
+					<span className="text-sm block opacity-60">
+						{formatDate(created_at)}
+					</span>
+				)}
+				<p className="prose-lg opacity-80">{content.excerpt}</p>
+			</div>
 		</div>
 	)
 }

@@ -43,6 +43,7 @@ export const getPostBySlug = async (slug: string): Promise<any> => {
 			slug: data.story.slug,
 			content: data.story.content?.content, // Assuming your main content is in a 'content' field
 			tags: data.story?.tag_list,
+			image: data.story?.content?.image,
 		}
 
 		return post

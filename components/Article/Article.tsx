@@ -3,6 +3,8 @@ import Prose from "@components/Prose"
 import Heading from "@components/Typography/Heading"
 import Link from "@components/UI/Link"
 import Content from "../Content"
+import Image from "next/image"
+import FeatherIcon from "feather-icons-react"
 
 const Article = ({
 	children,
@@ -15,18 +17,37 @@ const Article = ({
 		category: string
 		tags?: string[]
 		wordCount?: number
+		image?: {
+			filename: string
+			alt: string
+			description: string
+		}
 	}
 }) => {
 	const publishDate = formatDate(data.publishDate)
 	const tagsArray = data.tags?.toString().split(",")
+
 	return (
 		<>
+			{data.image && (
+				<div className="max-w-7xl mx-auto sm:-mb-64">
+					<Image
+						src={data.image.filename}
+						alt={data.image.alt}
+						width={1000}
+						height={1000}
+						quality={60}
+						priority
+						className="w-full h-auto rounded-lg"
+					/>
+				</div>
+			)}
 			<Content>
-				<Prose className="w-full mt-24 mb-8 max-w-7xl">
+				<Prose className="mt-12 sm:mt-24 max-w-7xl sm:dark:bg-gray-800/80 relative px-4 -mx-4 sm:bg-gray-100/80">
 					<Heading as="h1">{data.title}</Heading>
 				</Prose>
 				<article>
-					<Prose className="prose-lg my-6 mb-24">
+					<Prose className="prose-lg my-6 mb-12 relative">
 						{publishDate && (
 							<div className="flex items-center gap-2">
 								<span className="prose-lg">
@@ -41,6 +62,12 @@ const Article = ({
 							&larr; Back
 						</Link>
 					</Prose>
+					{data?.image?.alt && (
+						<p className="italic flex items-center gap-2 text-sm mb-4">
+							<FeatherIcon icon="camera" size={16} /> Pictured above:{" "}
+							{data.image.alt}
+						</p>
+					)}
 
 					<Prose className="">{children}</Prose>
 					{tagsArray && (

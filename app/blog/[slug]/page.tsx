@@ -19,7 +19,6 @@ export default async function BlogPost(props: {
 }) {
 	const slug = (await props.params).slug
 	const post = await getPostBySlug(slug)
-
 	if (!post) {
 		notFound()
 	}
@@ -32,6 +31,7 @@ export default async function BlogPost(props: {
 				publishDate: post.date,
 				category: "Blog",
 				tags: post.tags,
+				image: post?.image,
 			}}
 		>
 			<Markdown 
