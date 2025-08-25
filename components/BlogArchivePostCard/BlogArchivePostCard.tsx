@@ -19,7 +19,7 @@ const BlogArchivePostCard = ({
 	content,
 }: BlogArchivePostCardProps) => {
 	return (
-		<div className={cn("pl-4 py-12 pr-28 relative overflow-hidden border-b border-gray-200/50 dark:border-gray-700")}>
+		<div className={cn("py-4 sm:py-12 sm:pr-28 relative overflow-hidden border-b border-gray-200/50 dark:border-gray-700")}>
 			<Link href={`/blog/${slug}`} className="text-2xl sm:text-3xl font-bold">
 				{name}
 			</Link>

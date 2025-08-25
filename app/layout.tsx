@@ -1,7 +1,6 @@
 import "@/src/styles/app.css"
 import type { Metadata } from "next"
 import "../public/fonts/fonts.css"
-
 import StoryblokProvider from "@/components/Storyblok/StoryblokProvider"
 import Header from "@components/Header"
 import { themeScript } from "./theme-utils"
@@ -19,6 +18,17 @@ export const metadata: Metadata = {
 		template: "%s - Cory Miller",
 	},
 	description,
+	manifest: "/site.webmanifest",
+	icons: {
+		icon: [
+			{ url: "/favicon.ico" },
+			{ url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+			{ url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+			{ url: "/android-chrome-192x192.png", sizes: "192x192", type: "image/png" },
+			{ url: "/android-chrome-512x512.png", sizes: "512x512", type: "image/png" },
+		],
+		apple: "/apple-touch-icon.png",
+	},
 	openGraph: {
 		title,
 		description,
@@ -53,7 +63,7 @@ export default function RootLayout({
 }) {
 	return (
 		<StoryblokProvider>
-			<html lang="en" suppressHydrationWarning>
+			<html lang="en" suppressHydrationWarning>	
 				<head>
 					<script dangerouslySetInnerHTML={{ __html: themeScript }} />
 				</head>
