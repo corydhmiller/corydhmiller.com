@@ -1,7 +1,6 @@
 import "@/src/styles/app.css"
 import type { Metadata } from "next"
 import "../public/fonts/fonts.css"
-import StoryblokProvider from "@/components/Storyblok/StoryblokProvider"
 import Header from "@components/Header"
 import { themeScript } from "./theme-utils"
 import { Footer } from "@/components/Footer"
@@ -70,17 +69,15 @@ export default function RootLayout({
 	children: React.ReactNode
 }) {
 	return (
-		<StoryblokProvider>
-			<html lang="en" suppressHydrationWarning>
-				<head>
-					<script dangerouslySetInnerHTML={{ __html: themeScript }} />
-				</head>
-				<body className="bg-white dark:bg-gray-800 text-gray-800 dark:text-white transition-colors duration-300 flex flex-col">
-					<Header />
-					<main className="wrapper flex-1">{children}</main>
-					<Footer />
-				</body>
-			</html>
-		</StoryblokProvider>
+		<html lang="en" suppressHydrationWarning>
+			<head>
+				<script dangerouslySetInnerHTML={{ __html: themeScript }} />
+			</head>
+			<body className="bg-white dark:bg-gray-800 text-gray-800 dark:text-white transition-colors duration-300 flex flex-col">
+				<Header />
+				<main className="wrapper flex-1">{children}</main>
+				<Footer />
+			</body>
+		</html>
 	)
 }

@@ -5,7 +5,7 @@ const Prose = ({
 	children,
 	className,
 }: {
-	children: React.ReactNode | React.ReactNodeArray
+	children: React.ReactNode | React.ReactNode[]
 	className?: string
 }) => {
 	return (

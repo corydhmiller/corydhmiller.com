@@ -19,7 +19,7 @@ export default async function BlogPost(props: {
 	params: Promise<{ slug: string }>
 }) {
 	const slug = (await props.params).slug
-	const post = await getPostBySlug(slug)
+	const post = await getPostBySlug(slug, false) // Always use published content in main routes
 	if (!post) {
 		notFound()
 	}
@@ -48,7 +48,7 @@ export default async function BlogPost(props: {
 
 // Generate Static Params (Paths)
 export async function generateStaticParams() {
-	const allPosts = await getAllPosts()
+	const allPosts = await getAllPosts(false) // Only published posts for static generation
 
 	const paths = allPosts.map((post) => ({
 		slug: post.slug,
@@ -59,7 +59,6 @@ export async function generateStaticParams() {
 
 export const dynamicParams = false
 export const revalidate = 10
-export const dynamic = "force-static"
 
 // Metadata generation
 export async function generateMetadata(props) {
