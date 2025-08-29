@@ -17,23 +17,23 @@ export async function GET(request: Request) {
   try {
     const storyblokApi = getStoryblokApi(true) // Use preview token
     
-    // Verify the story exists
-    const { data } = await storyblokApi.get(`cdn/stories/${slug}`, {
+    // Verify the story exists using getStory method
+    const response = await storyblokApi.getStory(slug, {
       version: 'draft',
     })
 
-    if (!data?.story) {
+    if (!response?.data?.story) {
       return new Response('Story not found', { status: 404 })
     }
 
     // Redirect to dedicated preview route
-    if (data.story.slug.startsWith('blog/')) {
-      redirect(`/preview/${data.story.slug.replace('blog/', '')}`)
+    if (slug.startsWith('blog/')) {
+      redirect(`/preview/${slug.replace('blog/', '')}`)
     }
     
-    redirect(`/preview/${data.story.slug}`)
+    redirect(`/preview/${slug}`)
   } catch (error) {
     console.error('Preview error:', error)
-    return new Response('Error enabling preview', { status: 500 })
+    return new Response(`Error enabling preview: ${error.message}`, { status: 500 })
   }
 }
