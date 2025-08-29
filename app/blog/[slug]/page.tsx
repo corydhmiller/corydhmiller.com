@@ -59,7 +59,6 @@ export async function generateStaticParams() {
 
 export const dynamicParams = false
 export const revalidate = 10
-export const dynamic = "force-static"
 
 // Metadata generation
 export async function generateMetadata(props) {

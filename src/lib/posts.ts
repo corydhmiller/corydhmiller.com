@@ -1,12 +1,15 @@
-import { getStoryblokApi } from "@storyblok/react"
+import { draftMode } from "next/headers"
+import { getStoryblokApiInstance } from "./storyblok"
 
 export const getAllPosts = async () => {
 	try {
-		const storyblokApi = getStoryblokApi()
+		const { isEnabled } = await draftMode()
+		const storyblokApi = getStoryblokApiInstance(isEnabled)
+		
 		// Fetch all blog posts from Storyblok
 		const { data } = await storyblokApi.get("cdn/stories", {
 			starts_with: "blog/", // Assuming your blog posts are in a 'blog' folder
-			version: process.env.NODE_ENV === "production" ? "published" : "draft",
+			version: isEnabled ? "draft" : "published",
 		})
 		// Transform the Storyblok response into the expected format
 		const allPosts = data.stories.map((story) => ({
@@ -30,10 +33,12 @@ export const getAllPosts = async () => {
 
 export const getPostBySlug = async (slug: string): Promise<any> => {
 	try {
-		const storyblokApi = getStoryblokApi()
+		const { isEnabled } = await draftMode()
+		const storyblokApi = getStoryblokApiInstance(isEnabled)
+		
 		// Fetch all blog posts from Storyblok
 		const { data } = await storyblokApi.get(`cdn/stories/blog/${slug}`, {
-			version: process.env.NODE_ENV === "production" ? "published" : "draft",
+			version: isEnabled ? "draft" : "published",
 		})
 		// Transform the Storyblok response into the expected format
 		const post = {
