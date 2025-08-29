@@ -1,5 +1,5 @@
 import { redirect } from 'next/navigation'
-import { getStoryblokApiInstance } from '@/src/lib/storyblok'
+import { getStoryblokApi } from '@/src/lib/storyblok'
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url)
@@ -15,7 +15,7 @@ export async function GET(request: Request) {
   }
 
   try {
-    const storyblokApi = getStoryblokApiInstance(true) // Use preview token
+    const storyblokApi = getStoryblokApi(true) // Use preview token
     
     // Verify the story exists
     const { data } = await storyblokApi.get(`cdn/stories/${slug}`, {

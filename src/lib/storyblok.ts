@@ -1,16 +1,16 @@
-import { getStoryblokApi } from "@storyblok/react"
+import { storyblokInit, apiPlugin } from "@storyblok/react/rsc";
+import { COMPONENTS } from "@/components/Storyblok/components";
 
-// Get the appropriate access token based on context
-export function getAccessToken(preview = false) {
-  if (preview) {
-    return process.env.NEXT_PUBLIC_STORYBLOK_PREVIEW_TOKEN || process.env.NEXT_PUBLIC_STORYBLOK_API_TOKEN
-  }
-  return process.env.NEXT_PUBLIC_STORYBLOK_PUBLIC_TOKEN || process.env.NEXT_PUBLIC_STORYBLOK_API_TOKEN
-}
+export const storyblokComponents = COMPONENTS;
 
-// Get Storyblok API instance with appropriate token
-export function getStoryblokApiInstance(preview = false) {
-  return getStoryblokApi({
-    accessToken: getAccessToken(preview)
-  })
-}
+export const getStoryblokApi = (preview = false) => {
+  const accessToken = preview
+    ? process.env.NEXT_PUBLIC_STORYBLOK_PREVIEW_TOKEN
+    : process.env.NEXT_PUBLIC_STORYBLOK_PUBLIC_TOKEN;
+  return storyblokInit({
+    accessToken: accessToken || process.env.NEXT_PUBLIC_STORYBLOK_API_TOKEN, // fallback
+    use: [apiPlugin],
+    components: storyblokComponents,
+    enableFallbackComponent: true,
+  })();
+};

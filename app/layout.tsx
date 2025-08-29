@@ -1,12 +1,9 @@
 import "@/src/styles/app.css"
 import type { Metadata } from "next"
 import "../public/fonts/fonts.css"
-import StoryblokProvider from "@/components/Storyblok/StoryblokProvider"
 import Header from "@components/Header"
 import { themeScript } from "./theme-utils"
 import { Footer } from "@/components/Footer"
-import PreviewBanner from "@/components/PreviewBanner"
-import { draftMode } from "next/headers"
 
 const imageUrl = `https://corydhmiller.com/og?title=${"Photography by Cory"}&image=https://corydhmiller.com/images/about-cory-miller.jpeg`,
 	title = "Photography by Cory Miller",
@@ -66,26 +63,21 @@ export const metadata: Metadata = {
 	},
 }
 
-export default async function RootLayout({
+export default function RootLayout({
 	children,
 }: {
 	children: React.ReactNode
 }) {
-	const { isEnabled } = await draftMode()
-	
 	return (
-		<StoryblokProvider>
-			<html lang="en" suppressHydrationWarning>
-				<head>
-					<script dangerouslySetInnerHTML={{ __html: themeScript }} />
-				</head>
-				<body className="bg-white dark:bg-gray-800 text-gray-800 dark:text-white transition-colors duration-300 flex flex-col">
-					{isEnabled && <PreviewBanner />}
-					<Header />
-					<main className={`wrapper flex-1 ${isEnabled ? 'pt-12' : ''}`}>{children}</main>
-					<Footer />
-				</body>
-			</html>
-		</StoryblokProvider>
+		<html lang="en" suppressHydrationWarning>
+			<head>
+				<script dangerouslySetInnerHTML={{ __html: themeScript }} />
+			</head>
+			<body className="bg-white dark:bg-gray-800 text-gray-800 dark:text-white transition-colors duration-300 flex flex-col">
+				<Header />
+				<main className="wrapper flex-1">{children}</main>
+				<Footer />
+			</body>
+		</html>
 	)
 }

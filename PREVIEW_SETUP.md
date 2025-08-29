@@ -15,7 +15,7 @@ Add to your production environment:
 ```bash
 # Storyblok tokens
 NEXT_PUBLIC_STORYBLOK_PREVIEW_TOKEN=your_preview_token_here
-NEXT_PUBLIC_STORYBLOK_PUBLIC_TOKEN=your_public_token_here
+NEXT_PUBLIC_STORYBLOK_API_TOKEN=your_public_token_here
 STORYBLOK_PREVIEW_SECRET=your_secret_key_here
 
 # Fallback token (if you don't have separate tokens)
