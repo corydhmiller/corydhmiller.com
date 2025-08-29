@@ -5,10 +5,10 @@ export const storyblokComponents = COMPONENTS;
 
 export const getStoryblokApi = (preview = false) => {
   const accessToken = preview
-    ? process.env.NEXT_PUBLIC_STORYBLOK_PREVIEW_TOKEN
-    : process.env.NEXT_PUBLIC_STORYBLOK_PUBLIC_TOKEN;
+    ? process.env.NEXT_PUBLIC_STORYBLOCK_PREVIEW_ACCESS_TOKEN
+    : process.env.STORYBLOCK_PUBLIC_ACCESS_TOKEN;
   return storyblokInit({
-    accessToken: accessToken || process.env.NEXT_PUBLIC_STORYBLOK_API_TOKEN, // fallback
+    accessToken,
     use: [apiPlugin],
     components: storyblokComponents,
     enableFallbackComponent: true,
