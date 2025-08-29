@@ -10,16 +10,27 @@ export default async function PreviewPage({
   const resolvedParams = await params;
   const slug = resolvedParams.slug || ["home"];
   
+  // Join the full slug path as it comes from the redirect
+  const fullSlug = slug.join("/");
+  console.log("Preview page slug:", fullSlug);
+  
   const client = getStoryblokApi(true);
   
+  if (!client) {
+    console.error("Storyblok API not initialized");
+    notFound();
+  }
+  
   try {
-    const response = await client.getStory(`blog/${slug.join("/")}`, {
+    const response = await client.getStory(fullSlug, {
       version: "draft",
     });
     
+    console.log("Story fetched successfully:", response.data.story.name);
     return <StoryblokStory story={response.data.story} />;
   } catch (error) {
     console.error("Error fetching story:", error);
+    console.error("Attempted slug:", fullSlug);
     notFound();
   }
 }
@@ -31,15 +42,20 @@ export async function generateMetadata({
   params: Promise<{ slug?: string[] }> 
 }) {
   const resolvedParams = await params;
-  const slug = resolvedParams.slug?.[0];
+  const slug = resolvedParams.slug || ["home"];
+  const fullSlug = slug.join("/");
   
-  if (!slug) {
+  if (!fullSlug) {
     return { title: "Preview" };
   }
 
   try {
     const client = getStoryblokApi(true);
-    const response = await client.getStory(`blog/${slug}`, {
+    if (!client) {
+      return { title: "Preview - Error" };
+    }
+    
+    const response = await client.getStory(fullSlug, {
       version: "draft",
     });
     
