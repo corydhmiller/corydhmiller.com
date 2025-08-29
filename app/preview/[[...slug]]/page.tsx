@@ -27,7 +27,28 @@ export default async function PreviewPage({
     });
     
     console.log("Story fetched successfully:", response.data.story.name);
-    return <StoryblokStory story={response.data.story} />;
+    console.log("Story content:", JSON.stringify(response.data.story.content, null, 2));
+    console.log("Story component:", response.data.story.content.component);
+    
+    const story = response.data.story;
+    
+    // Debug the story structure
+    if (!story.content) {
+      console.error("Story has no content");
+      return <div>Story has no content</div>;
+    }
+    
+    if (!story.content.body && !story.content.content) {
+      console.error("Story content has no body or content field");
+      return (
+        <div>
+          <h1>{story.content.title || "Preview"}</h1>
+          <pre>{JSON.stringify(story.content, null, 2)}</pre>
+        </div>
+      );
+    }
+    
+    return <StoryblokStory story={story} />;
   } catch (error) {
     console.error("Error fetching story:", error);
     console.error("Attempted slug:", fullSlug);
