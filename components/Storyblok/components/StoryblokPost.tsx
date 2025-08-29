@@ -1,26 +1,34 @@
-// app/components/StoryblokPost.jsx
-import { StoryblokComponent, storyblokEditable } from "@storyblok/react"
+import { storyblokEditable } from "@storyblok/react"
+import Article from "@components/Article"
+import Markdown from "react-markdown"
+import remarkGfm from "remark-gfm"
+import rehypeUnwrapImages from "rehype-unwrap-images"
+import { MarkdownComponents } from "@utils/markdownComponents"
 
 const StoryblokPost = ({ blok }) => {
-	console.log("StoryblokPost received blok:", blok);
+	console.log("StoryblokPost rendering with blok:", blok);
 	
-	// Handle case where body might not exist
-	if (!blok.body || !Array.isArray(blok.body)) {
-		return (
-			<main {...storyblokEditable(blok)}>
-				<h1>{blok.title || "Post"}</h1>
-				{blok.content && <div dangerouslySetInnerHTML={{ __html: blok.content }} />}
-				<pre>Debug blok: {JSON.stringify(blok, null, 2)}</pre>
-			</main>
-		);
-	}
-
 	return (
-		<main {...storyblokEditable(blok)}>
-			{blok.body.map((nestedBlok) => (
-				<StoryblokComponent blok={nestedBlok} key={nestedBlok._uid} />
-			))}
-		</main>
+		<div {...storyblokEditable(blok)}>
+			<Article
+				data={{
+					title: blok.title,
+					wordCount: 100, // Could calculate this from content
+					publishDate: new Date().toISOString(), // Could use story publish date
+					category: "Blog",
+					tags: blok.tags || [],
+					image: blok.image,
+				}}
+			>
+				<Markdown
+					remarkPlugins={[remarkGfm]}
+					rehypePlugins={[rehypeUnwrapImages]}
+					components={MarkdownComponents}
+				>
+					{blok.content || ''}
+				</Markdown>
+			</Article>
+		</div>
 	);
 }
 
