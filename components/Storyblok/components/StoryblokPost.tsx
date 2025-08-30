@@ -6,8 +6,6 @@ import rehypeUnwrapImages from "rehype-unwrap-images"
 import { MarkdownComponents } from "@utils/markdownComponents"
 
 const StoryblokPost = ({ blok }) => {
-	console.log("StoryblokPost rendering with blok:", blok);
-	
 	return (
 		<div {...storyblokEditable(blok)}>
 			<Article
@@ -25,11 +23,11 @@ const StoryblokPost = ({ blok }) => {
 					rehypePlugins={[rehypeUnwrapImages]}
 					components={MarkdownComponents}
 				>
-					{blok.content || ''}
+					{blok.content || ""}
 				</Markdown>
 			</Article>
 		</div>
-	);
+	)
 }
 
 export default StoryblokPost
