@@ -73,7 +73,7 @@ const Article = ({
 						</p>
 					)}
 
-					<Prose className="">{children}</Prose>
+					<Prose className="mt-8">{children}</Prose>
 					{tagsArray && (
 						<Prose className="grid prose-lg mt-12">
 							<div>
