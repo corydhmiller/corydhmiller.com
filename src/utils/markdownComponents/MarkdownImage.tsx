@@ -1,3 +1,7 @@
+import {
+	updateStoryblokImageDimensions,
+	updateStoryblokQuality,
+} from "@/app/lib/storyblok-image"
 import Image from "next/image"
 
 // Because we will always get a storyblok image here, like this:
@@ -10,6 +14,11 @@ export const MarkdownImage = (props) => {
 	const newProps = { ...props }
 
 	const isLocalImage = !props.src.startsWith("http")
+	const resizedImageSrc = updateStoryblokImageDimensions(props.src, {
+		width: 1536,
+		height: 0,
+	})
+	const resizedImageQualitySrc = updateStoryblokQuality(resizedImageSrc, 85)
 
 	// Extract dimensions from Storyblok URL if it's not a local image
 	if (!isLocalImage && props.src.includes("storyblok.com")) {
@@ -22,10 +31,8 @@ export const MarkdownImage = (props) => {
 
 	return (
 		<figure className="flex flex-col" role="figure">
-			<Image {...newProps} />
-			<figcaption>
-				{newProps.alt}
-			</figcaption>
+			<Image {...newProps} src={resizedImageQualitySrc} />
+			<figcaption>{newProps.alt}</figcaption>
 		</figure>
 	)
 }
