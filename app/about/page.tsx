@@ -22,14 +22,14 @@ export default function About() {
 				<Prose className="mt-12 sm:mt-24 max-w-7xl sm:dark:bg-gray-800/80 relative px-4 -mx-4 sm:bg-gray-100/80 rounded-t">
 					<Heading as="h1">I&apos;m Cory Miller.</Heading>
 				</Prose>
-				<Prose className="prose-base mb-24 relative px-4 -mx-4 sm:dark:bg-gray-800/80 sm:bg-gray-100/80 rounded-b">
+				<Prose className="mb-24 relative px-4 -mx-4 sm:dark:bg-gray-800/80 sm:bg-gray-100/80 rounded-b">
 					<p>
 						I was born in Washington, raised in California, and currently live
 						in Vienna, Austria. I&apos;m a photographer, web engineer, musician,
 						and creative at heart.
 					</p>
 
-					<h2 className="text-5xl font-bold">What I Do</h2>
+					<h2 className="font-bold">What I Do</h2>
 					<ul className="list-disc list-inside pl-0">
 						<li>
 							I take pictures of people around the world, streets photography
@@ -55,7 +55,7 @@ export default function About() {
 						</li>
 					</ul>
 
-					<h2 className="text-5xl font-bold">What I Use</h2>
+					<h2 className="font-bold">What I Use</h2>
 					<p>
 						I don&apos;t have any brand loyalty or affiliations, all of the
 						cameras and technology I use is from years of trial and error, or
@@ -84,7 +84,7 @@ export default function About() {
 						</li>
 					</ul>
 
-					<h2 className="text-5xl font-bold">Get in Touch</h2>
+					<h2 className="font-bold">Get in Touch</h2>
 					<p>
 						While I&apos;m not a big fan of social media, you can find me on{" "}
 						<Link
@@ -120,6 +120,10 @@ export const metadata = {
 		siteName: "Cory Miller",
 		locale: "en_US",
 		type: "website",
-		images: [{ url: `https://corydhmiller.com/og?title=About - Cory Miller&image=https://corydhmiller.com/images/about-cory-miller.jpeg` }],
+		images: [
+			{
+				url: `https://corydhmiller.com/og?title=About - Cory Miller&image=https://corydhmiller.com/images/about-cory-miller.jpeg`,
+			},
+		],
 	},
 }

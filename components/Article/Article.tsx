@@ -46,11 +46,11 @@ const Article = ({
 					/>
 				</div>
 			)}
-			<Content>
-				<Prose className="mt-12 sm:mt-24 max-w-7xl sm:dark:bg-gray-800/80 relative px-4 -mx-4 sm:bg-gray-100/80 rounded">
-					<Heading as="h1">{data.title}</Heading>
-				</Prose>
-				<article>
+			<article>
+				<Content>
+					<Prose className="mt-12 sm:mt-24 max-w-7xl sm:dark:bg-gray-800/80 relative px-4 -mx-4 sm:bg-gray-100/80 rounded">
+						<Heading as="h1">{data.title}</Heading>
+					</Prose>
 					<Prose className="prose-lg my-6 mb-12 relative">
 						{publishDate && (
 							<div className="flex items-center gap-2">
@@ -92,8 +92,8 @@ const Article = ({
 							</div>
 						</Prose>
 					)}
-				</article>
-			</Content>
+				</Content>
+			</article>
 		</>
 	)
 }
