@@ -31,7 +31,7 @@ export const MarkdownImage = (props) => {
 
 	return (
 		<figure className="flex flex-col" role="figure">
-			<Image {...newProps} src={resizedImageQualitySrc} />
+			<Image {...newProps} src={resizedImageQualitySrc} quality={null} />
 			<figcaption>{newProps.alt}</figcaption>
 		</figure>
 	)

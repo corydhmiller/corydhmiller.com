@@ -46,11 +46,11 @@ const Article = ({
 					/>
 				</div>
 			)}
-			<Content>
-				<Prose className="mt-12 sm:mt-24 max-w-7xl sm:dark:bg-gray-800/80 relative px-4 -mx-4 sm:bg-gray-100/80 rounded">
-					<Heading as="h1">{data.title}</Heading>
-				</Prose>
-				<article>
+			<article className="prose-xl prose-pre:bg-transparent prose-p:max-w-3xl prose-headings:text-gray-800 dark:prose-headings:text-white prose-strong:text-gray-800 dark:prose-strong:text-white prose-h1:text-3xl sm:prose-h1:text-8xl text-gray-800 dark:text-white text-balance prose-figcaption:text-sm sm:prose-figcaption:text-base prose-figcaption:italic prose-img:max-w-3xl prose-img:w-full prose-blockquote:text-3xl prose-blockquote:max-w-3xl prose-blockquote:text-center  prose-blockquote:border-primary prose-blockquote:border-2 prose-blockquote:rounded-lg prose-blockquote:px-4 prose-blockquote:relative prose-blockquote:bg-primary/10 prose-blockquote:dark:bg-gray-800/80">
+				<Content>
+					<Prose className="mt-12 sm:mt-24 max-w-7xl sm:dark:bg-gray-800/80 relative px-4 -mx-4 sm:bg-gray-100/80 rounded">
+						<Heading as="h1">{data.title}</Heading>
+					</Prose>
 					<Prose className="prose-lg my-6 mb-12 relative">
 						{publishDate && (
 							<div className="flex items-center gap-2">
@@ -92,8 +92,8 @@ const Article = ({
 							</div>
 						</Prose>
 					)}
-				</article>
-			</Content>
+				</Content>
+			</article>
 		</>
 	)
 }
