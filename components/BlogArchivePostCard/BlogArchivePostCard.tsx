@@ -43,7 +43,7 @@ const BlogArchivePostCard = ({
 						alt={content.image.alt}
 						width={488}
 						height={323}
-						className="w-full max-h-[300px] object-cover group-hover:opacity-100 opacity-75 transition-opacity duration-300"
+						className="w-full max-h-[300px] object-cover group-hover:opacity-100 opacity-75 transition-opacity duration-300 m-0"
 						priority={priority}
 					/>
 				</Link>
