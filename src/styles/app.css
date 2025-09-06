@@ -4,7 +4,7 @@
 		'"Noto Color Emoji"';
 	--serif: "GrazieMille", "Georgia", "Cambria", '"Times New Roman"', "serif";
 	--primary: #cfa473;
-	--secondary: #F06517;
+	--secondary: #f06517;
 	--tertiary: #981905;
 	--background-color: white;
 }
@@ -15,6 +15,10 @@ body {
 	margin: 0;
 	font-family: var(--sans-serif);
 	font-size: 1.35rem;
+
+	--site-gutter: 7vw;
+	--mobile-site-gutter: 6vw;
+	--site-max-width: 1300px;
 }
 
 *,
