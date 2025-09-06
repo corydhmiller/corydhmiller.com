@@ -7,7 +7,7 @@ import Image from "next/image"
 export default function Home() {
 	return (
 		<div className="relative w-screen overflow-hidden">
-			<div className="relative text-center z-10 px-4 py-12 border-l border-r border-gray-200">
+			<div className="relative text-center z-10 px-4 py-12">
 				<Heading>Cory Miller</Heading>
 				<span className="opacity-80 font-normal">
 					Street, Portrait, and Headshot Photography
@@ -17,10 +17,10 @@ export default function Home() {
 			<div className="max-w-[1300px] mx-auto">
 				<FluidEngine rows={60} columns={24}>
 					<FluidBox
-						rowStart={1}
 						colStart={[1]}
 						colEnd={[16, 24, 27]}
-						rowEnd={[12]}
+						rowStart={1}
+						rowEnd={[7]}
 					>
 						<Image
 							src="/images/main-walks-in-from-rain.jpg"
@@ -35,10 +35,10 @@ export default function Home() {
 					<FluidBox
 						colStart={[1, 4, 12]}
 						colEnd={[13, 18, 26]}
-						rowStart={[12, 13]}
-						rowEnd={[12, 16]}
+						rowStart={[9, 7]}
+						rowEnd={[11, 16]}
 					>
-						<AnimateBox startY={-100} endY={100}>
+						<AnimateBox startY={150} endY={-100}>
 							<Image
 								src="/images/portrait-of-ruslan.jpg"
 								alt="A portrait of Ruslan"
@@ -51,9 +51,9 @@ export default function Home() {
 					</FluidBox>
 					<FluidBox
 						colStart={2}
-						colEnd={[11, 15, 16]}
+						colEnd={[14, 15, 16]}
 						rowStart={[13, 16]}
-						rowEnd={18}
+						rowEnd={[18,21]}
 					>
 						<AnimateBox startY={100} endY={200}>
 							<Image
@@ -68,10 +68,10 @@ export default function Home() {
 					<FluidBox
 						colStart={1}
 						colEnd={[16, 20, 27]}
-						rowStart={24}
-						rowEnd={26}
+						rowStart={[22]}
+						rowEnd={[23]}
 					>
-						<AnimateBox startY={150} endY={-87}>
+						<AnimateBox startY={350} endY={200}>
 							<Image
 								src="/images/woman-hailing-taxi-cab.jpg"
 								alt="A cinematic photo of a woman hailing a taxi cab"
@@ -102,7 +102,7 @@ export default function Home() {
 					<FluidBox
 						colStart={1}
 						colEnd={[10, 12, 14]}
-						rowStart={[33, 33, 30]}
+						rowStart={[37, 37, 32]}
 						rowEnd={[42, 42, 38]}
 					>
 						<AnimateBox startY={250} endY={-120}>
@@ -119,7 +119,7 @@ export default function Home() {
 					<FluidBox
 						colStart={[3, 12, 14]}
 						colEnd={[17, 22, 24]}
-						rowStart={[42, 33, 32]}
+						rowStart={[42, 33, 34]}
 						rowEnd={[45, 42, 40]}
 					>
 						<AnimateBox startY={300} endY={-250}>
@@ -136,8 +136,8 @@ export default function Home() {
 					<FluidBox
 						colStart={[1, 2, 5]}
 						colEnd={[17, 22, 24]}
-						rowStart={[48, 41, 38]}
-						rowEnd={[51, 46, 48]}
+						rowStart={[48, 46, 38]}
+						rowEnd={[51, 46, 42]}
 					>
 						<AnimateBox startY={100} endY={-250}>
 							<Image
