@@ -1,0 +1,32 @@
+.FluidEngine {
+	--fluidRows: 129;
+	--fluidColumns: 24;
+	--grid-gutter: calc(var(--site-gutter, 4vw) - 34px);
+	--cell-max-width: calc(
+		(var(--site-max-width, 1300px) - (34px * (24 - 1))) / 24
+	);
+	--inset-padding: 0vw;
+	--row-height-scaling-factor: 0.0215;
+	--container-width: min(
+		var(--site-max-width, 1300px),
+		calc(100vw - var(--site-gutter, 4vw) * 2 - var(--inset-padding))
+	);
+
+	display: grid;
+	position: relative;
+	row-gap: 20px;
+	column-gap: 34px;
+	grid-template-rows: repeat(
+		var(--fluidRows),
+		minmax(
+			calc(var(--container-width) * var(--row-height-scaling-factor)),
+			auto
+		)
+	);
+	grid-template-columns:
+		minmax(var(--grid-gutter), 1fr) repeat(
+			var(--fluidColumns),
+			minmax(0, var(--cell-max-width))
+		)
+		minmax(var(--grid-gutter), 1fr);
+}

@@ -11,6 +11,10 @@ const nextConfig = {
 			{ protocol: "https", hostname: "a.storyblok.com", pathname: "/**" },
 		],
 	},
+
+	compiler: {
+		styledComponents: true,
+	},
 }
 
 module.exports = withMDX(nextConfig)
