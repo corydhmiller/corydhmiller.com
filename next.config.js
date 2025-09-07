@@ -10,10 +10,8 @@ const nextConfig = {
 			{ protocol: "https", hostname: "images.unsplash.com", pathname: "/**" },
 			{ protocol: "https", hostname: "a.storyblok.com", pathname: "/**" },
 		],
-	},
-
-	images: {
 		qualities: [1, 60, 85, 90],
+		deviceSizes: [420, 768, 1024, 1200, 1440],
 	},
 }
 

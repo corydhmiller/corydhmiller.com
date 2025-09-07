@@ -3,12 +3,12 @@
 	--fluidColumns: 24;
 	--grid-gutter: calc(var(--site-gutter, 4vw) - 34px);
 	--cell-max-width: calc(
-		(var(--site-max-width, 1445px) - (34px * (24 - 1))) / 24
+		(var(--site-max-width, 1200px) - (34px * (24 - 1))) / 24
 	);
 	--inset-padding: 0vw;
 	--row-height-scaling-factor: 0.0215;
 	--container-width: min(
-		var(--site-max-width, 1445px),
+		var(--site-max-width, 1200px),
 		calc(100vw - var(--site-gutter, 4vw) * 2 - var(--inset-padding))
 	);
 

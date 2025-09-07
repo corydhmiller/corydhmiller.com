@@ -9,7 +9,8 @@ export const MarkdownImage = (props: any) => {
 	return (
 		<StoryblokImage
 			{...props}
-			dimensions={{ width: 1536, height: 0 }}
+			width={768}
+			height={0}
 			quality={85}
 			showCaption={true}
 		/>

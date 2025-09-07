@@ -129,6 +129,9 @@ export function PhotoModal({ selectedImage, onClose }: PhotoModalProps) {
 			if (e.key === "Escape" && !showInfo) {
 				onClose()
 			}
+			if (e.key === "i" && !showInfo) {
+				setShowInfo(true)
+			}
 		}
 		window.addEventListener("keydown", handleEsc)
 		return () => window.removeEventListener("keydown", handleEsc)
@@ -198,7 +201,7 @@ export function PhotoModal({ selectedImage, onClose }: PhotoModalProps) {
 					{/* Info toggle button */}
 					<ActionButton
 						onClick={() => setShowInfo(true)}
-						icon="aperture"
+						icon="info"
 						className="absolute bottom-4 right-4 z-30 p-2"
 						ariaLabel="Show photo information"
 					/>

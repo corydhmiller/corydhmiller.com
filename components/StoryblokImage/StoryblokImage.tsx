@@ -53,8 +53,8 @@ export function StoryblokImage({
 				width={imageWidth}
 				height={imageHeight}
 				quality={quality}
-				sizes={sizes || "100vw"}
-				priority={priority}
+				sizes={sizes || `${imageWidth}px`}
+				loading={priority ? "eager" : "lazy"}
 				{...props}
 			/>
 			{showCaption && alt && <figcaption>{alt}</figcaption>}

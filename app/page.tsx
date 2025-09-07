@@ -20,7 +20,7 @@ export default function Home() {
 						alt="A man holding an umbrella walks in out of the rain"
 						width={1300}
 						height={731}
-						quality={90}
+						quality={80}
 						className="w-full"
 						priority
 					/>
@@ -36,7 +36,7 @@ export default function Home() {
 						alt="A portrait of Ruslan"
 						width={704}
 						height={905}
-						quality={90}
+						quality={80}
 						className="shadow-xl w-full"
 					/>
 				</FluidBox>
@@ -44,24 +44,24 @@ export default function Home() {
 					colStart={[2, 2, 2, 1]}
 					colEnd={[26, 26, 26, 10]}
 					rowStart={[9, 9, 9, 6]}
-					rowEnd={[15]}
+					rowEnd={[11,11,11,11]}
 				>
 					<StoryblokImage
 						src="https://a.storyblok.com/f/313088/1800x2700/feccff1276/boy-looking-through-window.jpg"
 						alt="A boy and his family walk through a museum door"
 						width={768}
 						height={1151}
-						quality={90}
+						quality={80}
 						className="shadow-xl w-full"
 					/>
 				</FluidBox>
-				<FluidBox colStart={[1]} colEnd={[27]} rowStart={[16]} rowEnd={[18]}>
+				<FluidBox colStart={[1]} colEnd={[27]} rowStart={[13]} rowEnd={[17]}>
 					<StoryblokImage
 						src="https://a.storyblok.com/f/313088/1800x753/dbb1d117f7/woman-hailing-taxi-cab.jpg"
 						alt="A cinematic photo of a woman hailing a taxi cab"
 						width={1450}
 						height={606}
-						quality={90}
+						quality={80}
 						className="shadow-xl w-full"
 					/>
 				</FluidBox>
@@ -76,7 +76,7 @@ export default function Home() {
 						alt="A photo of a young girl dancing on the Vienna streets"
 						width={736}
 						height={490}
-						quality={90}
+						quality={80}
 						className="shadow-2xl w-full"
 					/>
 				</FluidBox>
@@ -98,7 +98,7 @@ export default function Home() {
 						alt="A photo of a guard standing watch by Dean's Yard in London"
 						width={661}
 						height={993}
-						quality={90}
+						quality={80}
 						className="shadow-xl w-full"
 					/>
 				</FluidBox>
@@ -113,14 +113,14 @@ export default function Home() {
 						alt="A portrait of Andre"
 						width={416}
 						height={427}
-						quality={90}
+						quality={80}
 						className="shadow-xl w-full"
 					/>
 				</FluidBox>
 				<FluidBox
 					colStart={[2]}
 					colEnd={[26]}
-					rowStart={[33, 33, 33, 31]}
+					rowStart={[33]}
 					rowEnd={[35]}
 				>
 					<StoryblokImage
@@ -128,7 +128,7 @@ export default function Home() {
 						alt="A portrait of Georgia"
 						width={768}
 						height={1154}
-						quality={90}
+						quality={80}
 						className="shadow-2xl w-full"
 					/>
 				</FluidBox>
