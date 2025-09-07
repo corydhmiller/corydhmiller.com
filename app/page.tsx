@@ -20,7 +20,7 @@ export default function Home() {
 						alt="A man holding an umbrella walks in out of the rain"
 						width={1300}
 						height={731}
-						quality={85}
+						quality={90}
 						className="w-full"
 						priority
 					/>
@@ -36,7 +36,7 @@ export default function Home() {
 						alt="A portrait of Ruslan"
 						width={704}
 						height={905}
-						quality={85}
+						quality={90}
 						className="shadow-xl w-full"
 					/>
 				</FluidBox>
@@ -51,7 +51,7 @@ export default function Home() {
 						alt="A boy and his family walk through a museum door"
 						width={768}
 						height={1151}
-						quality={85}
+						quality={90}
 						className="shadow-xl w-full"
 					/>
 				</FluidBox>
@@ -61,7 +61,7 @@ export default function Home() {
 						alt="A cinematic photo of a woman hailing a taxi cab"
 						width={1450}
 						height={606}
-						quality={85}
+						quality={90}
 						className="shadow-xl w-full"
 					/>
 				</FluidBox>
@@ -76,7 +76,7 @@ export default function Home() {
 						alt="A photo of a young girl dancing on the Vienna streets"
 						width={736}
 						height={490}
-						quality={85}
+						quality={90}
 						className="shadow-2xl w-full"
 					/>
 				</FluidBox>
@@ -98,7 +98,7 @@ export default function Home() {
 						alt="A photo of a guard standing watch by Dean's Yard in London"
 						width={661}
 						height={993}
-						quality={85}
+						quality={90}
 						className="shadow-xl w-full"
 					/>
 				</FluidBox>
@@ -113,7 +113,7 @@ export default function Home() {
 						alt="A portrait of Andre"
 						width={416}
 						height={427}
-						quality={85}
+						quality={90}
 						className="shadow-xl w-full"
 					/>
 				</FluidBox>
@@ -128,7 +128,7 @@ export default function Home() {
 						alt="A portrait of Georgia"
 						width={768}
 						height={1154}
-						quality={85}
+						quality={90}
 						className="shadow-2xl w-full"
 					/>
 				</FluidBox>
