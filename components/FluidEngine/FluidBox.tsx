@@ -43,7 +43,7 @@ const FluidBox: React.FC<FluidBoxProps> = ({
 		${getResponsiveValue(colStart, "grid-column-start")}
 		${getResponsiveValue(colEnd, "grid-column-end")}
 	`
-	return <FluidBox className={`fluid-box ${className}`}>{children}</FluidBox>
+	return <FluidBox className={`${className}`}>{children}</FluidBox>
 }
 
 export default FluidBox
