@@ -15,7 +15,6 @@ interface StoryblokImageProps extends Omit<ImageProps, "src"> {
 	blur?: boolean
 	lowResSrc?: string
 	showCaption?: boolean
-	wrapInFigure?: boolean
 }
 
 export function StoryblokImage({
@@ -26,7 +25,6 @@ export function StoryblokImage({
 	dimensions,
 	blur = false,
 	showCaption = false,
-	wrapInFigure = false,
 	priority,
 	...props
 }: StoryblokImageProps) {
@@ -117,14 +115,10 @@ export function StoryblokImage({
 		/>
 	)
 
-	if (wrapInFigure) {
-		return (
-			<figure className="flex flex-col" role="figure">
-				{imageElement}
-				{showCaption && alt && <figcaption>{alt}</figcaption>}
-			</figure>
-		)
-	}
-
-	return imageElement
+	return (
+		<figure className="flex flex-col" role="figure">
+			{imageElement}
+			{showCaption && alt && <figcaption>{alt}</figcaption>}
+		</figure>
+	)
 }
