@@ -1,5 +1,5 @@
-"use client"
-import styled from "styled-components"
+import { CSSProperties } from "react"
+import styles from "./FluidBox.module.css"
 
 interface FluidBoxProps {
 	rowStart: number | number[]
@@ -18,32 +18,47 @@ const FluidBox: React.FC<FluidBoxProps> = ({
 	children,
 	className = "",
 }) => {
-	const getResponsiveValue = (value: number | number[], property: string) => {
-		if (typeof value === "number") {
-			return `${property}: ${value};`
+	const getCSSProperties = (
+		rowStart: number | number[],
+		rowEnd: number | number[],
+		colStart: number | number[],
+		colEnd: number | number[]
+	): CSSProperties => {
+		const cssVars: Record<string, string> = {}
+
+		const setResponsiveVars = (value: number | number[], prefix: string) => {
+			if (typeof value === "number") {
+				cssVars[`--${prefix}`] = value.toString()
+			} else {
+				const breakpoints = ["", "480", "768", "1024"]
+				value.forEach((val, index) => {
+					const suffix = breakpoints[index] ? `-${breakpoints[index]}` : ""
+					cssVars[`--${prefix}${suffix}`] = val.toString()
+				})
+			}
 		}
 
-		const breakpoints = ["", "480px", "768px", "1024px"]
-		let css = ""
+		setResponsiveVars(rowStart, "row-start")
+		setResponsiveVars(rowEnd, "row-end")
+		setResponsiveVars(colStart, "col-start")
+		setResponsiveVars(colEnd, "col-end")
 
-		value.forEach((val, index) => {
-			if (index === 0) {
-				css += `${property}: ${val};\n\t\t`
-			} else if (breakpoints[index]) {
-				css += `@media (min-width: ${breakpoints[index]}) {\n\t\t\t${property}: ${val};\n\t\t}\n\t\t`
-			}
-		})
-
-		return css
+		return {
+			...cssVars,
+			gridRowStart: typeof rowStart === "number" ? rowStart : rowStart[0],
+			gridRowEnd: typeof rowEnd === "number" ? rowEnd : rowEnd[0],
+			gridColumnStart: typeof colStart === "number" ? colStart : colStart[0],
+			gridColumnEnd: typeof colEnd === "number" ? colEnd : colEnd[0],
+		} as CSSProperties
 	}
 
-	const FluidBox = styled.div`
-		${getResponsiveValue(rowStart, "grid-row-start")}
-		${getResponsiveValue(rowEnd, "grid-row-end")}
-		${getResponsiveValue(colStart, "grid-column-start")}
-		${getResponsiveValue(colEnd, "grid-column-end")}
-	`
-	return <FluidBox className={`${className}`}>{children}</FluidBox>
+	const inlineStyles = getCSSProperties(rowStart, rowEnd, colStart, colEnd)
+
+	return (
+		<div className={`${styles.fluidBox} ${className}`} style={inlineStyles}>
+			{children}
+		</div>
+	)
 }
 
 export default FluidBox
