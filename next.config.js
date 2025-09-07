@@ -1,8 +1,8 @@
-const nextConfig = {
+module.exports = {
+  // other configurations
   images: {
-    // Removed the qualities line
     domains: ['example.com'],
+    // Remove the line below
+    // qualities: [50],
   },
 };
-
-module.exports = nextConfig;
