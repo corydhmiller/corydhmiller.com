@@ -1,30 +1,51 @@
 .fluidBox {
-  /* CSS custom properties will be set inline for responsive values */
+	grid-row-start: var(--row-start);
+	grid-row-end: var(--row-end);
+	grid-column-start: var(--col-start);
+	grid-column-end: var(--col-end);
 }
 
 @media (min-width: 480px) {
-  .fluidBox {
-    grid-row-start: var(--row-start-480, var(--row-start));
-    grid-row-end: var(--row-end-480, var(--row-end));
-    grid-column-start: var(--col-start-480, var(--col-start));
-    grid-column-end: var(--col-end-480, var(--col-end));
-  }
+	.fluidBox {
+		grid-row-start: var(--row-start-480, var(--row-start));
+		grid-row-end: var(--row-end-480, var(--row-end));
+		grid-column-start: var(--col-start-480, var(--col-start));
+		grid-column-end: var(--col-end-480, var(--col-end));
+	}
 }
 
 @media (min-width: 768px) {
-  .fluidBox {
-    grid-row-start: var(--row-start-768, var(--row-start-480, var(--row-start)));
-    grid-row-end: var(--row-end-768, var(--row-end-480, var(--row-end)));
-    grid-column-start: var(--col-start-768, var(--col-start-480, var(--col-start)));
-    grid-column-end: var(--col-end-768, var(--col-end-480, var(--col-end)));
-  }
+	.fluidBox {
+		grid-row-start: var(
+			--row-start-768,
+			var(--row-start-480, var(--row-start))
+		);
+		grid-row-end: var(--row-end-768, var(--row-end-480, var(--row-end)));
+		grid-column-start: var(
+			--col-start-768,
+			var(--col-start-480, var(--col-start))
+		);
+		grid-column-end: var(--col-end-768, var(--col-end-480, var(--col-end)));
+	}
 }
 
 @media (min-width: 1024px) {
-  .fluidBox {
-    grid-row-start: var(--row-start-1024, var(--row-start-768, var(--row-start-480, var(--row-start))));
-    grid-row-end: var(--row-end-1024, var(--row-end-768, var(--row-end-480, var(--row-end))));
-    grid-column-start: var(--col-start-1024, var(--col-start-768, var(--col-start-480, var(--col-start))));
-    grid-column-end: var(--col-end-1024, var(--col-end-768, var(--col-end-480, var(--col-end))));
-  }
+	.fluidBox {
+		grid-row-start: var(
+			--row-start-1024,
+			var(--row-start-768, var(--row-start-480, var(--row-start)))
+		);
+		grid-row-end: var(
+			--row-end-1024,
+			var(--row-end-768, var(--row-end-480, var(--row-end)))
+		);
+		grid-column-start: var(
+			--col-start-1024,
+			var(--col-start-768, var(--col-start-480, var(--col-start)))
+		);
+		grid-column-end: var(
+			--col-end-1024,
+			var(--col-end-768, var(--col-end-480, var(--col-end)))
+		);
+	}
 }

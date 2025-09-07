@@ -43,13 +43,7 @@ const FluidBox: React.FC<FluidBoxProps> = ({
 		setResponsiveVars(colStart, "col-start")
 		setResponsiveVars(colEnd, "col-end")
 
-		return {
-			...cssVars,
-			gridRowStart: typeof rowStart === "number" ? rowStart : rowStart[0],
-			gridRowEnd: typeof rowEnd === "number" ? rowEnd : rowEnd[0],
-			gridColumnStart: typeof colStart === "number" ? colStart : colStart[0],
-			gridColumnEnd: typeof colEnd === "number" ? colEnd : colEnd[0],
-		} as CSSProperties
+		return cssVars as CSSProperties
 	}
 
 	const inlineStyles = getCSSProperties(rowStart, rowEnd, colStart, colEnd)
