@@ -15,6 +15,9 @@ const nextConfig = {
 	compiler: {
 		styledComponents: true,
 	},
+	images: {
+		qualities: [50],
+	},
 }
 
 module.exports = withMDX(nextConfig)

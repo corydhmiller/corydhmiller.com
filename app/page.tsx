@@ -1,4 +1,3 @@
-import AnimateBox from "@/components/AnimateBox/AnimateBox"
 import FluidBox from "@/components/FluidEngine/FluidBox"
 import FluidEngine from "@/components/FluidEngine/FluidEngine"
 import Heading from "@/components/Typography/Heading"
@@ -14,157 +13,124 @@ export default function Home() {
 				</span>
 			</div>
 
-			<div className="max-w-[1300px] mx-auto">
-				<FluidEngine rows={60} columns={24}>
-					<FluidBox
-						colStart={[1]}
-						colEnd={[16, 24, 27]}
-						rowStart={1}
-						rowEnd={[7]}
-					>
-						<Image
-							src="/images/main-walks-in-from-rain.jpg"
-							alt="A man holding an umbrella walks in out of the rain"
-							width={1300}
-							height={731}
-							quality={50}
-							className="w-full"
-							priority
-						/>
-					</FluidBox>
-					<FluidBox
-						colStart={[1, 4, 12]}
-						colEnd={[13, 18, 26]}
-						rowStart={[9, 7]}
-						rowEnd={[11, 16]}
-					>
-						<AnimateBox startY={150} endY={-100}>
-							<Image
-								src="/images/portrait-of-ruslan.jpg"
-								alt="A portrait of Ruslan"
-								width={531}
-								height={683}
-								quality={50}
-								className="shadow-xl"
-							/>
-						</AnimateBox>
-					</FluidBox>
-					<FluidBox
-						colStart={2}
-						colEnd={[14, 15, 16]}
-						rowStart={[13, 16]}
-						rowEnd={[18,21]}
-					>
-						<AnimateBox startY={100} endY={200}>
-							<Image
-								src="/images/boy-looking-through-window.jpg"
-								alt="A boy and his family walk through a museum door"
-								width={727}
-								height={1090}
-								quality={50}
-							/>
-						</AnimateBox>
-					</FluidBox>
-					<FluidBox
-						colStart={1}
-						colEnd={[16, 20, 27]}
-						rowStart={[22]}
-						rowEnd={[23]}
-					>
-						<AnimateBox startY={350} endY={200}>
-							<Image
-								src="/images/woman-hailing-taxi-cab.jpg"
-								alt="A cinematic photo of a woman hailing a taxi cab"
-								width={1800}
-								height={753}
-								quality={50}
-								className="shadow-xl"
-							/>
-						</AnimateBox>
-					</FluidBox>
-					<FluidBox
-						colStart={[1, 5]}
-						colEnd={[17, 24]}
-						rowStart={26}
-						rowEnd={31}
-					>
-						<AnimateBox startY={250} endY={-120}>
-							<Image
-								src="/images/young-girl-dancing-in-vienna.jpg"
-								alt="A photo of a young girl dancing on the Vienna streets"
-								width={1500}
-								height={999}
-								quality={50}
-								className="shadow-2xl"
-							/>
-						</AnimateBox>
-					</FluidBox>
-					<FluidBox
-						colStart={1}
-						colEnd={[10, 12, 14]}
-						rowStart={[37, 37, 32]}
-						rowEnd={[42, 42, 38]}
-					>
-						<AnimateBox startY={250} endY={-120}>
-							<Image
-								src="/images/guard-stands-watch-at-deans-yard.jpg"
-								alt="A photo of a guard standing watch by Dean's Yard in London"
-								width={1500}
-								height={999}
-								quality={50}
-								className="shadow-xl"
-							/>
-						</AnimateBox>
-					</FluidBox>
-					<FluidBox
-						colStart={[3, 12, 14]}
-						colEnd={[17, 22, 24]}
-						rowStart={[42, 33, 34]}
-						rowEnd={[45, 42, 40]}
-					>
-						<AnimateBox startY={300} endY={-250}>
-							<Image
-								src="/images/andre-headshot.jpg"
-								alt="A portrait of Andre"
-								width={1800}
-								height={1857}
-								quality={50}
-								className="shadow-xl"
-							/>
-						</AnimateBox>
-					</FluidBox>
-					<FluidBox
-						colStart={[1, 2, 5]}
-						colEnd={[17, 22, 24]}
-						rowStart={[48, 46, 38]}
-						rowEnd={[51, 46, 42]}
-					>
-						<AnimateBox startY={100} endY={-250}>
-							<Image
-								src="/images/georgia-portrait.jpg"
-								alt="A portrait of Georgia"
-								width={875}
-								height={1314}
-								quality={50}
-								className="shadow-2xl"
-							/>
-						</AnimateBox>
-					</FluidBox>
-					<FluidBox
-						colStart={[2, 3, 14]}
-						colEnd={[12, 16, 24]}
-						rowStart={[31]}
-						rowEnd={[32]}
-					>
+			<FluidEngine rows={42} columns={24}>
+				<FluidBox colStart={[1]} colEnd={[27]} rowStart={1} rowEnd={[4]}>
+					<Image
+						src="/images/main-walks-in-from-rain.jpg"
+						alt="A man holding an umbrella walks in out of the rain"
+						width={1300}
+						height={731}
+						quality={50}
+						className="w-full"
+						priority
+					/>
+				</FluidBox>
+				<FluidBox
+					colStart={[2, 2, 4, 14]}
+					colEnd={[26, 26, 26, 27]}
+					rowStart={[5]}
+					rowEnd={[8]}
+				>
+					<Image
+						src="/images/portrait-of-ruslan.jpg"
+						alt="A portrait of Ruslan"
+						width={531}
+						height={683}
+						quality={50}
+						className="shadow-xl w-full"
+					/>
+				</FluidBox>
+				<FluidBox
+					colStart={[2,2,2,1]}
+					colEnd={[26, 26, 26, 10]}
+					rowStart={[9,9,9,6]}
+					rowEnd={[15]}
+				>
+					<Image
+						src="/images/boy-looking-through-window.jpg"
+						alt="A boy and his family walk through a museum door"
+						width={727}
+						height={1090}
+						quality={50}
+						className="shadow-xl w-full"
+					/>
+				</FluidBox>
+				<FluidBox colStart={[1]} colEnd={[27]} rowStart={[16]} rowEnd={[18]}>
+					<Image
+						src="/images/woman-hailing-taxi-cab.jpg"
+						alt="A cinematic photo of a woman hailing a taxi cab"
+						width={1800}
+						height={753}
+						quality={50}
+						className="shadow-xl w-full"
+					/>
+				</FluidBox>
+				<FluidBox
+					colStart={[1, 2]}
+					colEnd={[27, 27, 25]}
+					rowStart={[19]}
+					rowEnd={22}
+				>
+					<Image
+						src="/images/young-girl-dancing-in-vienna.jpg"
+						alt="A photo of a young girl dancing on the Vienna streets"
+						width={1500}
+						height={999}
+						quality={50}
+						className="shadow-2xl w-full"
+					/>
+				</FluidBox>
+				<FluidBox colStart={[2]} colEnd={[26]} rowStart={[24]} rowEnd={[25]}>
+					<div className="px-4">
 						<p>Photographer based in Vienna, Austria</p>
 						<p className="pl-4 pt-8">looking for honest moments</p>
 						<p className="pl-12 pt-12">...mostly in monochrome</p>
-					</FluidBox>
-					<FluidBox colStart={[2]} colEnd={[23]} rowStart={[52]} rowEnd={[53]}>
-						<p>Enjoy your visit</p>
-					</FluidBox>
-				</FluidEngine>
-			</div>
+					</div>
+				</FluidBox>
+				<FluidBox
+					colStart={[2, 2, 1]}
+					colEnd={[26, 26, 12]}
+					rowStart={[27]}
+					rowEnd={[29]}
+				>
+					<Image
+						src="/images/guard-stands-watch-at-deans-yard.jpg"
+						alt="A photo of a guard standing watch by Dean's Yard in London"
+						width={1500}
+						height={999}
+						quality={50}
+						className="shadow-xl w-full"
+					/>
+				</FluidBox>
+				<FluidBox
+					colStart={[2, 2, 13]}
+					colEnd={[26, 26, 26]}
+					rowStart={[30, 30, 28]}
+					rowEnd={[32, 32, 31]}
+				>
+					<Image
+						src="/images/andre-headshot.jpg"
+						alt="A portrait of Andre"
+						width={1800}
+						height={1857}
+						quality={50}
+						className="shadow-xl w-full"
+					/>
+				</FluidBox>
+				<FluidBox colStart={[2]} colEnd={[26]} rowStart={[33,33,33,31]} rowEnd={[35]}>
+					<Image
+						src="/images/georgia-portrait.jpg"
+						alt="A portrait of Georgia"
+						width={875}
+						height={1314}
+						quality={50}
+						className="shadow-2xl w-full"
+					/>
+				</FluidBox>
+				<FluidBox colStart={[2]} colEnd={[26]} rowStart={[38]} rowEnd={[39]}>
+					<p>Enjoy your visit</p>
+				</FluidBox>
+			</FluidEngine>
 		</div>
 	)
 }
