@@ -2,6 +2,10 @@
 
 import React, { useState } from "react"
 import Image, { ImageProps } from "next/image"
+import {
+	updateStoryblokImageDimensions,
+	updateStoryblokQuality,
+} from "@/app/lib/storyblok-image"
 import { cn } from "@/src/utils/cn.utils"
 
 interface StoryblokImageProps extends Omit<ImageProps, "src"> {
@@ -46,20 +50,20 @@ export function StoryblokImage({
 			}
 		}
 		
-		// Ensure we have /m/ for any Storyblok transformations
+		// Apply dimensions using the utility function
 		if (dimensions) {
 			// Apply custom dimensions
-			processedSrc = src + `/m/${dimensions.width}x${dimensions.height}`
+			processedSrc = updateStoryblokImageDimensions(src, dimensions)
 		} else if (imageWidth) {
 			// Use the specified width with height 0 (maintains aspect ratio)
-			processedSrc = src + `/m/${imageWidth}x0`
+			processedSrc = updateStoryblokImageDimensions(src, { width: Number(imageWidth), height: 0 })
 		} else {
 			// Just add /m/ to enable other filters without changing dimensions
 			processedSrc = src + `/m/`
 		}
 		
 		// Apply quality filter via Storyblok API
-		processedSrc = processedSrc + `/filters:quality(${quality})`
+		processedSrc = updateStoryblokQuality(processedSrc, quality)
 	}
 	
 	// Generate low-res version for blur effect
