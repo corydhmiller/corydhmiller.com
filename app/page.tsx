@@ -1,7 +1,7 @@
 import FluidBox from "@/components/FluidEngine/FluidBox"
 import FluidEngine from "@/components/FluidEngine/FluidEngine"
+import { StoryblokImage } from "@/components/StoryblokImage/StoryblokImage"
 import Heading from "@/components/Typography/Heading"
-import Image from "next/image"
 
 export default function Home() {
 	return (
@@ -15,12 +15,12 @@ export default function Home() {
 
 			<FluidEngine rows={42} columns={24}>
 				<FluidBox colStart={[1]} colEnd={[27]} rowStart={1} rowEnd={[4]}>
-					<Image
-						src="/images/main-walks-in-from-rain.jpg"
+					<StoryblokImage
+						src="https://a.storyblok.com/f/313088/2730x1536/0102f6d8b1/main-walks-in-from-rain.jpg"
 						alt="A man holding an umbrella walks in out of the rain"
 						width={1300}
 						height={731}
-						quality={50}
+						quality={85}
 						className="w-full"
 						priority
 					/>
@@ -31,37 +31,37 @@ export default function Home() {
 					rowStart={[5]}
 					rowEnd={[8]}
 				>
-					<Image
-						src="/images/portrait-of-ruslan.jpg"
+					<StoryblokImage
+						src="https://a.storyblok.com/f/313088/1800x2314/d488b45088/portrait-of-ruslan.jpg"
 						alt="A portrait of Ruslan"
-						width={531}
-						height={683}
-						quality={50}
+						width={704}
+						height={905}
+						quality={85}
 						className="shadow-xl w-full"
 					/>
 				</FluidBox>
 				<FluidBox
-					colStart={[2,2,2,1]}
+					colStart={[2, 2, 2, 1]}
 					colEnd={[26, 26, 26, 10]}
-					rowStart={[9,9,9,6]}
+					rowStart={[9, 9, 9, 6]}
 					rowEnd={[15]}
 				>
-					<Image
-						src="/images/boy-looking-through-window.jpg"
+					<StoryblokImage
+						src="https://a.storyblok.com/f/313088/1800x2700/feccff1276/boy-looking-through-window.jpg"
 						alt="A boy and his family walk through a museum door"
-						width={727}
-						height={1090}
-						quality={50}
+						width={768}
+						height={1151}
+						quality={85}
 						className="shadow-xl w-full"
 					/>
 				</FluidBox>
 				<FluidBox colStart={[1]} colEnd={[27]} rowStart={[16]} rowEnd={[18]}>
-					<Image
-						src="/images/woman-hailing-taxi-cab.jpg"
+					<StoryblokImage
+						src="https://a.storyblok.com/f/313088/1800x753/dbb1d117f7/woman-hailing-taxi-cab.jpg"
 						alt="A cinematic photo of a woman hailing a taxi cab"
-						width={1800}
-						height={753}
-						quality={50}
+						width={1450}
+						height={606}
+						quality={85}
 						className="shadow-xl w-full"
 					/>
 				</FluidBox>
@@ -71,12 +71,12 @@ export default function Home() {
 					rowStart={[19]}
 					rowEnd={22}
 				>
-					<Image
-						src="/images/young-girl-dancing-in-vienna.jpg"
+					<StoryblokImage
+						src="https://a.storyblok.com/f/313088/1500x999/4aa823a04f/young-girl-dancing-in-vienna.jpg"
 						alt="A photo of a young girl dancing on the Vienna streets"
-						width={1500}
-						height={999}
-						quality={50}
+						width={736}
+						height={490}
+						quality={85}
 						className="shadow-2xl w-full"
 					/>
 				</FluidBox>
@@ -93,12 +93,12 @@ export default function Home() {
 					rowStart={[27]}
 					rowEnd={[29]}
 				>
-					<Image
-						src="/images/guard-stands-watch-at-deans-yard.jpg"
+					<StoryblokImage
+						src="https://a.storyblok.com/f/313088/1800x2705/696605a9cc/guard-stands-watch-at-deans-yard.jpg"
 						alt="A photo of a guard standing watch by Dean's Yard in London"
-						width={1500}
-						height={999}
-						quality={50}
+						width={661}
+						height={993}
+						quality={85}
 						className="shadow-xl w-full"
 					/>
 				</FluidBox>
@@ -108,22 +108,27 @@ export default function Home() {
 					rowStart={[30, 30, 28]}
 					rowEnd={[32, 32, 31]}
 				>
-					<Image
-						src="/images/andre-headshot.jpg"
+					<StoryblokImage
+						src="https://a.storyblok.com/f/313088/1800x1847/96fc69403c/andre-headshot.jpg"
 						alt="A portrait of Andre"
-						width={1800}
-						height={1857}
-						quality={50}
+						width={416}
+						height={427}
+						quality={85}
 						className="shadow-xl w-full"
 					/>
 				</FluidBox>
-				<FluidBox colStart={[2]} colEnd={[26]} rowStart={[33,33,33,31]} rowEnd={[35]}>
-					<Image
-						src="/images/georgia-portrait.jpg"
+				<FluidBox
+					colStart={[2]}
+					colEnd={[26]}
+					rowStart={[33, 33, 33, 31]}
+					rowEnd={[35]}
+				>
+					<StoryblokImage
+						src="https://a.storyblok.com/f/313088/1800x2705/a322514087/georgia-portrait.jpg"
 						alt="A portrait of Georgia"
-						width={875}
-						height={1314}
-						quality={50}
+						width={768}
+						height={1154}
+						quality={85}
 						className="shadow-2xl w-full"
 					/>
 				</FluidBox>

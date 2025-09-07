@@ -8,8 +8,6 @@ export const updateStoryblokImageDimensions = (
 }
 
 export const updateStoryblokQuality = (image: string, quality: number) => {
-	const initialUrl = new URL(image)
-	// Add /filters:quality(32) to the url
-	// Note this is not filters=, but filters:
-	return `${initialUrl.origin}${initialUrl.pathname}/filters:quality(${quality})${initialUrl.search}${initialUrl.hash}`
+	// Add filters:quality as part of the URL path
+	return image + `/filters:quality(${quality})`
 }
