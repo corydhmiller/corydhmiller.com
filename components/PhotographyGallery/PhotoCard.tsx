@@ -37,7 +37,7 @@ export function PhotoCard({ photo, index, focusedIndex, onSelect, onFocus }: Pho
           alt={photo.content.image.alt}
           className="h-full w-full object-cover transition-opacity duration-500"
           fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          sizes="(max-width: 768px) 100vw, (max-width: 1445px) 50vw, 33vw"
         />
       </motion.div>
     </motion.div>

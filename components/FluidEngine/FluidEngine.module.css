@@ -3,17 +3,18 @@
 	--fluidColumns: 24;
 	--grid-gutter: calc(var(--site-gutter, 4vw) - 34px);
 	--cell-max-width: calc(
-		(var(--site-max-width, 1550px) - (34px * (24 - 1))) / 24
+		(var(--site-max-width, 1200px) - (34px * (24 - 1))) / 24
 	);
 	--inset-padding: 0vw;
 	--row-height-scaling-factor: 0.0215;
 	--container-width: min(
-		var(--site-max-width, 1550px),
+		var(--site-max-width, 1200px),
 		calc(100vw - var(--site-gutter, 4vw) * 2 - var(--inset-padding))
 	);
 
 	display: grid;
 	position: relative;
+
 	grid-template-rows: repeat(
 		var(--fluidRows),
 		minmax(
@@ -27,9 +28,9 @@
 			minmax(0, var(--cell-max-width))
 		)
 		minmax(var(--grid-gutter), 1fr);
-		row-gap: clamp(20px, 2vw, 30px);
+	row-gap: clamp(20px, 2vw, 30px);
 }
-@media (min-width: 768pxpx) {
+@media (min-width: 768px) {
 	.FluidEngine {
 		column-gap: clamp(0px, 2vw, 34px);
 	}
