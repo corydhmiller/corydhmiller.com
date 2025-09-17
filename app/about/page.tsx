@@ -3,13 +3,14 @@ import Prose from "@components/Prose"
 import Link from "@components/UI/Link"
 import Image from "next/image"
 import Heading from "@components/Typography/Heading"
+import { StoryblokImage } from "@/components/StoryblokImage/StoryblokImage"
 
 export default function About() {
 	return (
 		<>
 			<div className="max-w-7xl mx-auto sm:-mb-64">
-				<Image
-					src="/images/about-cory-miller.jpeg"
+				<StoryblokImage
+					src="https://a.storyblok.com/f/313088/1800x1199/94a7598a0a/corymiller-about-main.jpg"
 					alt="Cory Miller"
 					width={1200}
 					height={600}
@@ -61,13 +62,12 @@ export default function About() {
 						cameras and technology I use is from years of trial and error, or
 						just for the sake of fun.
 					</p>
-					<p>Here&apos;s a list of the equipment I use:</p>
+					<p>Here&apos;s a list of some of the equipment I use:</p>
 					<ul className="list-disc list-inside pl-0">
 						<li>
 							Cameras
 							<ul className="list-disc list-inside sm:ml-4">
-								<li>Sony A7C</li>
-								<li>Fujifilm X-Pro 2</li>
+								<li>Sony A7CR</li>
 								<li>Canon AE-1 Program</li>
 								<li>Minolta SRT-101</li>
 								<li>Yashica Electro 35</li>
@@ -76,10 +76,9 @@ export default function About() {
 						<li>
 							Lenses
 							<ul className="list-disc list-inside sm:ml-4">
+								<li>Sony FE 24-50 f/2.8</li>
 								<li>Sony FE 40mm f/2.5 G</li>
 								<li>Sony FE 85mm f/1.8</li>
-								<li>Fujifilm XF 23mm f/1.4 R</li>
-								<li>Fujifilm XF 35mm f/1.4 R</li>
 							</ul>
 						</li>
 					</ul>
