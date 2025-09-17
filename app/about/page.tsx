@@ -121,7 +121,7 @@ export const metadata = {
 		type: "website",
 		images: [
 			{
-				url: `https://corydhmiller.com/og?title=About - Cory Miller&image=https://corydhmiller.com/images/about-cory-miller.jpeg`,
+				url: `https://corydhmiller.com/og?title=About - Cory Miller&image=https://a.storyblok.com/f/313088/1800x1199/94a7598a0a/corymiller-about-main.jpg`,
 			},
 		],
 	},
