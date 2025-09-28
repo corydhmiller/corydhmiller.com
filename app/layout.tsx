@@ -72,6 +72,12 @@ export default function RootLayout({
 		<html lang="en" suppressHydrationWarning>
 			<head>
 				<script dangerouslySetInnerHTML={{ __html: themeScript }} />
+
+				<script
+					defer
+					src="https://static.cloudflareinsights.com/beacon.min.js"
+					data-cf-beacon='{"token": "f3c6324c8dee414d9f8a2ad012cb8d1c"}'
+				></script>
 			</head>
 			<body className="bg-white dark:bg-gray-800 text-gray-800 dark:text-white transition-colors duration-300 flex flex-col">
 				<Header />
