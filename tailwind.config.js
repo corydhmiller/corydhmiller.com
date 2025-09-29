@@ -25,7 +25,7 @@ module.exports = {
 			white: "#EEEEEC",
 			gray: {
 				100: "#EEEEEC",
-				200: "#c9c0d9",
+				200: "#cfcfcf",
 				400: "#535353",
 				800: "#141414",
 			},
