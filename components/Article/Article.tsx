@@ -6,6 +6,7 @@ import Content from "../Content"
 import Image from "next/image"
 import FeatherIcon from "feather-icons-react"
 import { updateStoryblokImageDimensions } from "@/app/lib/storyblok-image"
+import { StoryblokImage } from "../StoryblokImage/StoryblokImage"
 
 const Article = ({
 	children,
@@ -32,11 +33,8 @@ const Article = ({
 		<>
 			{data.image && (
 				<div className="max-w-7xl mx-auto sm:-mb-64">
-					<Image
-						src={updateStoryblokImageDimensions(data.image.filename, {
-							width: 1200,
-							height: 600,
-						})}
+					<StoryblokImage
+						src={data.image.filename}
 						alt={data.image.alt}
 						width={1200}
 						height={600}
