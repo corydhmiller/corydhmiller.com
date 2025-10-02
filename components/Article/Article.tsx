@@ -2,10 +2,8 @@ import { formatDate } from "@/src/utils/dates.utils"
 import Prose from "@components/Prose"
 import Heading from "@components/Typography/Heading"
 import Link from "@components/UI/Link"
-import Content from "../Content"
-import Image from "next/image"
 import FeatherIcon from "feather-icons-react"
-import { updateStoryblokImageDimensions } from "@/app/lib/storyblok-image"
+import Content from "../Content"
 import { StoryblokImage } from "../StoryblokImage/StoryblokImage"
 
 const Article = ({
