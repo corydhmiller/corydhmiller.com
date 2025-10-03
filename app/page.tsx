@@ -14,15 +14,30 @@ export default function Home() {
 			</div>
 
 			<FluidEngine rows={42} columns={24}>
-				<FluidBox colStart={[1]} colEnd={[27]} rowStart={1} rowEnd={[4]}>
+				<FluidBox colStart={[1]} colEnd={[27]} rowStart={1} rowEnd={[2]}>
 					<StoryblokImage
 						src="https://a.storyblok.com/f/313088/2730x1536/0102f6d8b1/main-walks-in-from-rain.jpg"
 						alt="A man holding an umbrella walks in out of the rain"
-						width={1300}
-						height={731}
+						width={2540}
+						height={1428}
 						quality={80}
 						className="w-full"
 						priority
+						/>
+				</FluidBox>
+				<FluidBox
+					colStart={[2]}
+					colEnd={[27, 27, 26]}
+					rowStart={3}
+					rowEnd={[4]}
+					>
+					<StoryblokImage
+						src="https://a.storyblok.com/f/313088/7764x3882/1055f4a5d1/dogs-greet-each-other-at-hofburg.jpg"
+						alt="Several dogs greeting each other at the Hofburg"
+						width={1869}
+						height={834}
+						quality={80}
+						className="w-full rounded-[2px]"
 					/>
 				</FluidBox>
 				<FluidBox
@@ -37,14 +52,14 @@ export default function Home() {
 						width={704}
 						height={905}
 						quality={80}
-						className="shadow-xl w-full"
+						className="shadow-xl w-full rounded-[2px]"
 					/>
 				</FluidBox>
 				<FluidBox
 					colStart={[2, 2, 2, 1]}
 					colEnd={[26, 26, 26, 10]}
 					rowStart={[9, 9, 9, 6]}
-					rowEnd={[11,11,11,11]}
+					rowEnd={[10]}
 				>
 					<StoryblokImage
 						src="https://a.storyblok.com/f/313088/1800x2700/feccff1276/boy-looking-through-window.jpg"
@@ -52,17 +67,40 @@ export default function Home() {
 						width={768}
 						height={1151}
 						quality={80}
-						className="shadow-xl w-full"
+						className="shadow-xl w-full rounded-[2px]"
 					/>
 				</FluidBox>
-				<FluidBox colStart={[1]} colEnd={[27]} rowStart={[13]} rowEnd={[17]}>
+
+				<FluidBox colStart={[2]} colEnd={[26]} rowStart={[11]} rowEnd={[12]}>
+					<StoryblokImage
+						src="https://a.storyblok.com/f/313088/7696x3523/9cd609c306/group-of-visitors-gather-around-a-wurst-stand.jpg"
+						alt="A group of visitors gather around a wurst stand"
+						width={1149}
+						height={549}
+						quality={80}
+						className="shadow-xl w-full rounded-[2px]"
+					/>
+				</FluidBox>
+
+				<FluidBox colStart={[1]} colEnd={[27,27,12]} rowStart={[13]} rowEnd={[14,14,17]}>
+					<StoryblokImage
+						src="https://a.storyblok.com/f/313088/8611x5740/e5fe5343b5/a-man-sits-quietly-reading-a-map-og.jpg"
+						alt="A man sits quietly reading a map"
+						width={1150}
+						height={766}
+						quality={80}
+						className="shadow-xl w-full rounded-[2px]"
+					/>
+				</FluidBox>
+
+				<FluidBox colStart={[1,1,13]} colEnd={[27]} rowStart={[15,15,13]} rowEnd={[17]}>
 					<StoryblokImage
 						src="https://a.storyblok.com/f/313088/1800x753/dbb1d117f7/woman-hailing-taxi-cab.jpg"
 						alt="A cinematic photo of a woman hailing a taxi cab"
-						width={1450}
-						height={606}
+						width={1304}
+						height={545}
 						quality={80}
-						className="shadow-xl w-full"
+						className="shadow-xl w-full rounded-[2px]"
 					/>
 				</FluidBox>
 				<FluidBox
@@ -77,7 +115,7 @@ export default function Home() {
 						width={736}
 						height={490}
 						quality={80}
-						className="shadow-2xl w-full"
+						className="shadow-2xl w-full rounded-[2px]"
 					/>
 				</FluidBox>
 				<FluidBox colStart={[2]} colEnd={[26]} rowStart={[24]} rowEnd={[25]}>
@@ -99,7 +137,7 @@ export default function Home() {
 						width={661}
 						height={993}
 						quality={80}
-						className="shadow-xl w-full"
+						className="shadow-xl w-full rounded-[2px]"
 					/>
 				</FluidBox>
 				<FluidBox
@@ -114,22 +152,17 @@ export default function Home() {
 						width={416}
 						height={427}
 						quality={80}
-						className="shadow-xl w-full"
+						className="shadow-xl w-full rounded-[2px]"
 					/>
 				</FluidBox>
-				<FluidBox
-					colStart={[2]}
-					colEnd={[26]}
-					rowStart={[33]}
-					rowEnd={[35]}
-				>
+				<FluidBox colStart={[2]} colEnd={[26]} rowStart={[33]} rowEnd={[35]}>
 					<StoryblokImage
 						src="https://a.storyblok.com/f/313088/1800x2705/a322514087/georgia-portrait.jpg"
 						alt="A portrait of Georgia"
 						width={768}
 						height={1154}
 						quality={80}
-						className="shadow-2xl w-full"
+						className="shadow-2xl w-full rounded-[2px]"
 					/>
 				</FluidBox>
 				<FluidBox colStart={[2]} colEnd={[26]} rowStart={[38]} rowEnd={[39]}>
